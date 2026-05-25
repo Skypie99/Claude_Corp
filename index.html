@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claude Corp — Multi-Agent AI System</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f1117;
+      --surface: #161b27;
+      --surface-2: #1e2535;
+      --border: #2a3347;
+      --accent: #7c6af7;
+      --accent-soft: #a89df8;
+      --text: #e8ecf4;
+      --text-muted: #8b95aa;
+      --text-faint: #4e596b;
+      --green: #34d399;
+      --tag-bg: #1e2535;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background: rgba(15, 17, 23, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--accent), #b36af7);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      margin-left: 1.75rem;
+      transition: color 0.15s;
+    }
+    nav a:hover { color: var(--text); }
+
+    .nav-cta {
+      margin-left: 2rem;
+      background: var(--accent);
+      color: #fff !important;
+      padding: 0.45rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background 0.15s !important;
+    }
+    .nav-cta:hover { background: var(--accent-soft) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.78rem;
+      color: var(--accent-soft);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+    }
+
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 .accent { background: linear-gradient(135deg, var(--accent), #b36af7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.875rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.65rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-soft); }
+    .btn-ghost { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent-soft); }
+
+    /* ── SECTIONS ── */
+    section { max-width: 1060px; margin: 0 auto; padding: 4rem 2rem; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-soft);
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 580px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent-soft);
+      margin-bottom: 1rem;
+    }
+
+    .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .step p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.55; }
+
+    /* ── TEAM GRID ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .role-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.25rem 1rem;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+
+    .role-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .role-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.625rem;
+      display: block;
+    }
+
+    .role-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .role-title {
+      font-size: 0.78rem;
+      color: var(--accent-soft);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .role-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── FEATURES ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .feature {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .feature-icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.875rem;
+    }
+
+    .feature h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .feature p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.55; }
+
+    /* ── DIVIDER ── */
+    hr { border: none; border-top: 1px solid var(--border); }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      text-align: center;
+      padding: 5rem 2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta-band h2 { margin-bottom: 1rem; }
+    .cta-band p { color: var(--text-muted); margin-bottom: 2rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.75rem 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-faint);
+    }
+
+    footer a { color: var(--text-muted); text-decoration: none; }
+    footer a:hover { color: var(--accent-soft); }
+
+    @media (max-width: 640px) {
+      nav a:not(.nav-cta) { display: none; }
+      .hero { padding: 3.5rem 1.25rem 3rem; }
+      section { padding: 3rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="#" class="logo">
+    <span class="logo-mark">CC</span>
+    Claude Corp
+  </a>
+  <nav>
+    <a href="#how-it-works">How it works</a>
+    <a href="#team">The team</a>
+    <a href="#features">Features</a>
+    <a href="https://github.com/Skypie99/Claude_Corp" class="nav-cta" target="_blank" rel="noopener">GitHub &rarr;</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <span class="dot"></span>
+    Active &mdash; 19 scheduled agents running
+  </div>
+  <h1>A <span class="accent">15-role AI team</span><br />that ships software autonomously</h1>
+  <p class="hero-desc">
+    Claude Corp is a multi-agent project management system built on Anthropic's Claude.
+    Specialized AI roles collaborate across two production apps — planning, building, testing, reviewing, and deploying — all governed by a living Constitution.
+  </p>
+  <div class="hero-actions">
+    <a href="https://github.com/Skypie99/Claude_Corp" class="btn btn-primary" target="_blank" rel="noopener">View on GitHub</a>
+    <a href="#team" class="btn btn-ghost">Meet the team</a>
+  </div>
+</section>
+
+<hr />
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <p class="section-label">How it works</p>
+  <h2>From backlog to deploy, automated</h2>
+  <p class="section-desc">
+    Each role is a Claude agent with a scoped SKILL.md. Morgan orchestrates across roles. A Constitution enforces safety gates.
+  </p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Sky sets intent</h3>
+      <p>Sky writes a directive or invokes a slash command. The Constitution's authority order locks in: Sky &gt; Constitution &gt; role files &gt; skills.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Orchestrator plans</h3>
+      <p>Morgan reads backlogs, open branches, and qa-reports — then routes work to the right specialist roles in the right dependency order.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Roles execute</h3>
+      <p>Each agent works in isolation on a scoped branch. Design, code, test, accessibility, performance, and privacy checks all run before anything merges.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h3>Safety sweep</h3>
+      <p>A 7-layer Design Compiler gate + Orion recovery agent ensure no UI ships without full parity and no reversals require a rollback plan.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">05</div>
+      <h3>Sky merges</h3>
+      <p>Only Sky touches <code>main</code>. Agents branch, propose, and report — never auto-merge. Morgan delivers the briefing; Sky decides.</p>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- TEAM -->
+<section id="team">
+  <p class="section-label">The team</p>
+  <h2>15 specialized roles</h2>
+  <p class="section-desc">Each role is a purpose-built Claude agent with a scoped SKILL.md, a prefixed branch namespace, and a silent external presence — only Morgan talks to Sky.</p>
+  <div class="team-grid">
+    <div class="role-card">
+      <span class="role-icon">📋</span>
+      <div class="role-name">Morgan</div>
+      <div class="role-title">Project Manager</div>
+      <div class="role-desc">Status briefings, decision routing, and the sole channel for messaging Sky.</div>
+    </div>
+    <div class="role-card">
+      <span class="role-icon">⚒️</span>
+      <div class="role-name">Shamus</div>
+      <div class="role-title">Feature Engineer</div>
+      <div class="role-desc">Ships new screens, flows, and UI. Every PR passes the 7-layer Design Compiler gate.</div>
+    </div>
+    <div class="role-card">
+      <span class="role-icon">🔬</span>
+      <div class="role-name">Gary</div>
+      <div class="role-title">QA Engineer</div>
+      <div class="role-desc">Writes and runs tests. Catches regressions before they reach Sky's review queue.</div>
+    </div>
+    <div class="role-card">
+      <span class="role-icon">🛡️</span>
+      <div class="role-name">Steve</div>
+      <div class="role-title">Safety Engineer</div>
+      <div class="role-desc">Enforces Constitution safety rules. Raises blockers before risky code ships.</div>
+    </div>
+    <div class="role-card">
+      <span class="role-icon">♿</span>
+      <div class="role-name">Alex</div>
+      <div class="role-title">Accessibility Engineer</div>
+      <div class="role-desc">WCAG 2.2 AA audits on every UI change. No screen ships without an a11y pass.</div>
+    </div>
+    <div class="role-card">
+      <span class="role-icon">⚡</span>
+      <div class="role-name">Peter</div>
+      <div class="role-title">Performance Engineer</div>
+      <div class="role-desc">Bundle audits, render profiling, and load-time optimization across all projects.</div>
+    </div>
+    <div class="role-card">
+      <span class="role-icon">🎨</span>
+      <div class="role-name">Dani</div>
+      <div class="role-title">Design Lead</div>
+      <div class="role-desc">Token-first design system. Runs the Design Compiler; POLISH and BLOCK decisions are hers.</div>
+    </div>
+    <div class="role-card">
+      <span class="role-icon">🔐</span>
+      <div class="role-name">Jordan</div>
+      <div class="role-title">Privacy Engineer</div>
+      <div class="role-desc">Privacy-by-design gate on all location, auth, and user-data changes. PRIVACY.md owns the spec.</div>
+    </div>
+    <div class="role-card">
+      <span class="role-icon">✍️</span>
+      <div class="role-name">Will</div>
+      <div class="role-title">Communications</div>
+      <div class="role-desc">UX copy, changelogs, onboarding text, and release notes — clear language across all surfaces.</div>
+    </div>
+    <div class="role-card">
+      <span class="role-icon">🚀</span>
+      <div class="role-name">Rory</div>
+      <div class="role-title">Deployment Engineer</div>
+      <div class="role-desc">CI/CD pipelines, GitHub Actions, and live-URL readiness. Gets things actually shipped.</div>
+    </div>
+    <div class="role-card">
+      <span class="role-icon">🔍</span>
+      <div class="role-name">Casey</div>
+      <div class="role-title">Code Reviewer</div>
+      <div class="role-desc">Deep diff reviews for correctness bugs, edge cases, and API misuse before merge.</div>
+    </div>
+    <div class="role-card">
+      <span class="role-icon">📊</span>
+      <div class="role-name">Riley</div>
+      <div class="role-title">Analytics</div>
+      <div class="role-desc">Metrics, data validation, and insight reporting across project health signals.</div>
+    </div>
+    <div class="role-card">
+      <span class="role-icon">🧩</span>
+      <div class="role-name">Quinn</div>
+      <div class="role-title">Integration Lead</div>
+      <div class="role-desc">Third-party APIs, SDK upgrades, and cross-system compatibility work.</div>
+    </div>
+    <div class="role-card">
+      <span class="role-icon">📝</span>
+      <div class="role-name">Dana</div>
+      <div class="role-title">Documentation</div>
+      <div class="role-desc">Keeps specs, learnings, and architecture docs in sync with the actual codebase.</div>
+    </div>
+    <div class="role-card">
+      <span class="role-icon">🔄</span>
+      <div class="role-name">Orion</div>
+      <div class="role-title">Recovery Agent</div>
+      <div class="role-desc">Recovery-only (Art. 8.4). Steps in when another role hits a blocker or inconsistent state.</div>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- FEATURES -->
+<section id="features">
+  <p class="section-label">What makes it work</p>
+  <h2>Built-in guardrails, not guidelines</h2>
+  <p class="section-desc">Claude Corp is governed by a Constitution that outranks any role or skill. Safety is structural, not aspirational.</p>
+  <div class="features-grid">
+    <div class="feature">
+      <div class="feature-icon">📜</div>
+      <h3>Living Constitution</h3>
+      <p>A versioned governance document (currently v1.11) that all 15 roles inherit as hard law. No agent self-amends. Only Sky changes it.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🏗️</div>
+      <h3>7-Layer Design Compiler</h3>
+      <p>Every UI change passes tokenization, accessibility parity, component consistency, visual entropy, luxury UI score, and regression safety before Shamus marks it DONE.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🌙</div>
+      <h3>Background Mode (Art. 12)</h3>
+      <p>19 scheduled agents run autonomously overnight. A halt-sentinel file (`BACKGROUND_HALT`) freezes all background work instantly. Max 1 reversible change per cycle.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🔒</div>
+      <h3>Main is Sacred</h3>
+      <p>No agent ever touches <code>main</code>. Every change lands on a role-prefixed branch, gets reviewed, and merges only when Sky approves.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📬</div>
+      <h3>One Voice to Sky</h3>
+      <p>Morgan is the only agent allowed to message Sky externally. All other roles surface findings to qa-reports. Morgan picks them up and briefs Sky.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">♻️</div>
+      <h3>Velocity Loop</h3>
+      <p>Five vl-* slash commands drive a continuous backlog-to-PR cycle: plan → work → review → state-sync → next. No idle time between iterations.</p>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<!-- CTA -->
+<div class="cta-band">
+  <h2>Built by one developer, powered by fifteen agents</h2>
+  <p>Claude Corp runs on top of Anthropic's Claude. It's Sky's personal engineering team — always on, always scoped, and always governed.</p>
+  <a href="https://github.com/Skypie99/Claude_Corp" class="btn btn-primary" target="_blank" rel="noopener">View the source on GitHub &rarr;</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Built by <a href="https://github.com/Skypie99" target="_blank" rel="noopener">Sky Halisky</a> &middot; Powered by <a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic Claude</a> &middot; <a href="https://github.com/Skypie99/Claude_Corp" target="_blank" rel="noopener">GitHub</a></p>
+</footer>
+
+</body>
+</html>
