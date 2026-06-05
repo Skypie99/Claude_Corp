@@ -3,543 +3,549 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Claude Corp — Multi-Agent AI System</title>
+  <title>Claude Corp — A 15-role AI team that ships software autonomously</title>
+  <meta name="description" content="Claude Corp is a multi-agent engineering system built on Anthropic's Claude. 15 specialized AI roles plan, build, test, review, and deploy across two production apps — governed by a living Constitution." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c6af7'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='15' font-weight='bold' fill='white' text-anchor='middle'%3ECC%3C/text%3E%3C/svg%3E">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0f1117;
-      --surface: #161b27;
-      --surface-2: #1e2535;
-      --border: #2a3347;
-      --accent: #7c6af7;
-      --accent-soft: #a89df8;
-      --text: #e8ecf4;
-      --text-muted: #8b95aa;
-      --text-faint: #4e596b;
-      --green: #34d399;
-      --tag-bg: #1e2535;
+      --bg:          #08090e;
+      --bg-2:        #0b0d14;
+      --surface:     #10131d;
+      --surface-2:   #161a27;
+      --border:      rgba(255,255,255,0.08);
+      --border-soft: rgba(255,255,255,0.05);
+      --hairline:    rgba(255,255,255,0.12);
+
+      --violet:      #8b7cff;
+      --violet-2:    #b06aff;
+      --indigo:      #6c8cff;
+      --coral:       #ff8a5b;   /* Claude warmth */
+      --sky:         #46b8f5;
+      --emerald:     #34d399;
+      --orange:      #fb923c;
+      --pink:        #f472b6;
+      --green:       #34d399;
+
+      --text:        #eef0f7;
+      --text-muted:  #a3abc2;
+      --text-faint:  #5e687f;
+
+      --maxw: 1140px;
+      --radius: 18px;
+      --radius-sm: 11px;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
       line-height: 1.6;
       min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
+
+    /* ── AMBIENT BACKGROUND ── */
+    .bg-layer { position: fixed; inset: 0; z-index: -2; pointer-events: none; }
+    .bg-grid {
+      position: fixed; inset: 0; z-index: -2; pointer-events: none;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 35%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 35%, transparent 80%);
+    }
+    .glow {
+      position: fixed; z-index: -2; border-radius: 50%; pointer-events: none;
+      filter: blur(90px); opacity: 0.55;
+    }
+    .glow-1 { top: -260px; left: 50%; width: 900px; height: 620px; transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(124,106,247,0.45), transparent 65%); }
+    .glow-2 { top: 120px; right: -200px; width: 620px; height: 620px;
+      background: radial-gradient(circle, rgba(255,138,91,0.20), transparent 65%); }
+    .glow-3 { top: 60px; left: -240px; width: 560px; height: 560px;
+      background: radial-gradient(circle, rgba(70,184,245,0.18), transparent 65%); }
+    .bg-grain {
+      position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    a { color: inherit; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding-left: 2rem; padding-right: 2rem; }
 
     /* ── HEADER ── */
     header {
-      border-bottom: 1px solid var(--border);
-      padding: 1.25rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      background: rgba(15, 17, 23, 0.92);
-      backdrop-filter: blur(12px);
-      z-index: 100;
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(16px) saturate(140%);
+      background: linear-gradient(180deg, rgba(8,9,14,0.85), rgba(8,9,14,0.6));
+      border-bottom: 1px solid var(--border-soft);
     }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--text);
-      text-decoration: none;
+    .header-inner {
+      max-width: var(--maxw); margin: 0 auto; padding: 1rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
     }
-
+    .logo { display: flex; align-items: center; gap: 0.65rem; font-weight: 700; font-size: 1rem; text-decoration: none; color: var(--text); letter-spacing: -0.01em; }
     .logo-mark {
-      width: 28px;
-      height: 28px;
-      background: linear-gradient(135deg, var(--accent), #b36af7);
-      border-radius: 7px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      font-weight: 800;
-      color: #fff;
+      width: 30px; height: 30px; border-radius: 9px;
+      background: linear-gradient(135deg, var(--violet), var(--violet-2) 55%, var(--coral));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 800; color: #fff;
+      box-shadow: 0 4px 16px rgba(124,106,247,0.45), inset 0 1px 0 rgba(255,255,255,0.35);
     }
-
-    nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.875rem;
-      margin-left: 1.75rem;
-      transition: color 0.15s;
+    .logo-mark span { transform: translateY(0.5px); }
+    nav { display: flex; align-items: center; gap: 0.4rem; }
+    nav a.navlink {
+      color: var(--text-muted); text-decoration: none; font-size: 0.875rem; font-weight: 500;
+      padding: 0.45rem 0.8rem; border-radius: 8px; transition: color .15s, background .15s;
     }
-    nav a:hover { color: var(--text); }
-
+    nav a.navlink:hover { color: var(--text); background: rgba(255,255,255,0.04); }
     .nav-cta {
-      margin-left: 2rem;
-      background: var(--accent);
-      color: #fff !important;
-      padding: 0.45rem 1rem;
-      border-radius: 6px;
-      font-weight: 600;
-      transition: background 0.15s !important;
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-left: 0.6rem; padding: 0.5rem 0.95rem; border-radius: 9px;
+      font-size: 0.875rem; font-weight: 600; text-decoration: none; color: #fff;
+      background: linear-gradient(135deg, var(--violet), var(--violet-2));
+      box-shadow: 0 6px 20px rgba(124,106,247,0.35), inset 0 1px 0 rgba(255,255,255,0.25);
+      transition: transform .15s, box-shadow .15s;
     }
-    .nav-cta:hover { background: var(--accent-soft) !important; }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 10px 28px rgba(124,106,247,0.5), inset 0 1px 0 rgba(255,255,255,0.25); }
+    .nav-cta svg { width: 15px; height: 15px; }
+    .icon { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.85; stroke-linecap: round; stroke-linejoin: round; }
 
     /* ── HERO ── */
-    .hero {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 5rem 2rem 4rem;
-      text-align: center;
+    .hero { text-align: center; padding: 5.5rem 2rem 2.5rem; position: relative; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.4rem 0.95rem; border-radius: 999px; margin-bottom: 1.9rem;
+      font-size: 0.76rem; font-weight: 600; letter-spacing: 0.02em; color: #d7d2ff;
+      background: linear-gradient(180deg, rgba(124,106,247,0.16), rgba(124,106,247,0.06));
+      border: 1px solid rgba(139,124,255,0.3);
+      box-shadow: 0 2px 16px rgba(124,106,247,0.18);
     }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 0.3rem 0.9rem;
-      font-size: 0.78rem;
-      color: var(--accent-soft);
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-bottom: 1.75rem;
-    }
-
-    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 3px rgba(52,211,153,0.18); animation: pulse 2.4s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
 
     h1 {
-      font-size: clamp(2.2rem, 5vw, 3.4rem);
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.25rem;
+      font-size: clamp(2.4rem, 6vw, 4.1rem); font-weight: 800; line-height: 1.05;
+      letter-spacing: -0.035em; margin: 0 auto 1.4rem; max-width: 14ch;
     }
-
-    h1 .accent { background: linear-gradient(135deg, var(--accent), #b36af7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-    .hero-desc {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.7;
+    h1 .grad {
+      background: linear-gradient(115deg, var(--violet) 0%, var(--violet-2) 45%, var(--coral) 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     }
-
-    .hero-actions {
-      display: flex;
-      gap: 0.875rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    .hero-desc { font-size: 1.16rem; color: var(--text-muted); max-width: 620px; margin: 0 auto 2.3rem; line-height: 1.65; }
+    .hero-actions { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.65rem 1.5rem;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.15s;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.5rem; border-radius: 11px; font-size: 0.96rem; font-weight: 600;
+      text-decoration: none; transition: transform .15s, box-shadow .15s, border-color .15s; cursor: pointer;
     }
+    .btn svg { width: 17px; height: 17px; }
+    .btn-primary { color: #fff; background: linear-gradient(135deg, var(--violet), var(--violet-2)); box-shadow: 0 8px 26px rgba(124,106,247,0.4), inset 0 1px 0 rgba(255,255,255,0.25); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(124,106,247,0.55), inset 0 1px 0 rgba(255,255,255,0.25); }
+    .btn-ghost { color: var(--text); background: rgba(255,255,255,0.04); border: 1px solid var(--hairline); }
+    .btn-ghost:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.06); }
 
-    .btn-primary { background: var(--accent); color: #fff; }
-    .btn-primary:hover { background: var(--accent-soft); }
-    .btn-ghost { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
-    .btn-ghost:hover { border-color: var(--accent); color: var(--accent-soft); }
+    /* ── STAT BAND ── */
+    .stats { display: flex; justify-content: center; flex-wrap: wrap; gap: 0; margin: 3rem auto 0; max-width: 760px;
+      border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.012)); backdrop-filter: blur(6px); }
+    .stat { flex: 1 1 0; min-width: 150px; padding: 1.2rem 1rem; text-align: center; border-right: 1px solid var(--border-soft); }
+    .stat:last-child { border-right: none; }
+    .stat .num { font-size: 1.85rem; font-weight: 800; letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #fff, #c7ccda); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .stat .lbl { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.25rem; font-weight: 500; }
+
+    /* ── ORCHESTRATION PIPELINE (signature visual) ── */
+    .pipeline-wrap { max-width: var(--maxw); margin: 4rem auto 0; padding: 0 2rem; }
+    .pipeline {
+      position: relative; border-radius: var(--radius); padding: 2.2rem 1.6rem;
+      background:
+        radial-gradient(120% 140% at 50% -20%, rgba(124,106,247,0.12), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.012));
+      border: 1px solid var(--border);
+      box-shadow: 0 30px 80px -40px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.06);
+      backdrop-filter: blur(8px);
+    }
+    .pipeline-cap { display: flex; align-items: center; gap: 0.5rem; justify-content: center; margin-bottom: 1.7rem; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); }
+    .pipeline-cap .ln { height: 1px; width: 34px; background: linear-gradient(90deg, transparent, var(--hairline)); }
+    .pipeline-cap .ln.r { background: linear-gradient(90deg, var(--hairline), transparent); }
+    .flow { display: flex; align-items: stretch; gap: 0; }
+    .stage { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.7rem; min-width: 0; }
+    .node {
+      width: 100%; max-width: 132px; min-height: 96px; border-radius: 14px; padding: 0.9rem 0.7rem;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid var(--hairline);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 8px 24px -16px rgba(0,0,0,0.8);
+    }
+    .node .nicon { width: 38px; height: 38px; border-radius: 11px; display: flex; align-items: center; justify-content: center; }
+    .node .nicon svg { width: 19px; height: 19px; stroke-width: 2; }
+    .node .ntitle { font-size: 0.82rem; font-weight: 700; letter-spacing: -0.01em; }
+    .node .nsub { font-size: 0.68rem; color: var(--text-faint); line-height: 1.3; }
+    .stage > .slabel { font-size: 0.68rem; color: var(--text-muted); font-weight: 500; }
+
+    .ni-sky    { background: linear-gradient(135deg, rgba(255,138,91,0.25), rgba(255,138,91,0.08)); color: var(--coral); border: 1px solid rgba(255,138,91,0.3); }
+    .ni-morgan { background: linear-gradient(135deg, rgba(244,114,182,0.22), rgba(244,114,182,0.07)); color: var(--pink); border: 1px solid rgba(244,114,182,0.3); }
+    .ni-roles  { background: linear-gradient(135deg, rgba(139,124,255,0.25), rgba(139,124,255,0.08)); color: var(--violet); border: 1px solid rgba(139,124,255,0.32); }
+    .ni-safety { background: linear-gradient(135deg, rgba(52,211,153,0.22), rgba(52,211,153,0.07)); color: var(--emerald); border: 1px solid rgba(52,211,153,0.3); }
+    .ni-main   { background: linear-gradient(135deg, rgba(70,184,245,0.22), rgba(70,184,245,0.07)); color: var(--sky); border: 1px solid rgba(70,184,245,0.3); }
+
+    .dots { display: flex; gap: 4px; flex-wrap: wrap; justify-content: center; max-width: 78px; }
+    .dots i { width: 9px; height: 9px; border-radius: 3px; font-size: 6px; font-weight: 800; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-style: normal; opacity: 0.92; }
+
+    .connector { flex: 0 0 34px; align-self: center; height: 2px; position: relative; margin-top: -22px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.22), rgba(255,255,255,0.06)); border-radius: 2px; }
+    .connector::after { content: ""; position: absolute; top: 50%; left: 0; width: 6px; height: 6px; border-radius: 50%; transform: translateY(-50%);
+      background: var(--violet); box-shadow: 0 0 8px var(--violet); animation: travel 2.6s linear infinite; }
+    .connector.c2::after { animation-delay: .5s; } .connector.c3::after { animation-delay: 1s; } .connector.c4::after { animation-delay: 1.5s; }
+    @keyframes travel { 0% { left: 0; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
 
     /* ── SECTIONS ── */
-    section { max-width: 1060px; margin: 0 auto; padding: 4rem 2rem; }
+    section { max-width: var(--maxw); margin: 0 auto; padding: 5.5rem 2rem; }
+    .sec-head { margin-bottom: 3rem; max-width: 640px; }
+    .sec-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 0.45rem; font-family: "JetBrains Mono", monospace; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.9rem; }
+    .eyebrow::before { content: ""; width: 16px; height: 1.5px; background: var(--violet); border-radius: 2px; }
+    h2 { font-size: clamp(1.8rem, 3.4vw, 2.5rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.85rem; }
+    .sec-desc { color: var(--text-muted); font-size: 1.04rem; line-height: 1.6; }
 
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent-soft);
-      margin-bottom: 0.75rem;
-    }
-
-    h2 {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.75rem;
-    }
-
-    .section-desc {
-      color: var(--text-muted);
-      font-size: 1rem;
-      max-width: 580px;
-      margin-bottom: 3rem;
-    }
-
-    /* ── HOW IT WORKS ── */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1.25rem;
-    }
-
-    .step {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-    }
-
-    .step-num {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--accent-soft);
-      margin-bottom: 1rem;
-    }
-
-    .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    /* ── STEPS ── */
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.1rem; }
+    .step { position: relative; background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01)); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.5rem 1.4rem; transition: transform .18s, border-color .18s; }
+    .step:hover { transform: translateY(-3px); border-color: rgba(139,124,255,0.4); }
+    .step-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.1rem; }
+    .step-ico { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; color: var(--violet);
+      background: linear-gradient(135deg, rgba(139,124,255,0.2), rgba(139,124,255,0.05)); border: 1px solid rgba(139,124,255,0.22); }
+    .step-ico svg { width: 20px; height: 20px; }
+    .step-num { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; font-weight: 600; color: var(--text-faint); }
+    .step h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 0.4rem; letter-spacing: -0.01em; }
     .step p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.55; }
+    .step code, .feature code { font-family: "JetBrains Mono", monospace; font-size: 0.82em; color: var(--coral); background: rgba(255,138,91,0.1); padding: 0.05em 0.35em; border-radius: 5px; }
 
-    /* ── TEAM GRID ── */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
+    /* ── TEAM ── */
+    .legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; margin-bottom: 1.8rem; }
+    .legend span { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.78rem; color: var(--text-muted); font-weight: 500; }
+    .legend i { width: 9px; height: 9px; border-radius: 3px; }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0.9rem; }
+    .role {
+      position: relative; overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01));
+      border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.25rem 1.2rem;
+      transition: transform .18s, border-color .18s, box-shadow .18s;
     }
-
-    .role-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.25rem 1.25rem 1rem;
-      transition: border-color 0.15s, transform 0.15s;
+    .role::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--rc, var(--violet)); opacity: 0.65; }
+    .role:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--rc) 45%, transparent); box-shadow: 0 18px 40px -28px var(--rc); }
+    .role-top { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.85rem; }
+    .mono {
+      width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.02rem; color: #fff;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--rc) 90%, #000), color-mix(in srgb, var(--rc) 55%, #000));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 4px 14px -6px var(--rc);
     }
-
-    .role-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .role-icon {
-      font-size: 1.5rem;
-      margin-bottom: 0.625rem;
-      display: block;
-    }
-
-    .role-name {
-      font-weight: 700;
-      font-size: 0.95rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .role-title {
-      font-size: 0.78rem;
-      color: var(--accent-soft);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .role-desc {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
+    .role-name { font-weight: 700; font-size: 0.98rem; letter-spacing: -0.01em; }
+    .role-title { font-size: 0.76rem; color: var(--rc, var(--violet)); font-weight: 600; }
+    .role-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; }
 
     /* ── FEATURES ── */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.25rem;
-    }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.1rem; }
+    .feature { background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01)); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.7rem 1.6rem; transition: transform .18s, border-color .18s; }
+    .feature:hover { transform: translateY(-3px); border-color: rgba(139,124,255,0.4); }
+    .feature-ico { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--violet); margin-bottom: 1.1rem;
+      background: linear-gradient(135deg, rgba(139,124,255,0.2), rgba(139,124,255,0.05)); border: 1px solid rgba(139,124,255,0.22); }
+    .feature-ico svg { width: 22px; height: 22px; }
+    .feature h3 { font-size: 1.08rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+    .feature p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.58; }
 
-    .feature {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-    }
-
-    .feature-icon {
-      font-size: 1.4rem;
-      margin-bottom: 0.875rem;
-    }
-
-    .feature h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
-    .feature p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.55; }
-
-    /* ── DIVIDER ── */
-    hr { border: none; border-top: 1px solid var(--border); }
-
-    /* ── CTA BAND ── */
-    .cta-band {
-      text-align: center;
-      padding: 5rem 2rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .cta-band h2 { margin-bottom: 1rem; }
-    .cta-band p { color: var(--text-muted); margin-bottom: 2rem; }
+    /* ── CTA ── */
+    .cta-band { max-width: 880px; margin: 2rem auto 0; padding: 0 2rem 1rem; }
+    .cta-inner { position: relative; overflow: hidden; text-align: center; border-radius: 24px; padding: 4rem 2.5rem;
+      background: radial-gradient(120% 160% at 50% -30%, rgba(124,106,247,0.28), transparent 60%), linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.012));
+      border: 1px solid var(--border); box-shadow: 0 40px 90px -50px rgba(124,106,247,0.6), inset 0 1px 0 rgba(255,255,255,0.07); }
+    .cta-inner h2 { margin-bottom: 0.9rem; }
+    .cta-inner p { color: var(--text-muted); margin-bottom: 2rem; font-size: 1.05rem; max-width: 540px; margin-left: auto; margin-right: auto; }
 
     /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 1.75rem 2rem;
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--text-faint);
+    footer { border-top: 1px solid var(--border-soft); margin-top: 5rem; padding: 2.2rem 2rem; }
+    .footer-inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.84rem; color: var(--text-faint); }
+    .footer-inner a { color: var(--text-muted); text-decoration: none; transition: color .15s; }
+    .footer-inner a:hover { color: var(--violet); }
+    .footer-links { display: flex; gap: 1.4rem; }
+
+    @media (max-width: 860px) {
+      .flow { flex-direction: column; gap: 0.6rem; }
+      .connector { width: 2px; height: 26px; flex: 0 0 26px; margin: 0; align-self: center;
+        background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.22), rgba(255,255,255,0.06)); }
+      .connector::after { animation: none; top: 0; left: 50%; transform: translateX(-50%); }
+      .node { max-width: 240px; }
     }
-
-    footer a { color: var(--text-muted); text-decoration: none; }
-    footer a:hover { color: var(--accent-soft); }
-
     @media (max-width: 640px) {
-      nav a:not(.nav-cta) { display: none; }
-      .hero { padding: 3.5rem 1.25rem 3rem; }
-      section { padding: 3rem 1.25rem; }
+      nav .navlink { display: none; }
+      .wrap, section, .header-inner { padding-left: 1.25rem; padding-right: 1.25rem; }
+      .hero { padding: 4rem 1.25rem 2rem; }
+      section { padding: 4rem 1.25rem; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border-soft); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; scroll-behavior: auto !important; transition: none !important; }
     }
   </style>
 </head>
 <body>
 
+<div class="bg-layer"></div>
+<div class="bg-grid"></div>
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+<div class="glow glow-3"></div>
+<div class="bg-grain"></div>
+
 <!-- HEADER -->
 <header>
-  <a href="#" class="logo">
-    <span class="logo-mark">CC</span>
-    Claude Corp
-  </a>
-  <nav>
-    <a href="#how-it-works">How it works</a>
-    <a href="#team">The team</a>
-    <a href="#features">Features</a>
-    <a href="https://github.com/Skypie99/Claude_Corp" class="nav-cta" target="_blank" rel="noopener">GitHub &rarr;</a>
-  </nav>
+  <div class="header-inner">
+    <a href="#" class="logo"><span class="logo-mark"><span>CC</span></span> Claude&nbsp;Corp</a>
+    <nav>
+      <a href="#how" class="navlink">How it works</a>
+      <a href="#team" class="navlink">The team</a>
+      <a href="#features" class="navlink">Features</a>
+      <a href="https://github.com/Skypie99/Claude_Corp" class="nav-cta" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" style="width:15px;height:15px"><path d="M12 .5C5.4.5 0 5.9 0 12.5c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 24 12.5C24 5.9 18.6.5 12 .5z"/></svg>
+        GitHub
+      </a>
+    </nav>
+  </div>
 </header>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-badge">
-    <span class="dot"></span>
-    Active &mdash; 19 scheduled agents running
-  </div>
-  <h1>A <span class="accent">15-role AI team</span><br />that ships software autonomously</h1>
+<div class="hero">
+  <div class="badge"><span class="dot"></span> Active &middot; 19 scheduled agents running</div>
+  <h1>A <span class="grad">15-role AI team</span> that ships software autonomously</h1>
   <p class="hero-desc">
-    Claude Corp is a multi-agent project management system built on Anthropic's Claude.
-    Specialized AI roles collaborate across two production apps — planning, building, testing, reviewing, and deploying — all governed by a living Constitution.
+    Claude Corp is a multi-agent engineering system built on Anthropic's Claude. Specialized AI roles plan,
+    build, test, review, and deploy across two production apps — all governed by a living Constitution.
   </p>
   <div class="hero-actions">
-    <a href="https://github.com/Skypie99/Claude_Corp" class="btn btn-primary" target="_blank" rel="noopener">View on GitHub</a>
-    <a href="#team" class="btn btn-ghost">Meet the team</a>
+    <a href="https://github.com/Skypie99/Claude_Corp" class="btn btn-primary" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 .5C5.4.5 0 5.9 0 12.5c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 24 12.5C24 5.9 18.6.5 12 .5z"/></svg>
+      View on GitHub
+    </a>
+    <a href="#team" class="btn btn-ghost">Meet the team <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
   </div>
-</section>
 
-<hr />
+  <div class="stats">
+    <div class="stat"><div class="num">15</div><div class="lbl">Specialized roles</div></div>
+    <div class="stat"><div class="num">19</div><div class="lbl">Scheduled agents</div></div>
+    <div class="stat"><div class="num">2</div><div class="lbl">Production apps</div></div>
+    <div class="stat"><div class="num">v1.11</div><div class="lbl">Living Constitution</div></div>
+  </div>
+</div>
+
+<!-- ORCHESTRATION PIPELINE -->
+<div class="pipeline-wrap">
+  <div class="pipeline">
+    <div class="pipeline-cap"><span class="ln"></span> The orchestration pipeline <span class="ln r"></span></div>
+    <div class="flow">
+      <div class="stage">
+        <div class="node">
+          <div class="nicon ni-sky"><svg class="icon" viewBox="0 0 24 24" style="stroke-width:2"><circle cx="12" cy="12" r="9"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
+          <div class="ntitle">Sky</div><div class="nsub">sets intent</div>
+        </div>
+        <div class="slabel">a directive</div>
+      </div>
+      <div class="connector c1"></div>
+      <div class="stage">
+        <div class="node">
+          <div class="nicon ni-morgan"><svg class="icon" viewBox="0 0 24 24" style="stroke-width:2"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div>
+          <div class="ntitle">Morgan</div><div class="nsub">plans &amp; routes</div>
+        </div>
+        <div class="slabel">dependency graph</div>
+      </div>
+      <div class="connector c2"></div>
+      <div class="stage">
+        <div class="node">
+          <div class="nicon ni-roles">
+            <div class="dots">
+              <i style="background:#8b7cff">S</i><i style="background:#a78bfa">D</i><i style="background:#46b8f5">P</i>
+              <i style="background:#34d399">G</i><i style="background:#fb923c">Q</i><i style="background:#f472b6">R</i>
+            </div>
+          </div>
+          <div class="ntitle">15 Roles</div><div class="nsub">build in parallel</div>
+        </div>
+        <div class="slabel">scoped branches</div>
+      </div>
+      <div class="connector c3"></div>
+      <div class="stage">
+        <div class="node">
+          <div class="nicon ni-safety"><svg class="icon" viewBox="0 0 24 24" style="stroke-width:2"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <div class="ntitle">Safety</div><div class="nsub">7-layer compiler</div>
+        </div>
+        <div class="slabel">a11y · privacy · perf</div>
+      </div>
+      <div class="connector c4"></div>
+      <div class="stage">
+        <div class="node">
+          <div class="nicon ni-main"><svg class="icon" viewBox="0 0 24 24" style="stroke-width:2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg></div>
+          <div class="ntitle">main</div><div class="nsub">Sky merges</div>
+        </div>
+        <div class="slabel">human approval</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- HOW IT WORKS -->
-<section id="how-it-works">
-  <p class="section-label">How it works</p>
-  <h2>From backlog to deploy, automated</h2>
-  <p class="section-desc">
-    Each role is a Claude agent with a scoped SKILL.md. Morgan orchestrates across roles. A Constitution enforces safety gates.
-  </p>
+<section id="how">
+  <div class="sec-head">
+    <div class="eyebrow">How it works</div>
+    <h2>From backlog to deploy, automated</h2>
+    <p class="sec-desc">Each role is a Claude agent with a scoped skill file. Morgan orchestrates across roles; the Constitution enforces every safety gate.</p>
+  </div>
   <div class="steps">
     <div class="step">
-      <div class="step-num">01</div>
+      <div class="step-top"><div class="step-ico"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div><div class="step-num">01</div></div>
       <h3>Sky sets intent</h3>
-      <p>Sky writes a directive or invokes a slash command. The Constitution's authority order locks in: Sky &gt; Constitution &gt; role files &gt; skills.</p>
+      <p>Sky writes a directive or runs a slash command. The authority order locks in: Sky &gt; Constitution &gt; role files &gt; skills.</p>
     </div>
     <div class="step">
-      <div class="step-num">02</div>
+      <div class="step-top"><div class="step-ico"><svg class="icon" viewBox="0 0 24 24"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div><div class="step-num">02</div></div>
       <h3>Orchestrator plans</h3>
-      <p>Morgan reads backlogs, open branches, and qa-reports — then routes work to the right specialist roles in the right dependency order.</p>
+      <p>Morgan reads backlogs, open branches, and QA reports — then routes work to the right specialists in dependency order.</p>
     </div>
     <div class="step">
-      <div class="step-num">03</div>
+      <div class="step-top"><div class="step-ico"><svg class="icon" viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg></div><div class="step-num">03</div></div>
       <h3>Roles execute</h3>
-      <p>Each agent works in isolation on a scoped branch. Design, code, test, accessibility, performance, and privacy checks all run before anything merges.</p>
+      <p>Each agent works in isolation on a scoped branch. Design, code, test, a11y, performance, and privacy checks all run before merge.</p>
     </div>
     <div class="step">
-      <div class="step-num">04</div>
+      <div class="step-top"><div class="step-ico"><svg class="icon" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg></div><div class="step-num">04</div></div>
       <h3>Safety sweep</h3>
-      <p>A 7-layer Design Compiler gate + Orion recovery agent ensure no UI ships without full parity and no reversals require a rollback plan.</p>
+      <p>A 7-layer Design Compiler gate plus the Orion recovery agent ensure no UI ships without full parity and a rollback path.</p>
     </div>
     <div class="step">
-      <div class="step-num">05</div>
+      <div class="step-top"><div class="step-ico"><svg class="icon" viewBox="0 0 24 24"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg></div><div class="step-num">05</div></div>
       <h3>Sky merges</h3>
-      <p>Only Sky touches <code>main</code>. Agents branch, propose, and report — never auto-merge. Morgan delivers the briefing; Sky decides.</p>
+      <p>Only Sky touches <code>main</code>. Agents branch, propose, and report — never auto-merge. Morgan briefs; Sky decides.</p>
     </div>
   </div>
 </section>
-
-<hr />
 
 <!-- TEAM -->
 <section id="team">
-  <p class="section-label">The team</p>
-  <h2>15 specialized roles</h2>
-  <p class="section-desc">Each role is a purpose-built Claude agent with a scoped SKILL.md, a prefixed branch namespace, and a silent external presence — only Morgan talks to Sky.</p>
+  <div class="sec-head">
+    <div class="eyebrow">The team</div>
+    <h2>15 specialized roles</h2>
+    <p class="sec-desc">Each role is a purpose-built Claude agent with a scoped skill file, a prefixed branch namespace, and a silent external presence — only Morgan talks to Sky.</p>
+  </div>
+
+  <div class="legend">
+    <span><i style="background:#a78bfa"></i> Design &amp; Frontend</span>
+    <span><i style="background:#46b8f5"></i> Backend &amp; Data</span>
+    <span><i style="background:#34d399"></i> Safety, Quality &amp; Infra</span>
+    <span><i style="background:#fb923c"></i> Product, Research &amp; Policy</span>
+    <span><i style="background:#f472b6"></i> Coordination</span>
+  </div>
+
   <div class="team-grid">
-    <div class="role-card">
-      <span class="role-icon">📋</span>
-      <div class="role-name">Morgan</div>
-      <div class="role-title">Project Manager</div>
-      <div class="role-desc">Status briefings, decision routing, and the sole channel for messaging Sky.</div>
-    </div>
-    <div class="role-card">
-      <span class="role-icon">⚒️</span>
-      <div class="role-name">Shamus</div>
-      <div class="role-title">Feature Engineer</div>
-      <div class="role-desc">Ships new screens, flows, and UI. Every PR passes the 7-layer Design Compiler gate.</div>
-    </div>
-    <div class="role-card">
-      <span class="role-icon">🔬</span>
-      <div class="role-name">Gary</div>
-      <div class="role-title">QA Engineer</div>
-      <div class="role-desc">Writes and runs tests. Catches regressions before they reach Sky's review queue.</div>
-    </div>
-    <div class="role-card">
-      <span class="role-icon">🛡️</span>
-      <div class="role-name">Steve</div>
-      <div class="role-title">Safety Engineer</div>
-      <div class="role-desc">Enforces Constitution safety rules. Raises blockers before risky code ships.</div>
-    </div>
-    <div class="role-card">
-      <span class="role-icon">♿</span>
-      <div class="role-name">Alex</div>
-      <div class="role-title">Accessibility Engineer</div>
-      <div class="role-desc">WCAG 2.2 AA audits on every UI change. No screen ships without an a11y pass.</div>
-    </div>
-    <div class="role-card">
-      <span class="role-icon">⚡</span>
-      <div class="role-name">Peter</div>
-      <div class="role-title">Performance Engineer</div>
-      <div class="role-desc">Bundle audits, render profiling, and load-time optimization across all projects.</div>
-    </div>
-    <div class="role-card">
-      <span class="role-icon">🎨</span>
-      <div class="role-name">Dani</div>
-      <div class="role-title">Design Lead</div>
-      <div class="role-desc">Token-first design system. Runs the Design Compiler; POLISH and BLOCK decisions are hers.</div>
-    </div>
-    <div class="role-card">
-      <span class="role-icon">🔐</span>
-      <div class="role-name">Jordan</div>
-      <div class="role-title">Privacy Engineer</div>
-      <div class="role-desc">Privacy-by-design gate on all location, auth, and user-data changes. PRIVACY.md owns the spec.</div>
-    </div>
-    <div class="role-card">
-      <span class="role-icon">✍️</span>
-      <div class="role-name">Will</div>
-      <div class="role-title">Communications</div>
-      <div class="role-desc">UX copy, changelogs, onboarding text, and release notes — clear language across all surfaces.</div>
-    </div>
-    <div class="role-card">
-      <span class="role-icon">🚀</span>
-      <div class="role-name">Rory</div>
-      <div class="role-title">Deployment Engineer</div>
-      <div class="role-desc">CI/CD pipelines, GitHub Actions, and live-URL readiness. Gets things actually shipped.</div>
-    </div>
-    <div class="role-card">
-      <span class="role-icon">🔍</span>
-      <div class="role-name">Casey</div>
-      <div class="role-title">Code Reviewer</div>
-      <div class="role-desc">Deep diff reviews for correctness bugs, edge cases, and API misuse before merge.</div>
-    </div>
-    <div class="role-card">
-      <span class="role-icon">📊</span>
-      <div class="role-name">Riley</div>
-      <div class="role-title">Analytics</div>
-      <div class="role-desc">Metrics, data validation, and insight reporting across project health signals.</div>
-    </div>
-    <div class="role-card">
-      <span class="role-icon">🧩</span>
-      <div class="role-name">Quinn</div>
-      <div class="role-title">Integration Lead</div>
-      <div class="role-desc">Third-party APIs, SDK upgrades, and cross-system compatibility work.</div>
-    </div>
-    <div class="role-card">
-      <span class="role-icon">📝</span>
-      <div class="role-name">Dana</div>
-      <div class="role-title">Documentation</div>
-      <div class="role-desc">Keeps specs, learnings, and architecture docs in sync with the actual codebase.</div>
-    </div>
-    <div class="role-card">
-      <span class="role-icon">🔄</span>
-      <div class="role-name">Orion</div>
-      <div class="role-title">Recovery Agent</div>
-      <div class="role-desc">Recovery-only (Art. 8.4). Steps in when another role hits a blocker or inconsistent state.</div>
-    </div>
+    <!-- Coordination -->
+    <div class="role" style="--rc:#f472b6"><div class="role-top"><div class="mono">M</div><div><div class="role-name">Morgan</div><div class="role-title">Project Manager</div></div></div><div class="role-desc">Status briefings, decision routing, and the sole channel for messaging Sky.</div></div>
+    <!-- Design & Frontend -->
+    <div class="role" style="--rc:#a78bfa"><div class="role-top"><div class="mono">S</div><div><div class="role-name">Shamus</div><div class="role-title">Feature Engineer</div></div></div><div class="role-desc">Ships new screens, flows, and UI. Every PR passes the 7-layer Design Compiler gate.</div></div>
+    <div class="role" style="--rc:#a78bfa"><div class="role-top"><div class="mono">D</div><div><div class="role-name">Dani</div><div class="role-title">Creative Director</div></div></div><div class="role-desc">Owns the token-first design system and runs the Design Compiler — POLISH and BLOCK calls are hers.</div></div>
+    <div class="role" style="--rc:#a78bfa"><div class="role-top"><div class="mono">A</div><div><div class="role-name">Alex</div><div class="role-title">Accessibility Engineer</div></div></div><div class="role-desc">WCAG 2.2 AA audits on every UI change. No screen ships without an a11y pass.</div></div>
+    <!-- Backend & Data -->
+    <div class="role" style="--rc:#46b8f5"><div class="role-top"><div class="mono">D</div><div><div class="role-name">Dana</div><div class="role-title">Backend Engineer</div></div></div><div class="role-desc">Schema, migrations, RLS, and data integrity. Never touches the live database.</div></div>
+    <div class="role" style="--rc:#46b8f5"><div class="role-top"><div class="mono">P</div><div><div class="role-name">Peter</div><div class="role-title">Performance Engineer</div></div></div><div class="role-desc">Bundle audits, render profiling, and query optimization across every project.</div></div>
+    <!-- Safety, Quality & Infra -->
+    <div class="role" style="--rc:#34d399"><div class="role-top"><div class="mono">S</div><div><div class="role-name">Steve</div><div class="role-title">Safety Engineer</div></div></div><div class="role-desc">Enforces Constitution safety rules. Raises blockers before risky code ships.</div></div>
+    <div class="role" style="--rc:#34d399"><div class="role-top"><div class="mono">G</div><div><div class="role-name">Gary</div><div class="role-title">QA Engineer</div></div></div><div class="role-desc">Writes and runs the test suite. Catches regressions before they reach review.</div></div>
+    <div class="role" style="--rc:#34d399"><div class="role-top"><div class="mono">R</div><div><div class="role-name">Rory</div><div class="role-title">DevOps Engineer</div></div></div><div class="role-desc">CI/CD pipelines, EAS builds, and release readiness. Gets things actually shipped.</div></div>
+    <!-- Product, Research & Policy -->
+    <div class="role" style="--rc:#fb923c"><div class="role-top"><div class="mono">Q</div><div><div class="role-name">Quinn</div><div class="role-title">Product Manager</div></div></div><div class="role-desc">Grooms the backlog, specs features, and prioritizes by real user value.</div></div>
+    <div class="role" style="--rc:#fb923c"><div class="role-top"><div class="mono">R</div><div><div class="role-name">Riley</div><div class="role-title">User Researcher</div></div></div><div class="role-desc">Personas, journey maps, and friction analysis grounded in real disabled-user needs.</div></div>
+    <div class="role" style="--rc:#fb923c"><div class="role-top"><div class="mono">J</div><div><div class="role-name">Jordan</div><div class="role-title">Privacy Advisor</div></div></div><div class="role-desc">Privacy-by-design gate on all location, auth, and user-data changes.</div></div>
+    <div class="role" style="--rc:#fb923c"><div class="role-top"><div class="mono">C</div><div><div class="role-name">Casey</div><div class="role-title">Community Manager</div></div></div><div class="role-desc">Contributor docs, onboarding, and growth strategy for the project.</div></div>
+    <div class="role" style="--rc:#fb923c"><div class="role-top"><div class="mono">W</div><div><div class="role-name">Will</div><div class="role-title">Technical Writer</div></div></div><div class="role-desc">READMEs, setup guides, changelogs, and the learnings log — clear language everywhere.</div></div>
+    <!-- Coordination -->
+    <div class="role" style="--rc:#f472b6"><div class="role-top"><div class="mono">O</div><div><div class="role-name">Orion</div><div class="role-title">Recovery Agent</div></div></div><div class="role-desc">Recovery-only (Art. 8.4). Steps in when another role hits a blocker or inconsistent state.</div></div>
   </div>
 </section>
-
-<hr />
 
 <!-- FEATURES -->
 <section id="features">
-  <p class="section-label">What makes it work</p>
-  <h2>Built-in guardrails, not guidelines</h2>
-  <p class="section-desc">Claude Corp is governed by a Constitution that outranks any role or skill. Safety is structural, not aspirational.</p>
-  <div class="features-grid">
+  <div class="sec-head center">
+    <div class="eyebrow">What makes it work</div>
+    <h2>Built-in guardrails, not guidelines</h2>
+    <p class="sec-desc">Claude Corp is governed by a Constitution that outranks any role or skill. Safety is structural, not aspirational.</p>
+  </div>
+  <div class="features">
     <div class="feature">
-      <div class="feature-icon">📜</div>
+      <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24"><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></svg></div>
       <h3>Living Constitution</h3>
-      <p>A versioned governance document (currently v1.11) that all 15 roles inherit as hard law. No agent self-amends. Only Sky changes it.</p>
+      <p>A versioned governance document (currently v1.11) that all 15 roles inherit as hard law. No agent self-amends — only Sky changes it.</p>
     </div>
     <div class="feature">
-      <div class="feature-icon">🏗️</div>
+      <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg></div>
       <h3>7-Layer Design Compiler</h3>
-      <p>Every UI change passes tokenization, accessibility parity, component consistency, visual entropy, luxury UI score, and regression safety before Shamus marks it DONE.</p>
+      <p>Every UI change passes tokenization, accessibility parity, component consistency, visual entropy, luxury score, and regression safety before it's marked done.</p>
     </div>
     <div class="feature">
-      <div class="feature-icon">🌙</div>
-      <h3>Background Mode (Art. 12)</h3>
-      <p>19 scheduled agents run autonomously overnight. A halt-sentinel file (`BACKGROUND_HALT`) freezes all background work instantly. Max 1 reversible change per cycle.</p>
+      <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></div>
+      <h3>Background Mode</h3>
+      <p>19 scheduled agents run autonomously overnight. A halt-sentinel file freezes all background work instantly. Max one reversible change per cycle.</p>
     </div>
     <div class="feature">
-      <div class="feature-icon">🔒</div>
-      <h3>Main is Sacred</h3>
+      <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+      <h3>main is sacred</h3>
       <p>No agent ever touches <code>main</code>. Every change lands on a role-prefixed branch, gets reviewed, and merges only when Sky approves.</p>
     </div>
     <div class="feature">
-      <div class="feature-icon">📬</div>
-      <h3>One Voice to Sky</h3>
-      <p>Morgan is the only agent allowed to message Sky externally. All other roles surface findings to qa-reports. Morgan picks them up and briefs Sky.</p>
+      <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.5 5.1 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.5-6.9A2 2 0 0 0 16.8 4H7.2a2 2 0 0 0-1.7 1.1z"/></svg></div>
+      <h3>One voice to Sky</h3>
+      <p>Morgan is the only agent allowed to message Sky. Every other role surfaces findings to QA reports; Morgan picks them up and briefs.</p>
     </div>
     <div class="feature">
-      <div class="feature-icon">♻️</div>
+      <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></svg></div>
       <h3>Velocity Loop</h3>
-      <p>Five vl-* slash commands drive a continuous backlog-to-PR cycle: plan → work → review → state-sync → next. No idle time between iterations.</p>
+      <p>Five chained commands drive a continuous backlog-to-PR cycle: plan → work → review → state-sync → next. No idle time between iterations.</p>
     </div>
   </div>
 </section>
 
-<hr />
-
 <!-- CTA -->
 <div class="cta-band">
-  <h2>Built by one developer, powered by fifteen agents</h2>
-  <p>Claude Corp runs on top of Anthropic's Claude. It's Sky's personal engineering team — always on, always scoped, and always governed.</p>
-  <a href="https://github.com/Skypie99/Claude_Corp" class="btn btn-primary" target="_blank" rel="noopener">View the source on GitHub &rarr;</a>
+  <div class="cta-inner">
+    <h2>Built by one developer,<br/>powered by fifteen agents</h2>
+    <p>Claude Corp runs on Anthropic's Claude. It's Sky's personal engineering team — always on, always scoped, always governed.</p>
+    <a href="https://github.com/Skypie99/Claude_Corp" class="btn btn-primary" target="_blank" rel="noopener">
+      View the source on GitHub
+      <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <p>Built by <a href="https://github.com/Skypie99" target="_blank" rel="noopener">Sky Halisky</a> &middot; Powered by <a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic Claude</a> &middot; <a href="https://github.com/Skypie99/Claude_Corp" target="_blank" rel="noopener">GitHub</a></p>
+  <div class="footer-inner">
+    <div>Built by <a href="https://github.com/Skypie99" target="_blank" rel="noopener">Sky Halisky</a> &middot; Powered by <a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic Claude</a></div>
+    <div class="footer-links">
+      <a href="#how">How it works</a>
+      <a href="#team">Team</a>
+      <a href="#features">Features</a>
+      <a href="https://github.com/Skypie99/Claude_Corp" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
 </footer>
 
 </body>
