@@ -518,7 +518,7 @@
     .gov-list, .branchlist { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; margin: 0 0 0.85rem; }
     .gov-list li { font-size: 0.84rem; color: var(--text); display: flex; gap: 0.55rem; align-items: baseline; }
     .gov-list li b { font-family: "JetBrains Mono", monospace; font-weight: 600; color: var(--violet); font-size: 0.78rem; flex-shrink: 0; min-width: 3.1em; }
-    .branchlist li { font-family: "JetBrains Mono", monospace; font-size: 0.74rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .branchlist li { font-family: "JetBrains Mono", monospace; font-size: 0.74rem; color: var(--text-muted); overflow-wrap: anywhere; }
     .branchlist .pre { color: var(--coral); }
     .proof-stat { font-size: 2.1rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1;
       background: linear-gradient(135deg, #fff, #c7ccda); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
@@ -617,7 +617,7 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="badge"><span class="dot"></span> Active &middot; 4 scheduled audits running</div>
+  <div class="badge"><span class="dot"></span> Active &middot; governed by a living Constitution</div>
   <h1>A <span class="grad">15-role AI team</span> that builds software autonomously</h1>
   <p class="hero-desc">
     Claude Corp is a multi-agent engineering system built on Anthropic's Claude. Specialized AI roles plan,
@@ -633,7 +633,7 @@
 
   <div class="stats glass-card">
     <div class="stat"><div class="num">15</div><div class="lbl">Specialized roles</div></div>
-    <div class="stat"><div class="num">4</div><div class="lbl">Scheduled audits</div></div>
+    <div class="stat"><div class="num">7</div><div class="lbl">Design-Compiler layers</div></div>
     <div class="stat"><div class="num">5</div><div class="lbl">Projects · 2 fully live</div></div>
     <div class="stat"><div class="num">v1.12</div><div class="lbl">Living Constitution</div></div>
   </div>
@@ -701,7 +701,7 @@
   <div class="sec-head center">
     <div class="eyebrow">Proof, not promises</div>
     <h2 id="proof-h">A real system, with receipts</h2>
-    <p class="sec-desc">Extraordinary claims deserve evidence. Everything here is verifiable — open the live apps, read the versioned governance, inspect the source.</p>
+    <p class="sec-desc">Extraordinary claims deserve evidence. Everything here is verifiable — open the live apps, inspect the source, and read how the system is governed.</p>
   </div>
 
   <!-- live apps you can open -->
@@ -738,22 +738,23 @@
       <h3><span class="proof-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></svg></span> Versioned governance</h3>
       <ul class="gov-list">
         <li><b>v1.12</b> Living Constitution — Art. 17 merge gate</li>
-        <li><b>v1.16</b> Agent OS runtime overlay</li>
+        <li><b>OS</b> Agent OS runtime overlay, versioned per release</li>
         <li><b>order</b> Sky → Constitution → roles → skills</li>
       </ul>
       <p>Governance is dated and citable — not vibes. No agent self-amends; <code>main</code> is sacred and only Sky merges.</p>
-      <a class="proof-link" href="https://github.com/Skypie99/Claude_Corp" target="_blank" rel="noopener">Read it on GitHub <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      <a class="proof-link" href="https://github.com/Skypie99/Claude_Corp" target="_blank" rel="noopener">Read the model on GitHub<span class="vh"> (opens in new tab)</span> <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
     </div>
 
     <div class="proof-card">
       <h3><span class="proof-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span> Every role, its own branch</h3>
       <ul class="branchlist">
         <li><span class="pre">feat/</span>claudecorp-p1-glass-foundation</li>
-        <li><span class="pre">attribution/</span>claude-corp-truth</li>
-        <li><span class="pre">content/</span>portfolio-voice-pass</li>
+        <li><span class="pre">attribution/</span>claude-corp-truth-2026-06-18</li>
+        <li><span class="pre">content/</span>portfolio-voice-pass-2026-06-10</li>
         <li><span class="pre">perf/</span>auto-2026-05-31</li>
       </ul>
       <p>Real, role-prefixed branches across projects. Agents propose on scoped branches; nothing reaches <code>main</code> without Sky's review.</p>
+      <a class="proof-link" href="https://github.com/Skypie99/Claude_Corp/commits/main" target="_blank" rel="noopener">This page's own 6-phase build history<span class="vh"> (opens in new tab)</span> <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
     </div>
 
     <div class="proof-card">
@@ -862,7 +863,7 @@
     <div class="feature glass-card">
       <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></div>
       <h3>Background Mode</h3>
-      <p>Scheduled audit agents run autonomously overnight. A halt-sentinel file freezes all background work instantly. Max one reversible change per cycle.</p>
+      <p>Audit agents can run autonomously on a schedule, bounded by Background Mode — a halt-sentinel file freezes all background work instantly, and every cycle is capped at one reversible change.</p>
     </div>
     <div class="feature glass-card">
       <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
