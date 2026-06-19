@@ -401,6 +401,21 @@
     .connector.c2::after { animation-delay: .5s; } .connector.c3::after { animation-delay: 1s; } .connector.c4::after { animation-delay: 1.5s; }
     @keyframes travel { 0% { left: 0; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
 
+    /* ── INTERACTIVE PIPELINE (JS-upgraded disclosure — static diagram without JS) ── */
+    .pipeline-hint { display: none; align-items: center; justify-content: center; gap: 0.45rem; margin: 1.5rem 0 0; font-size: 0.82rem; color: var(--text-faint); }
+    html.js .pipeline-hint { display: flex; }
+    .pipeline-hint svg { width: 15px; height: 15px; color: var(--violet); flex-shrink: 0; }
+    html.js .flow .node[role="button"] { cursor: pointer; transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
+    html.js .flow .node[role="button"]:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--nc, var(--violet)) 50%, var(--hairline)); }
+    .flow .node[aria-expanded="true"] { border-color: color-mix(in srgb, var(--nc, var(--violet)) 60%, transparent); box-shadow: 0 0 0 1px color-mix(in srgb, var(--nc, var(--violet)) 45%, transparent), 0 12px 30px -16px var(--nc, var(--violet)); }
+    .pipeline-detail { margin: 1.3rem auto 0; max-width: 720px; border: 1px solid var(--border); border-left: 3px solid var(--nc, var(--violet)); border-radius: var(--radius); background: linear-gradient(180deg, rgba(22,26,39,0.78), rgba(16,19,29,0.78)); box-shadow: var(--shadow-md); padding: 1.35rem 1.45rem; animation: rm-rise var(--dur-base) var(--ease-entrance); }
+    .pipeline-detail[hidden] { display: none; }
+    .pipeline-detail h3 { font-size: 1.0rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.55rem; display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.55rem; }
+    .pipeline-detail .pd-role { font-family: "JetBrains Mono", monospace; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nc, var(--violet)); }
+    .pipeline-detail p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; max-width: 65ch; }
+    .pipeline-detail p + p { margin-top: 0.6rem; }
+    .pipeline-detail code { font-family: "JetBrains Mono", monospace; font-size: 0.82em; color: var(--coral); background: rgba(255,138,91,0.1); padding: 0.05em 0.35em; border-radius: 5px; }
+
     /* ── SECTIONS ── */
     section { max-width: var(--maxw); margin: 0 auto; padding: 5.5rem 2rem; }
     .sec-head { margin-bottom: 3rem; max-width: 640px; }
@@ -589,7 +604,7 @@
     }
     /* Windows high-contrast / forced-colors: keep structure + focus visible */
     @media (forced-colors: active) {
-      .glass-card, .glass-card-feature, .role, .step, .applink, .proof-card, .role-modal-panel, .stats, .badge, .live-pill { border: 1px solid CanvasText; }
+      .glass-card, .glass-card-feature, .role, .step, .applink, .proof-card, .role-modal-panel, .stats, .badge, .live-pill, .pipeline-detail { border: 1px solid CanvasText; }
       :focus-visible { outline: 2px solid Highlight; outline-offset: 2px; }
       .aurora, .bg-grid, .bg-grain { display: none; }
     }
@@ -701,6 +716,8 @@
         <div class="slabel">human approval</div>
       </div>
     </div>
+    <p class="pipeline-hint"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg> Select a stage to follow a task from intent to merge.</p>
+    <div class="pipeline-detail" id="pipeline-detail" role="region" hidden></div>
   </div>
 </div>
 
@@ -1127,6 +1144,71 @@
       });
     });
     // (the "Select any role…" hint is now static markup, revealed via html.js — see #team — so it adds no post-load layout shift)
+  })();
+</script>
+
+<!-- Interactive orchestration pipeline: upgrades the static stage diagram into an accessible disclosure (reuses copy already on the page) -->
+<script>
+  (function () {
+    var STAGE = {
+      "Sky":      { role: "Sets intent",      nc: "#ff8a5b",
+        body: ["Sky writes a plain-language directive or runs a slash command. Her intent sits at the top of the authority order — it outranks the Constitution itself."] },
+      "Morgan":   { role: "Plans &amp; routes", nc: "#f472b6",
+        body: ["Morgan reads the backlogs, open branches, and QA reports, then routes work to the right specialists in dependency order.",
+               "Morgan is also the only role that ever messages Sky — every other role surfaces findings to a QA report."] },
+      "15 Roles": { role: "Build in parallel", nc: "#8b7cff",
+        body: ["Each role works in isolation on its own role-prefixed branch — <code>feat/</code>, <code>fix/</code>, <code>perf/</code>, <code>content/</code> — across five groups: design &amp; frontend, backend &amp; data, safety / quality / infra, product / research / policy, and coordination.",
+               "Design, code, test, accessibility, performance, and privacy checks all run before anything is proposed for merge."] },
+      "Safety":   { role: "7-layer compiler", nc: "#34d399",
+        body: ["A 7-layer Design Compiler gate runs before any UI is called done: tokenization, accessibility parity, component consistency, visual entropy, luxury score, regression safety, and the compile decision.",
+               "The Orion recovery agent stands by to restore a safe state if a role hits a blocker."] },
+      "main":     { role: "Sky merges",       nc: "#46b8f5",
+        body: ["No agent ever touches <code>main</code>. Every change lands on a branch, gets reviewed, and merges only when Sky approves.",
+               "Morgan briefs; Sky decides. Human approval is the last gate."] }
+    };
+
+    var flow = document.querySelector('.pipeline .flow');
+    var detail = document.getElementById('pipeline-detail');
+    if (!flow || !detail) return;
+    var nodes = Array.prototype.slice.call(flow.querySelectorAll('.node'));
+    var current = null;
+
+    function render(name) {
+      var d = STAGE[name];
+      detail.style.setProperty('--nc', d.nc);
+      detail.innerHTML = '<h3>' + name + ' <span class="pd-role">' + d.role + '</span></h3>' +
+        d.body.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+    }
+    function openStage(node, name) {
+      nodes.forEach(function (n) { n.setAttribute('aria-expanded', n === node ? 'true' : 'false'); });
+      render(name);
+      detail.setAttribute('aria-labelledby', node.id);
+      detail.hidden = false;
+      current = node;
+    }
+    function closeStage() {
+      nodes.forEach(function (n) { n.setAttribute('aria-expanded', 'false'); });
+      detail.hidden = true; detail.removeAttribute('aria-labelledby'); current = null;
+    }
+
+    nodes.forEach(function (node, i) {
+      var titleEl = node.querySelector('.ntitle'); if (!titleEl) return;
+      var name = titleEl.textContent.trim(); if (!STAGE[name]) return;
+      node.id = 'pstage-' + i;
+      node.style.setProperty('--nc', STAGE[name].nc);
+      node.setAttribute('role', 'button');
+      node.setAttribute('tabindex', '0');
+      node.setAttribute('aria-expanded', 'false');
+      node.setAttribute('aria-controls', 'pipeline-detail');
+      node.setAttribute('aria-label', name + ' — ' + STAGE[name].role.replace('&amp;', 'and') + ': show details');
+      function toggle() { if (current === node) { closeStage(); } else { openStage(node, name); } }
+      node.addEventListener('click', toggle);
+      node.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); toggle(); }
+        else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); nodes[(i + 1) % nodes.length].focus(); }
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); nodes[(i - 1 + nodes.length) % nodes.length].focus(); }
+      });
+    });
   })();
 </script>
 
