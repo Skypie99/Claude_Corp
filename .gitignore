@@ -1,0 +1,6 @@
+# Internal QA reports — kept local, never published via GitHub Pages
+qa-reports/
+
+# OS / editor cruft
+.DS_Store
+.claude/
