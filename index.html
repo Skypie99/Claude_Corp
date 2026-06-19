@@ -76,7 +76,7 @@
 
       --text:        #eef0f7;
       --text-muted:  #a3abc2;
-      --text-faint:  #5e687f;
+      --text-faint:  #828da6;   /* AA: 5.98:1 on --bg (was #5e687f = 3.56:1, failed) */
 
       --maxw: 1140px;
 
@@ -574,6 +574,12 @@
       *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; transition: none !important; }
       .aurora { will-change: auto; }
     }
+    /* Windows high-contrast / forced-colors: keep structure + focus visible */
+    @media (forced-colors: active) {
+      .glass-card, .glass-card-feature, .role, .step, .applink, .proof-card, .role-modal-panel, .stats, .badge, .live-pill { border: 1px solid CanvasText; }
+      :focus-visible { outline: 2px solid Highlight; outline-offset: 2px; }
+      .aurora, .bg-grid, .bg-grain { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -686,10 +692,10 @@
 </div>
 
 <!-- PROOF -->
-<section id="proof">
+<section id="proof" aria-labelledby="proof-h">
   <div class="sec-head center">
     <div class="eyebrow">Proof, not promises</div>
-    <h2>A real system, with receipts</h2>
+    <h2 id="proof-h">A real system, with receipts</h2>
     <p class="sec-desc">Extraordinary claims deserve evidence. Everything here is verifiable — open the live apps, read the versioned governance, inspect the source.</p>
   </div>
 
@@ -754,10 +760,10 @@
 </section>
 
 <!-- HOW IT WORKS -->
-<section id="how">
+<section id="how" aria-labelledby="how-h">
   <div class="sec-head">
     <div class="eyebrow">How it works</div>
-    <h2>From backlog to deploy, automated</h2>
+    <h2 id="how-h">From backlog to deploy, automated</h2>
     <p class="sec-desc">Each role is a Claude agent with a scoped skill file. Morgan orchestrates across roles; the Constitution enforces every safety gate.</p>
   </div>
   <div class="steps">
@@ -790,10 +796,10 @@
 </section>
 
 <!-- TEAM -->
-<section id="team">
+<section id="team" aria-labelledby="team-h">
   <div class="sec-head">
     <div class="eyebrow">The team</div>
-    <h2>15 specialized roles</h2>
+    <h2 id="team-h">15 specialized roles</h2>
     <p class="sec-desc">Each role is a purpose-built Claude agent with a scoped skill file, a prefixed branch namespace, and a silent external presence — only Morgan talks to Sky.</p>
   </div>
 
@@ -831,10 +837,10 @@
 </section>
 
 <!-- FEATURES -->
-<section id="features">
+<section id="features" aria-labelledby="features-h">
   <div class="sec-head center">
     <div class="eyebrow">What makes it work</div>
-    <h2>Built-in guardrails, not guidelines</h2>
+    <h2 id="features-h">Built-in guardrails, not guidelines</h2>
     <p class="sec-desc">Claude Corp is governed by a Constitution that outranks any role or skill. Safety is structural, not aspirational.</p>
   </div>
   <div class="features">
