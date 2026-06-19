@@ -1,8 +1,8 @@
 # Claude Corp
 
-**A 15-role AI engineering team that ships software autonomously — governed by a living Constitution.**
+**A 15-role AI engineering team that builds software autonomously — governed by a living Constitution.**
 
-Claude Corp is a multi-agent engineering system built on Anthropic's Claude. Fifteen specialized AI roles plan, build, test, review, and deploy across a portfolio of projects. Every action is bounded by a versioned Constitution that outranks any individual role or skill, so safety is structural rather than aspirational.
+Claude Corp is a multi-agent engineering system built on Anthropic's Claude. Fifteen specialized AI roles plan, build, test, and review across a portfolio of projects. Every action is bounded by a versioned Constitution that outranks any individual role or skill, so safety is structural rather than aspirational.
 
 Live landing page: **[claudecorp.skypistudio.com](https://claudecorp.skypistudio.com)**
 
