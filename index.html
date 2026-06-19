@@ -107,7 +107,7 @@
       --focus:      #b9acff;
     }
 
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: clip; }
 
     body {
       background: var(--bg);
@@ -165,6 +165,7 @@
     }
 
     a { color: inherit; }
+    .vh { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }  /* visually hidden, SR-only */
     .wrap { max-width: var(--maxw); margin: 0 auto; padding-left: 2rem; padding-right: 2rem; }
 
     /* ── FOCUS RING (WCAG 2.4.7) ── */
@@ -283,7 +284,9 @@
     .header-inner {
       max-width: var(--maxw); margin: 0 auto; padding: 1rem 2rem;
       display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; row-gap: 0.6rem;
     }
+    .logo { min-width: 0; }
     .logo { display: flex; align-items: center; gap: 0.65rem; font-weight: 700; font-size: 1rem; text-decoration: none; color: var(--text); letter-spacing: -0.01em; }
     .logo-mark {
       width: 30px; height: 30px; border-radius: 9px;
@@ -326,7 +329,7 @@
 
     h1 {
       font-size: clamp(2.4rem, 6vw, 4.1rem); font-weight: 800; line-height: 1.05;
-      letter-spacing: -0.035em; margin: 0 auto 1.4rem; max-width: 14ch;
+      letter-spacing: -0.035em; margin: 0 auto 1.4rem; max-width: 14ch; text-wrap: balance;
     }
     h1 .grad {
       background: linear-gradient(115deg, var(--violet) 0%, var(--violet-2) 45%, var(--coral) 100%);
@@ -370,7 +373,7 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 8px 24px -16px rgba(0,0,0,0.8);
     }
     .node .nicon { width: 38px; height: 38px; border-radius: 11px; display: flex; align-items: center; justify-content: center; }
-    .node .nicon svg { width: 19px; height: 19px; stroke-width: 2; }
+    .node .nicon svg { width: 19px; height: 19px; }
     .node .ntitle { font-size: 0.82rem; font-weight: 700; letter-spacing: -0.01em; }
     .node .nsub { font-size: 0.68rem; color: var(--text-faint); line-height: 1.3; }
     .stage > .slabel { font-size: 0.68rem; color: var(--text-muted); font-weight: 500; }
@@ -397,12 +400,12 @@
     .sec-head.center { margin-left: auto; margin-right: auto; text-align: center; }
     .eyebrow { display: inline-flex; align-items: center; gap: 0.45rem; font-family: "JetBrains Mono", monospace; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.9rem; }
     .eyebrow::before { content: ""; width: 16px; height: 1.5px; background: var(--violet); border-radius: 2px; }
-    h2 { font-size: clamp(1.8rem, 3.4vw, 2.5rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.85rem; }
+    h2 { font-size: clamp(1.8rem, 3.4vw, 2.5rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.85rem; text-wrap: balance; }
     .sec-desc { color: var(--text-muted); font-size: 1.04rem; line-height: 1.6; }
 
     /* ── STEPS (near-solid surfaces) ── */
-    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.1rem; }
-    .step { position: relative; background: linear-gradient(180deg, rgba(22,26,39,0.72), rgba(16,19,29,0.72)); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.5rem 1.4rem; transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 1.1rem; }
+    .step { position: relative; background: linear-gradient(180deg, rgba(22,26,39,0.72), rgba(16,19,29,0.72)); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.5rem; transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
     .step:hover { transform: translateY(-3px); border-color: rgba(139,124,255,0.4); }
     .step-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.1rem; }
     .step-ico { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; color: var(--violet);
@@ -417,11 +420,11 @@
     .legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; margin-bottom: 1.8rem; }
     .legend span { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.78rem; color: var(--text-muted); font-weight: 500; }
     .legend i { width: 9px; height: 9px; border-radius: 3px; }
-    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0.9rem; }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(230px, 100%), 1fr)); gap: 0.9rem; }
     .role {
       position: relative; overflow: hidden;
       background: linear-gradient(180deg, rgba(22,26,39,0.72), rgba(16,19,29,0.72));
-      border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.25rem 1.2rem;
+      border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.25rem;
       transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
     }
     .role::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--rc, var(--violet)); opacity: 0.65; }
@@ -435,14 +438,14 @@
     }
     .role-name { font-weight: 700; font-size: 0.98rem; letter-spacing: -0.01em; }
     .role-title { font-size: 0.76rem; color: var(--rc, var(--violet)); font-weight: 600; }
-    .role-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; }
+    .role-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; max-width: 65ch; }
 
     /* ── INTERACTIVE TEAM + ROLE MODAL ("meet each agent" — JS-enhanced) ── */
     .role.tappable { cursor: pointer; }
     .team-hint { font-size: 0.84rem; color: var(--text-faint); margin: -1.6rem 0 1.7rem; display: flex; align-items: center; gap: 0.45rem; }
     .team-hint svg { width: 15px; height: 15px; color: var(--violet); flex-shrink: 0; }
-    .role-cta { display: inline-flex; align-items: center; gap: 0.3rem; margin-top: 0.85rem; font-size: 0.73rem; font-weight: 600; color: var(--rc, var(--violet)); opacity: 0; transform: translateY(2px); transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
-    .role.tappable:hover .role-cta, .role.tappable:focus-visible .role-cta { opacity: 0.92; transform: translateY(0); }
+    .role-cta { display: inline-flex; align-items: center; gap: 0.3rem; margin-top: 0.85rem; font-size: 0.73rem; font-weight: 600; color: var(--rc, var(--violet)); opacity: 0.55; transition: opacity var(--dur-base) var(--ease-out), gap var(--dur-base) var(--ease-out); }
+    .role.tappable:hover .role-cta, .role.tappable:focus-visible .role-cta { opacity: 1; gap: 0.45rem; }
     .role-cta svg { width: 13px; height: 13px; }
 
     .role-modal { position: fixed; inset: 0; z-index: 300; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
@@ -483,7 +486,7 @@
     }
 
     /* ── PROOF (near-solid surfaces — perf-safe, no extra blur layers) ── */
-    .proof-apps { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.9rem; margin-bottom: 0.9rem; }
+    .proof-apps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 0.9rem; margin-bottom: 0.9rem; }
     .applink, .proof-card {
       position: relative; min-width: 0; text-decoration: none; color: var(--text);
       background: linear-gradient(180deg, rgba(22,26,39,0.72), rgba(16,19,29,0.72));
@@ -491,7 +494,7 @@
       box-shadow: var(--shadow-md);
       transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
     }
-    .applink { display: flex; flex-direction: column; gap: 0.55rem; padding: 1.3rem 1.4rem; }
+    .applink { display: flex; flex-direction: column; gap: 0.55rem; padding: 1.4rem; }
     .applink:hover, .proof-card:hover { transform: translateY(-3px); border-color: rgba(139,124,255,0.4); box-shadow: var(--shadow-lg); }
     .apptop { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
     .appname { font-weight: 700; font-size: 1.0rem; letter-spacing: -0.01em; display: flex; align-items: center; gap: 0.55rem; }
@@ -505,13 +508,13 @@
     .applink:hover .appurl { color: var(--violet); }
     .appdesc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
 
-    .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 0.9rem; }
+    .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr)); gap: 0.9rem; }
     .proof-card { padding: 1.5rem 1.5rem; display: flex; flex-direction: column; }
     .proof-card h3 { font-size: 1.0rem; font-weight: 700; margin-bottom: 0.8rem; letter-spacing: -0.01em; display: flex; align-items: center; gap: 0.55rem; }
     .proof-ico { width: 30px; height: 30px; border-radius: 9px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; color: var(--violet);
       background: linear-gradient(135deg, rgba(139,124,255,0.2), rgba(139,124,255,0.05)); border: 1px solid rgba(139,124,255,0.22); }
     .proof-ico svg { width: 16px; height: 16px; }
-    .proof-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; }
+    .proof-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; max-width: 65ch; }
     .gov-list, .branchlist { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; margin: 0 0 0.85rem; }
     .gov-list li { font-size: 0.84rem; color: var(--text); display: flex; gap: 0.55rem; align-items: baseline; }
     .gov-list li b { font-family: "JetBrains Mono", monospace; font-weight: 600; color: var(--violet); font-size: 0.78rem; flex-shrink: 0; min-width: 3.1em; }
@@ -528,13 +531,13 @@
     .proof-pointer svg { width: 15px; height: 15px; }
 
     /* ── FEATURES (Tier B glass) ── */
-    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.1rem; }
-    .feature { padding: 1.7rem 1.6rem; }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 1.1rem; }
+    .feature { padding: 1.7rem; }
     .feature-ico { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--violet); margin-bottom: 1.1rem;
       background: linear-gradient(135deg, rgba(139,124,255,0.2), rgba(139,124,255,0.05)); border: 1px solid rgba(139,124,255,0.22); }
     .feature-ico svg { width: 22px; height: 22px; }
     .feature h3 { font-size: 1.08rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
-    .feature p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.58; }
+    .feature p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.58; max-width: 65ch; }
 
     /* ── CTA (Tier A glass) ── */
     .cta-band { max-width: 880px; margin: 2rem auto 0; padding: 0 2rem 1rem; }
@@ -545,16 +548,17 @@
     .cta-inner h2 { margin-bottom: 0.9rem; }
     .cta-inner p { color: var(--text-muted); margin-bottom: 1rem; font-size: 1.05rem; max-width: 560px; margin-left: auto; margin-right: auto; }
     .cta-inner p strong { color: var(--text); font-weight: 700; }
-    .cta-inner .cta-availability { display: inline-flex; align-items: center; gap: 0.5rem; width: auto; font-size: 0.9rem; font-weight: 500; color: var(--text); margin: 0.5rem auto 1.7rem; padding: 0.45rem 1rem; border-radius: 999px; background: rgba(52,211,153,0.10); border: 1px solid rgba(52,211,153,0.26); }
+    .cta-inner .cta-availability { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.5rem; max-width: 100%; font-size: 0.9rem; font-weight: 500; color: var(--text); margin: 0.5rem auto 1.7rem; padding: 0.45rem 1rem; border-radius: var(--radius-pill); background: rgba(52,211,153,0.10); border: 1px solid rgba(52,211,153,0.26); }
     .cta-inner .cta-availability .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 0 3px rgba(52,211,153,0.16); flex-shrink: 0; }
     .cta-inner .hero-actions { margin-top: 0.4rem; }
 
     /* ── FOOTER ── */
-    footer { border-top: 1px solid var(--border-soft); margin-top: 5rem; padding: 2.2rem 2rem; }
+    footer { border-top: 1px solid var(--border-soft); margin-top: 5rem; padding: 2rem; }
     .footer-inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.84rem; color: var(--text-faint); }
     .footer-inner a { color: var(--text-muted); text-decoration: none; transition: color var(--dur-fast) var(--ease-out); }
     .footer-inner a:hover { color: var(--violet); }
-    .footer-links { display: flex; flex-wrap: wrap; gap: 0.7rem 1.3rem; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.3rem; }
+    .footer-links a { display: inline-flex; align-items: center; min-height: 24px; }  /* WCAG 2.5.8 target size */
 
     @media (max-width: 860px) {
       .flow { flex-direction: column; gap: 0.6rem; }
@@ -573,6 +577,7 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; transition: none !important; }
       .aurora { will-change: auto; }
+      .connector::after { display: none; }  /* no stranded traveling-dot when motion is off */
     }
     /* Windows high-contrast / forced-colors: keep structure + focus visible */
     @media (forced-colors: active) {
@@ -645,7 +650,7 @@
     <div class="flow">
       <div class="stage">
         <div class="node">
-          <div class="nicon ni-sky"><svg class="icon" viewBox="0 0 24 24" style="stroke-width:2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
+          <div class="nicon ni-sky"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
           <div class="ntitle">Sky</div><div class="nsub">sets intent</div>
         </div>
         <div class="slabel">a directive</div>
@@ -653,7 +658,7 @@
       <div class="connector c1"></div>
       <div class="stage">
         <div class="node">
-          <div class="nicon ni-morgan"><svg class="icon" viewBox="0 0 24 24" style="stroke-width:2" aria-hidden="true"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div>
+          <div class="nicon ni-morgan"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div>
           <div class="ntitle">Morgan</div><div class="nsub">plans &amp; routes</div>
         </div>
         <div class="slabel">dependency graph</div>
@@ -674,7 +679,7 @@
       <div class="connector c3"></div>
       <div class="stage">
         <div class="node">
-          <div class="nicon ni-safety"><svg class="icon" viewBox="0 0 24 24" style="stroke-width:2" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <div class="nicon ni-safety"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg></div>
           <div class="ntitle">Safety</div><div class="nsub">7-layer compiler</div>
         </div>
         <div class="slabel">a11y · privacy · perf</div>
@@ -682,7 +687,7 @@
       <div class="connector c4"></div>
       <div class="stage">
         <div class="node">
-          <div class="nicon ni-main"><svg class="icon" viewBox="0 0 24 24" style="stroke-width:2" aria-hidden="true"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg></div>
+          <div class="nicon ni-main"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg></div>
           <div class="ntitle">main</div><div class="nsub">Sky merges</div>
         </div>
         <div class="slabel">human approval</div>
@@ -703,7 +708,7 @@
   <div class="proof-apps">
     <a class="applink" href="https://skypistudio.com" target="_blank" rel="noopener">
       <div class="apptop">
-        <span class="appname"><span class="appdot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h18"/><path d="M9 21V9"/><rect width="18" height="18" x="3" y="3" rx="2"/></svg></span> Portfolio</span>
+        <span class="appname"><span class="appdot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h18"/><path d="M9 21V9"/><rect width="18" height="18" x="3" y="3" rx="2"/></svg></span> Portfolio<span class="vh"> (opens in new tab)</span></span>
         <span class="live-pill">Live</span>
       </div>
       <div class="appurl">skypistudio.com</div>
@@ -711,7 +716,7 @@
     </a>
     <a class="applink" href="https://prompts.skypistudio.com" target="_blank" rel="noopener">
       <div class="apptop">
-        <span class="appname"><span class="appdot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></span> Prompt Library</span>
+        <span class="appname"><span class="appdot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></span> Prompt Library<span class="vh"> (opens in new tab)</span></span>
         <span class="live-pill">Live</span>
       </div>
       <div class="appurl">prompts.skypistudio.com</div>
@@ -719,7 +724,7 @@
     </a>
     <a class="applink" href="https://ghostcode.skypistudio.com" target="_blank" rel="noopener">
       <div class="apptop">
-        <span class="appname"><span class="appdot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg></span> Ghost Code</span>
+        <span class="appname"><span class="appdot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg></span> Ghost Code<span class="vh"> (opens in new tab)</span></span>
         <span class="live-pill">Live</span>
       </div>
       <div class="appurl">ghostcode.skypistudio.com</div>
@@ -880,7 +885,7 @@
 <!-- CTA -->
 <div class="cta-band">
   <div class="cta-inner glass-card-feature">
-    <h2>Built by one developer,<br/>powered by fifteen agents</h2>
+    <h2>Built by one developer, powered by fifteen agents</h2>
     <p>Claude Corp is the multi-agent engineering system <strong>Sky Halisky</strong> designed and runs on Anthropic's Claude — always on, always scoped, always human-approved. The software it maintains is real, live, and linked above.</p>
     <p class="cta-availability"><span class="dot" aria-hidden="true"></span> Sky is open to thoughtful product &amp; implementation collaborations.</p>
     <div class="hero-actions">
