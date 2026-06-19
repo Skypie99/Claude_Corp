@@ -47,9 +47,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c6af7'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='15' font-weight='bold' fill='white' text-anchor='middle'%3ECC%3C/text%3E%3C/svg%3E">
+
+  <script>document.documentElement.classList.add('js');</script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -442,7 +444,8 @@
 
     /* ── INTERACTIVE TEAM + ROLE MODAL ("meet each agent" — JS-enhanced) ── */
     .role.tappable { cursor: pointer; }
-    .team-hint { font-size: 0.84rem; color: var(--text-faint); margin: -1.6rem 0 1.7rem; display: flex; align-items: center; gap: 0.45rem; }
+    .team-hint { font-size: 0.84rem; color: var(--text-faint); margin: -1.6rem 0 1.7rem; display: none; align-items: center; gap: 0.45rem; }
+    html.js .team-hint { display: flex; }  /* only shown when JS upgrades the cards (no-JS users see no dead hint; present at first paint = no CLS) */
     .team-hint svg { width: 15px; height: 15px; color: var(--violet); flex-shrink: 0; }
     .role-cta { display: inline-flex; align-items: center; gap: 0.3rem; margin-top: 0.85rem; font-size: 0.73rem; font-weight: 600; color: var(--rc, var(--violet)); opacity: 0.55; transition: opacity var(--dur-base) var(--ease-out), gap var(--dur-base) var(--ease-out); }
     .role.tappable:hover .role-cta, .role.tappable:focus-visible .role-cta { opacity: 1; gap: 0.45rem; }
@@ -809,6 +812,8 @@
     <p class="sec-desc">Each role is a purpose-built Claude agent with a scoped skill file, a prefixed branch namespace, and a silent external presence — only Morgan talks to Sky.</p>
   </div>
 
+  <p class="team-hint"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg> Select any role to see its authority, limits, and constraints.</p>
+
   <div class="legend">
     <span><i style="background:#a78bfa"></i> Design &amp; Frontend</span>
     <span><i style="background:#46b8f5"></i> Backend &amp; Data</span>
@@ -920,9 +925,9 @@
 </footer>
 
 <!-- Role detail modal (populated + activated by JS — progressive enhancement) -->
-<div class="role-modal" id="roleModal" role="dialog" aria-modal="true" aria-labelledby="rmName" aria-describedby="rmDomain" hidden>
+<div class="role-modal" id="roleModal" role="dialog" aria-modal="true" aria-labelledby="rmName rmRole" aria-describedby="rmDomain" hidden>
   <div class="role-modal-overlay" data-close="1"></div>
-  <div class="role-modal-panel" role="document">
+  <div class="role-modal-panel">
     <button type="button" class="role-modal-close" id="rmClose" data-close="1" aria-label="Close dialog">
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
     </button>
@@ -1116,15 +1121,7 @@
         if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); openModal(name, color, initial, card); }
       });
     });
-
-    // hint that the cards are interactive
-    var teamHead = document.querySelector('#team .sec-head');
-    if (teamHead) {
-      var hint = document.createElement('p');
-      hint.className = 'team-hint';
-      hint.innerHTML = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg> Select any role to see its authority, limits, and constraints.';
-      teamHead.insertAdjacentElement('afterend', hint);
-    }
+    // (the "Select any role…" hint is now static markup, revealed via html.js — see #team — so it adds no post-load layout shift)
   })();
 </script>
 
