@@ -413,6 +413,51 @@
     .role-title { font-size: 0.76rem; color: var(--rc, var(--violet)); font-weight: 600; }
     .role-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; }
 
+    /* ── PROOF (near-solid surfaces — perf-safe, no extra blur layers) ── */
+    .proof-apps { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.9rem; margin-bottom: 0.9rem; }
+    .applink, .proof-card {
+      position: relative; min-width: 0; text-decoration: none; color: var(--text);
+      background: linear-gradient(180deg, rgba(22,26,39,0.72), rgba(16,19,29,0.72));
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-md);
+      transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+    }
+    .applink { display: flex; flex-direction: column; gap: 0.55rem; padding: 1.3rem 1.4rem; }
+    .applink:hover, .proof-card:hover { transform: translateY(-3px); border-color: rgba(139,124,255,0.4); box-shadow: var(--shadow-lg); }
+    .apptop { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+    .appname { font-weight: 700; font-size: 1.0rem; letter-spacing: -0.01em; display: flex; align-items: center; gap: 0.55rem; }
+    .appdot { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; color: var(--violet);
+      background: linear-gradient(135deg, rgba(139,124,255,0.2), rgba(139,124,255,0.05)); border: 1px solid rgba(139,124,255,0.22); }
+    .appdot svg { width: 17px; height: 17px; }
+    .live-pill { display: inline-flex; align-items: center; gap: 0.4rem; font-family: "JetBrains Mono", monospace; font-size: 0.64rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5fe0ad;
+      padding: 0.2rem 0.55rem; border-radius: 999px; background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.28); }
+    .live-pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 0 3px rgba(52,211,153,0.16); }
+    .appurl { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; color: var(--text-muted); }
+    .applink:hover .appurl { color: var(--violet); }
+    .appdesc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+    .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 0.9rem; }
+    .proof-card { padding: 1.5rem 1.5rem; display: flex; flex-direction: column; }
+    .proof-card h3 { font-size: 1.0rem; font-weight: 700; margin-bottom: 0.8rem; letter-spacing: -0.01em; display: flex; align-items: center; gap: 0.55rem; }
+    .proof-ico { width: 30px; height: 30px; border-radius: 9px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; color: var(--violet);
+      background: linear-gradient(135deg, rgba(139,124,255,0.2), rgba(139,124,255,0.05)); border: 1px solid rgba(139,124,255,0.22); }
+    .proof-ico svg { width: 16px; height: 16px; }
+    .proof-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; }
+    .gov-list, .branchlist { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; margin: 0 0 0.85rem; }
+    .gov-list li { font-size: 0.84rem; color: var(--text); display: flex; gap: 0.55rem; align-items: baseline; }
+    .gov-list li b { font-family: "JetBrains Mono", monospace; font-weight: 600; color: var(--violet); font-size: 0.78rem; flex-shrink: 0; min-width: 3.1em; }
+    .branchlist li { font-family: "JetBrains Mono", monospace; font-size: 0.74rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .branchlist .pre { color: var(--coral); }
+    .proof-stat { font-size: 2.1rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1;
+      background: linear-gradient(135deg, #fff, #c7ccda); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .proof-link { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; font-weight: 600; color: var(--violet); text-decoration: none; margin-top: auto; padding-top: 0.7rem; }
+    .proof-link:hover { text-decoration: underline; }
+    .proof-link svg { width: 14px; height: 14px; }
+    .proof-pointer { text-align: center; margin-top: 1.4rem; }
+    .proof-pointer a { font-size: 0.86rem; font-weight: 600; color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 0.45rem; transition: color var(--dur-fast) var(--ease-out); }
+    .proof-pointer a:hover { color: var(--violet); }
+    .proof-pointer svg { width: 15px; height: 15px; }
+
     /* ── FEATURES (Tier B glass) ── */
     .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.1rem; }
     .feature { padding: 1.7rem 1.6rem; }
@@ -436,7 +481,7 @@
     .footer-inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.84rem; color: var(--text-faint); }
     .footer-inner a { color: var(--text-muted); text-decoration: none; transition: color var(--dur-fast) var(--ease-out); }
     .footer-inner a:hover { color: var(--violet); }
-    .footer-links { display: flex; gap: 1.4rem; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 0.7rem 1.3rem; }
 
     @media (max-width: 860px) {
       .flow { flex-direction: column; gap: 0.6rem; }
@@ -472,6 +517,7 @@
   <div class="header-inner">
     <a href="#" class="logo"><span class="logo-mark"><span>CC</span></span> Claude&nbsp;Corp</a>
     <nav aria-label="Primary">
+      <a href="#proof" class="navlink">Proof</a>
       <a href="#how" class="navlink">How it works</a>
       <a href="#team" class="navlink">The team</a>
       <a href="#features" class="navlink">Features</a>
@@ -506,6 +552,10 @@
     <div class="stat"><div class="num">4</div><div class="lbl">Scheduled audits</div></div>
     <div class="stat"><div class="num">5</div><div class="lbl">Projects · 2 fully live</div></div>
     <div class="stat"><div class="num">v1.12</div><div class="lbl">Living Constitution</div></div>
+  </div>
+
+  <div class="proof-pointer">
+    <a href="#proof">Real, versioned, and live — see the evidence <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="m5 12 7 7 7-7"/></svg></a>
   </div>
 </div>
 
@@ -561,6 +611,74 @@
     </div>
   </div>
 </div>
+
+<!-- PROOF -->
+<section id="proof">
+  <div class="sec-head center">
+    <div class="eyebrow">Proof, not promises</div>
+    <h2>A real system, with receipts</h2>
+    <p class="sec-desc">Extraordinary claims deserve evidence. Everything here is verifiable — open the live apps, read the versioned governance, inspect the source.</p>
+  </div>
+
+  <!-- live apps you can open -->
+  <div class="proof-apps">
+    <a class="applink" href="https://skypistudio.com" target="_blank" rel="noopener">
+      <div class="apptop">
+        <span class="appname"><span class="appdot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h18"/><path d="M9 21V9"/><rect width="18" height="18" x="3" y="3" rx="2"/></svg></span> Portfolio</span>
+        <span class="live-pill">Live</span>
+      </div>
+      <div class="appurl">skypistudio.com</div>
+      <div class="appdesc">Sky's accessibility-first portfolio — the hub these projects link from.</div>
+    </a>
+    <a class="applink" href="https://prompts.skypistudio.com" target="_blank" rel="noopener">
+      <div class="apptop">
+        <span class="appname"><span class="appdot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></span> Prompt Library</span>
+        <span class="live-pill">Live</span>
+      </div>
+      <div class="appurl">prompts.skypistudio.com</div>
+      <div class="appdesc">A Next.js app the system built, tested, and shipped under WCAG&nbsp;AA.</div>
+    </a>
+    <a class="applink" href="https://ghostcode.skypistudio.com" target="_blank" rel="noopener">
+      <div class="apptop">
+        <span class="appname"><span class="appdot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg></span> Ghost Code</span>
+        <span class="live-pill">Live</span>
+      </div>
+      <div class="appurl">ghostcode.skypistudio.com</div>
+      <div class="appdesc">A full redesign that passed the 7-layer Design Compiler gate.</div>
+    </a>
+  </div>
+
+  <!-- evidence cards -->
+  <div class="proof-grid">
+    <div class="proof-card">
+      <h3><span class="proof-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></svg></span> Versioned governance</h3>
+      <ul class="gov-list">
+        <li><b>v1.12</b> Living Constitution — Art. 17 merge gate</li>
+        <li><b>v1.16</b> Agent OS runtime overlay</li>
+        <li><b>order</b> Sky → Constitution → roles → skills</li>
+      </ul>
+      <p>Governance is dated and citable — not vibes. No agent self-amends; <code>main</code> is sacred and only Sky merges.</p>
+      <a class="proof-link" href="https://github.com/Skypie99/Claude_Corp" target="_blank" rel="noopener">Read it on GitHub <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+    </div>
+
+    <div class="proof-card">
+      <h3><span class="proof-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span> Every role, its own branch</h3>
+      <ul class="branchlist">
+        <li><span class="pre">feat/</span>claudecorp-p1-glass-foundation</li>
+        <li><span class="pre">attribution/</span>claude-corp-truth</li>
+        <li><span class="pre">content/</span>portfolio-voice-pass</li>
+        <li><span class="pre">perf/</span>auto-2026-05-31</li>
+      </ul>
+      <p>Real, role-prefixed branches across projects. Agents propose on scoped branches; nothing reaches <code>main</code> without Sky's review.</p>
+    </div>
+
+    <div class="proof-card">
+      <h3><span class="proof-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg></span> Continuously audited</h3>
+      <p style="margin-bottom:0.6rem"><span class="proof-stat">900+</span><br/>QA &amp; audit reports written across the portfolio.</p>
+      <p>Multi-agent reviews truth-audit each other against live code and git history before anything is called done.</p>
+    </div>
+  </div>
+</section>
 
 <!-- HOW IT WORKS -->
 <section id="how">
@@ -699,6 +817,7 @@
   <div class="footer-inner">
     <div>Built by <a href="https://skypistudio.com" target="_blank" rel="noopener">Sky Halisky</a> &middot; Powered by <a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic Claude</a></div>
     <div class="footer-links">
+      <a href="#proof">Proof</a>
       <a href="#how">How it works</a>
       <a href="#team">Team</a>
       <a href="#features">Features</a>
