@@ -413,6 +413,51 @@
     .role-title { font-size: 0.76rem; color: var(--rc, var(--violet)); font-weight: 600; }
     .role-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; }
 
+    /* ── INTERACTIVE TEAM + ROLE MODAL ("meet each agent" — JS-enhanced) ── */
+    .role.tappable { cursor: pointer; }
+    .team-hint { font-size: 0.84rem; color: var(--text-faint); margin: -1.6rem 0 1.7rem; display: flex; align-items: center; gap: 0.45rem; }
+    .team-hint svg { width: 15px; height: 15px; color: var(--violet); flex-shrink: 0; }
+    .role-cta { display: inline-flex; align-items: center; gap: 0.3rem; margin-top: 0.85rem; font-size: 0.73rem; font-weight: 600; color: var(--rc, var(--violet)); opacity: 0; transform: translateY(2px); transition: opacity var(--dur-base) var(--ease-out), transform var(--dur-base) var(--ease-out); }
+    .role.tappable:hover .role-cta, .role.tappable:focus-visible .role-cta { opacity: 0.92; transform: translateY(0); }
+    .role-cta svg { width: 13px; height: 13px; }
+
+    .role-modal { position: fixed; inset: 0; z-index: 300; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+    .role-modal[hidden] { display: none; }
+    .role-modal-overlay { position: absolute; inset: 0; background: rgba(4,5,9,0.74); -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); animation: rm-fade var(--dur-base) var(--ease-out); }
+    .role-modal-panel {
+      position: relative; z-index: 1; width: min(560px, 100%); max-height: min(86vh, 760px); overflow-y: auto;
+      background: linear-gradient(180deg, #1a1f2e, #11141f);
+      border: 1px solid var(--hairline); border-radius: var(--radius);
+      box-shadow: 0 40px 90px -30px rgba(0,0,0,0.85), inset 0 1px 0 rgba(255,255,255,0.08);
+      padding: 1.8rem 1.8rem 2rem;
+      animation: rm-rise var(--dur-base) var(--ease-entrance);
+    }
+    .role-modal-panel::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: var(--radius) var(--radius) 0 0; background: linear-gradient(90deg, var(--rmc, var(--violet)), transparent 80%); }
+    @keyframes rm-fade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes rm-rise { from { opacity: 0; transform: translateY(14px) scale(0.985); } to { opacity: 1; transform: none; } }
+    .role-modal-close { position: absolute; top: 1rem; right: 1rem; width: 36px; height: 36px; border-radius: 9px; border: 1px solid var(--border); background: rgba(255,255,255,0.04); color: var(--text-muted); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out); }
+    .role-modal-close:hover { background: rgba(255,255,255,0.09); color: var(--text); }
+    .role-modal-close svg { width: 16px; height: 16px; }
+    .rm-head { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1rem; padding-right: 2.6rem; }
+    .rm-mono { width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem; color: #fff;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--rmc, var(--violet)) 90%, #000), color-mix(in srgb, var(--rmc, var(--violet)) 55%, #000));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 6px 16px -6px var(--rmc, var(--violet)); }
+    .rm-name { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+    .rm-role { font-size: 0.85rem; font-weight: 600; color: var(--rmc, var(--violet)); }
+    .rm-domain { font-size: 0.95rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 1.35rem; }
+    .rm-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem 1.5rem; }
+    .rm-block h3 { font-family: "JetBrains Mono", monospace; font-size: 0.67rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.6rem; }
+    .rm-block ul { list-style: none; display: flex; flex-direction: column; gap: 0.42rem; }
+    .rm-block li { font-size: 0.83rem; color: var(--text); line-height: 1.45; padding-left: 1.05rem; position: relative; }
+    .rm-block li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 5px; height: 5px; border-radius: 50%; background: var(--text-faint); }
+    .rm-block.may li::before { background: var(--emerald); }
+    .rm-block.not li::before { background: var(--coral); }
+    @media (max-width: 540px) {
+      .rm-cols { grid-template-columns: 1fr; gap: 1.1rem; }
+      .role-modal { padding: 0.8rem; }
+      .role-modal-panel { padding: 1.5rem 1.3rem 1.6rem; }
+    }
+
     /* ── PROOF (near-solid surfaces — perf-safe, no extra blur layers) ── */
     .proof-apps { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0.9rem; margin-bottom: 0.9rem; }
     .applink, .proof-card {
@@ -827,6 +872,30 @@
   </div>
 </footer>
 
+<!-- Role detail modal (populated + activated by JS — progressive enhancement) -->
+<div class="role-modal" id="roleModal" role="dialog" aria-modal="true" aria-labelledby="rmName" aria-describedby="rmDomain" hidden>
+  <div class="role-modal-overlay" data-close="1"></div>
+  <div class="role-modal-panel" role="document">
+    <button type="button" class="role-modal-close" id="rmClose" data-close="1" aria-label="Close dialog">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+    <div class="rm-head">
+      <div class="rm-mono" id="rmMono" aria-hidden="true"></div>
+      <div>
+        <h2 class="rm-name" id="rmName"></h2>
+        <div class="rm-role" id="rmRole"></div>
+      </div>
+    </div>
+    <p class="rm-domain" id="rmDomain"></p>
+    <div class="rm-cols">
+      <div class="rm-block"><h3>Specialties</h3><ul id="rmSpec"></ul></div>
+      <div class="rm-block may"><h3>Can</h3><ul id="rmMay"></ul></div>
+      <div class="rm-block not"><h3>Cannot</h3><ul id="rmNot"></ul></div>
+      <div class="rm-block"><h3>Constraints</h3><ul id="rmCon"></ul></div>
+    </div>
+  </div>
+</div>
+
 <!-- Chromium-only glass refraction filter (Safari ignores it via @supports above) -->
 <svg aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
   <filter id="glass-refract" x="-20%" y="-20%" width="140%" height="140%">
@@ -849,6 +918,166 @@
         el.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(2) + '%');
       }, { passive: true });
     });
+  })();
+</script>
+
+<!-- Interactive "meet each agent": upgrades the static team cards into accessible dialog triggers -->
+<script>
+  (function () {
+    var DETAIL = {
+      "Morgan": { role: "Project Manager", domain: "Orchestration, status, and the single channel to Sky.",
+        specialties: ["Cross-role coordination", "Status briefings", "Risk escalation", "Dependency planning"],
+        may: ["Message Sky directly (sole channel)", "Coordinate cross-team work", "Escalate blockers", "Track project health"],
+        mustNot: ["Make unilateral technical decisions", "Override role boundaries", "Commit timelines without the team"],
+        constraints: ["Only Morgan messages Sky — ever", "Reports follow a fixed five-section format"] },
+      "Shamus": { role: "Feature Engineer", domain: "Frontend features, screens, and UI — every PR through the Design Compiler.",
+        specialties: ["React / Next.js", "Feature prototyping", "Component systems", "Design-token implementation"],
+        may: ["Create scoped UI branches", "Propose feature designs", "Build component specs", "Run the Design Compiler"],
+        mustNot: ["Ship without a Design Compiler PASS", "Modify core auth", "Change database schemas"],
+        constraints: ["A Design Compiler PASS is required before UI is done", "Coordinates with Dani on tokens"] },
+      "Dani": { role: "Creative Director", domain: "The design system, visual governance, and theming.",
+        specialties: ["Design tokens", "Theme consistency", "Visual language", "Luxury-UI scoring"],
+        may: ["Own and maintain design tokens", "Define visual standards", "Score design entropy", "Guide styling"],
+        mustNot: ["Ship breaking token changes unreviewed", "Override accessibility", "Make unilateral design calls"],
+        constraints: ["Authority over visual + token decisions", "The Design Compiler needs Dani's judgment"] },
+      "Alex": { role: "Accessibility Engineer", domain: "WCAG 2.2 AA compliance and inclusive design.",
+        specialties: ["WCAG 2.2 AA", "Screen-reader testing", "Keyboard navigation", "Color-contrast analysis"],
+        may: ["Audit components for a11y", "Recommend remediation", "Block non-compliant PRs", "Test with assistive tech"],
+        mustNot: ["Approve a11y workarounds", "Allow contrast violations", "Ship without a parity review"],
+        constraints: ["Accessibility is a non-negotiable pillar", "Every UI change needs a11y approval"] },
+      "Dana": { role: "Backend Engineer", domain: "APIs, schema, migrations, and data integrity.",
+        specialties: ["API design", "Database optimization", "Migrations (files only)", "Supabase / PostgreSQL"],
+        may: ["Design and implement APIs", "Create data models", "Optimize queries", "Author migrations as files"],
+        mustNot: ["Apply migrations to a live database", "Skip data validation", "Expose secrets"],
+        constraints: ["Migrations are files with rollback — never applied directly", "Never touches the live database"] },
+      "Peter": { role: "Performance Engineer", domain: "Speed, scalability, and resource efficiency.",
+        specialties: ["Query optimization", "Render profiling", "Caching strategies", "Latency analysis"],
+        may: ["Profile and find bottlenecks", "Recommend optimizations", "Review perf impact of PRs", "Set baselines"],
+        mustNot: ["Optimize without measuring first", "Trade safety for speed", "Sacrifice accessibility for speed"],
+        constraints: ["Measure first — never optimize blind", "Coordinates with Dana on DB changes"] },
+      "Steve": { role: "Safety Engineer", domain: "Security, privacy, and three-pillar enforcement.",
+        specialties: ["Threat modeling", "Security audits", "Privacy compliance", "Credential handling"],
+        may: ["Block unsafe changes", "Require security review", "Escalate privacy concerns", "Enforce the Constitution"],
+        mustNot: ["Approve credential exposure", "Skip security review", "Make exceptions to the pillars"],
+        constraints: ["Safety + privacy outrank everything else", "Can halt work when a pillar is violated"] },
+      "Gary": { role: "QA Engineer", domain: "Tests, regression prevention, and the CI safety net.",
+        specialties: ["Test-case design", "Regression detection", "Edge-case hunting", "Test automation"],
+        may: ["Write and run test suites", "Block regressions", "Request reproduction steps", "Design coverage"],
+        mustNot: ["Approve without test evidence", "Skip regression testing", "Ignore edge cases"],
+        constraints: ["“Done” means passing tests", "Nothing ships without Gary's green"] },
+      "Rory": { role: "DevOps Engineer", domain: "CI/CD, builds, and release readiness.",
+        specialties: ["CI/CD pipelines", "Deployment automation", "Build configuration", "Monitoring setup"],
+        may: ["Manage deployment pipelines", "Provision infrastructure", "Set up monitoring", "Recommend infra changes"],
+        mustNot: ["Deploy to production unattended", "Skip infrastructure testing", "Ignore security in infra"],
+        constraints: ["Only Sky merges to main", "Deployments follow change control"] },
+      "Quinn": { role: "Product Manager", domain: "Requirements, prioritization, and the roadmap.",
+        specialties: ["Requirements definition", "Feature prioritization", "Roadmap planning", "Product strategy"],
+        may: ["Define product requirements", "Prioritize features", "Write user stories", "Guide product direction"],
+        mustNot: ["Override architectural concerns", "Ignore technical constraints", "Ship without validation"],
+        constraints: ["Requirements must be technically feasible", "User value drives prioritization"] },
+      "Riley": { role: "User Researcher", domain: "Personas, journeys, and friction analysis.",
+        specialties: ["User research", "Journey mapping", "Friction analysis", "Evidence synthesis"],
+        may: ["Run research studies", "Generate insights", "Map user journeys", "Support decisions with data"],
+        mustNot: ["Publish PII", "Draw conclusions from tiny samples", "Skip privacy review"],
+        constraints: ["Research respects user privacy", "Insights are validated before they ship"] },
+      "Jordan": { role: "Privacy Advisor", domain: "Privacy-by-design across location, auth, and user data.",
+        specialties: ["Privacy review", "Compliance (PIPEDA)", "Governance docs", "Data-practice analysis"],
+        may: ["Review changes for privacy", "Document governance decisions", "Recommend safeguards", "Gate sensitive work"],
+        mustNot: ["Approve privacy violations", "Ignore compliance requirements", "Make binding legal commitments"],
+        constraints: ["Privacy is a non-negotiable pillar", "Not a lawyer — findings need professional legal review"] },
+      "Casey": { role: "Community Manager", domain: "Contributor docs, onboarding, and growth.",
+        specialties: ["Contributor docs", "Onboarding flows", "Growth strategy", "Community support"],
+        may: ["Write onboarding + contributor guides", "Plan growth", "Support contributors", "Improve first-run UX"],
+        mustNot: ["Expose private data", "Overpromise capabilities", "Ignore accessibility feedback"],
+        constraints: ["Accuracy over hype", "Coordinates with Will on docs"] },
+      "Will": { role: "Technical Writer", domain: "READMEs, setup guides, changelogs, and the learnings log.",
+        specialties: ["Technical documentation", "Setup guides", "Changelogs", "Plain-language editing"],
+        may: ["Write and maintain docs", "Create tutorials", "Curate the learnings log", "Improve clarity"],
+        mustNot: ["Document security workarounds", "Mislead about capabilities", "Touch application code"],
+        constraints: ["Docs must be accurate and current", "Never touches application code"] },
+      "Orion": { role: "Recovery Agent", domain: "Crisis recovery, safe-state restoration, and Constitution enforcement.",
+        specialties: ["System recovery", "Crisis response", "Safe-state restoration", "Escalation handling"],
+        may: ["Step in when a role hits a blocker", "Halt unsafe work", "Restore a safe state", "Enforce the Constitution"],
+        mustNot: ["Act outside a genuine emergency", "Modify the Constitution", "Make permanent changes without Sky"],
+        constraints: ["Recovery-only (Art. 8.4)", "Needs a genuine crisis to activate"] }
+    };
+
+    var modal = document.getElementById('roleModal');
+    if (!modal) return;
+    var panel = modal.querySelector('.role-modal-panel');
+    var el = function (id) { return document.getElementById(id); };
+    var elName = el('rmName'), elRole = el('rmRole'), elMono = el('rmMono'), elDomain = el('rmDomain'),
+        elSpec = el('rmSpec'), elMay = el('rmMay'), elNot = el('rmNot'), elCon = el('rmCon');
+    var lastFocused = null;
+    var scrim = [document.querySelector('header'), el('main'), document.querySelector('footer')];
+
+    function fill(ul, arr) { ul.innerHTML = ''; arr.forEach(function (t) { var li = document.createElement('li'); li.textContent = t; ul.appendChild(li); }); }
+
+    function openModal(name, color, initial, trigger) {
+      var d = DETAIL[name]; if (!d) return;
+      lastFocused = trigger || document.activeElement;
+      panel.style.setProperty('--rmc', color || 'var(--violet)');
+      elMono.textContent = initial; elName.textContent = name; elRole.textContent = d.role; elDomain.textContent = d.domain;
+      fill(elSpec, d.specialties); fill(elMay, d.may); fill(elNot, d.mustNot); fill(elCon, d.constraints);
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      scrim.forEach(function (n) { if (n) n.setAttribute('inert', ''); });
+      panel.scrollTop = 0;
+      el('rmClose').focus();
+      document.addEventListener('keydown', onKey, true);
+    }
+    function closeModal() {
+      modal.hidden = true;
+      document.body.style.overflow = '';
+      scrim.forEach(function (n) { if (n) n.removeAttribute('inert'); });
+      document.removeEventListener('keydown', onKey, true);
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+    function onKey(e) {
+      if (e.key === 'Escape') { e.preventDefault(); closeModal(); return; }
+      if (e.key === 'Tab') {
+        var f = Array.prototype.filter.call(
+          panel.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'),
+          function (n) { return n.offsetParent !== null; });
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    }
+    modal.addEventListener('click', function (e) { if (e.target.closest('[data-close]')) closeModal(); });
+
+    // progressive enhancement — turn each static role card into a dialog trigger
+    var cards = document.querySelectorAll('#team .role');
+    Array.prototype.forEach.call(cards, function (card) {
+      var nameEl = card.querySelector('.role-name'); if (!nameEl) return;
+      var name = nameEl.textContent.trim(); if (!DETAIL[name]) return;
+      var color = (card.style.getPropertyValue('--rc') || '').trim();
+      var monoEl = card.querySelector('.mono'); var initial = monoEl ? monoEl.textContent.trim() : name.charAt(0);
+      var titleEl = card.querySelector('.role-title'); var title = titleEl ? titleEl.textContent.trim() : '';
+      card.classList.add('tappable');
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-haspopup', 'dialog');
+      card.setAttribute('aria-label', name + ', ' + title + ' — view role details');
+      var cta = document.createElement('span');
+      cta.className = 'role-cta';
+      cta.innerHTML = 'View role <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+      card.appendChild(cta);
+      card.addEventListener('click', function () { openModal(name, color, initial, card); });
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); openModal(name, color, initial, card); }
+      });
+    });
+
+    // hint that the cards are interactive
+    var teamHead = document.querySelector('#team .sec-head');
+    if (teamHead) {
+      var hint = document.createElement('p');
+      hint.className = 'team-hint';
+      hint.innerHTML = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg> Select any role to see its authority, limits, and constraints.';
+      teamHead.insertAdjacentElement('afterend', hint);
+    }
   })();
 </script>
 
