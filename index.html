@@ -4,7 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Claude Corp — A 15-role AI team that ships software autonomously</title>
-  <meta name="description" content="Claude Corp is a multi-agent engineering system built on Anthropic's Claude. 15 specialized AI roles plan, build, test, review, and deploy across five production apps — governed by a living Constitution." />
+  <meta name="description" content="Claude Corp is a multi-agent engineering system built on Anthropic's Claude. 15 specialized AI roles plan, build, test, review, and deploy across a portfolio of projects — governed by a living Constitution." />
+
+  <!-- Open Graph / social share -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Claude Corp" />
+  <meta property="og:title" content="Claude Corp — A 15-role AI team that ships software autonomously" />
+  <meta property="og:description" content="A multi-agent engineering system built on Anthropic's Claude. 15 specialized AI roles plan, build, test, review, and deploy — governed by a living Constitution." />
+  <meta property="og:url" content="https://claudecorp.skypistudio.com/" />
+  <meta property="og:image" content="https://claudecorp.skypistudio.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Claude Corp — a 15-role AI engineering team governed by a living Constitution." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Claude Corp — A 15-role AI team that ships software autonomously" />
+  <meta name="twitter:description" content="A multi-agent engineering system built on Anthropic's Claude. 15 specialized AI roles, one living Constitution." />
+  <meta name="twitter:image" content="https://claudecorp.skypistudio.com/og-image.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -84,6 +99,18 @@
 
     a { color: inherit; }
     .wrap { max-width: var(--maxw); margin: 0 auto; padding-left: 2rem; padding-right: 2rem; }
+
+    /* ── SKIP LINK ── */
+    .skip-link {
+      position: absolute; left: 0.75rem; top: 0.75rem; z-index: 200;
+      transform: translateY(-160%);
+      padding: 0.6rem 1.1rem; border-radius: 9px;
+      font-size: 0.875rem; font-weight: 600; text-decoration: none; color: #fff;
+      background: linear-gradient(135deg, var(--violet), var(--violet-2));
+      box-shadow: 0 6px 20px rgba(124,106,247,0.45);
+      transition: transform .15s;
+    }
+    .skip-link:focus { transform: translateY(0); outline: 2px solid #fff; outline-offset: 2px; }
 
     /* ── HEADER ── */
     header {
@@ -312,11 +339,13 @@
 <div class="glow glow-3"></div>
 <div class="bg-grain"></div>
 
+<a href="#main" class="skip-link">Skip to main content</a>
+
 <!-- HEADER -->
 <header>
   <div class="header-inner">
     <a href="#" class="logo"><span class="logo-mark"><span>CC</span></span> Claude&nbsp;Corp</a>
-    <nav>
+    <nav aria-label="Primary">
       <a href="#how" class="navlink">How it works</a>
       <a href="#team" class="navlink">The team</a>
       <a href="#features" class="navlink">Features</a>
@@ -328,13 +357,15 @@
   </div>
 </header>
 
+<main id="main">
+
 <!-- HERO -->
 <div class="hero">
-  <div class="badge"><span class="dot"></span> Active &middot; 19 scheduled agents running</div>
+  <div class="badge"><span class="dot"></span> Active &middot; 4 scheduled audits running</div>
   <h1>A <span class="grad">15-role AI team</span> that ships software autonomously</h1>
   <p class="hero-desc">
     Claude Corp is a multi-agent engineering system built on Anthropic's Claude. Specialized AI roles plan,
-    build, test, review, and deploy across five production apps — all governed by a living Constitution.
+    build, test, review, and deploy across a portfolio of projects — all governed by a living Constitution.
   </p>
   <div class="hero-actions">
     <a href="https://github.com/Skypie99/Claude_Corp" class="btn btn-primary" target="_blank" rel="noopener">
@@ -346,9 +377,9 @@
 
   <div class="stats">
     <div class="stat"><div class="num">15</div><div class="lbl">Specialized roles</div></div>
-    <div class="stat"><div class="num">19</div><div class="lbl">Scheduled agents</div></div>
-    <div class="stat"><div class="num">5</div><div class="lbl">Production apps</div></div>
-    <div class="stat"><div class="num">v1.11</div><div class="lbl">Living Constitution</div></div>
+    <div class="stat"><div class="num">4</div><div class="lbl">Scheduled audits</div></div>
+    <div class="stat"><div class="num">5</div><div class="lbl">Projects · 2 fully live</div></div>
+    <div class="stat"><div class="num">v1.12</div><div class="lbl">Living Constitution</div></div>
   </div>
 </div>
 
@@ -493,7 +524,7 @@
     <div class="feature">
       <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24"><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></svg></div>
       <h3>Living Constitution</h3>
-      <p>A versioned governance document (currently v1.11) that all 15 roles inherit as hard law. No agent self-amends — only Sky changes it.</p>
+      <p>A versioned governance document (currently v1.12) that all 15 roles inherit as hard law. No agent self-amends — only Sky changes it.</p>
     </div>
     <div class="feature">
       <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg></div>
@@ -503,7 +534,7 @@
     <div class="feature">
       <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></div>
       <h3>Background Mode</h3>
-      <p>19 scheduled agents run autonomously overnight. A halt-sentinel file freezes all background work instantly. Max one reversible change per cycle.</p>
+      <p>Scheduled audit agents run autonomously overnight. A halt-sentinel file freezes all background work instantly. Max one reversible change per cycle.</p>
     </div>
     <div class="feature">
       <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
@@ -534,6 +565,8 @@
     </a>
   </div>
 </div>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
