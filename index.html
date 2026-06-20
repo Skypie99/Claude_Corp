@@ -154,6 +154,9 @@
       --ok-text:         #5fe0ad;
       --num-1:           #ffffff;
       --num-2:           #c7ccda;
+      --hover-1:         rgba(255,255,255,0.04);  /* subtle resting fill (ghost/toggle/nav/modal-close) */
+      --hover-2:         rgba(255,255,255,0.08);  /* hover fill */
+      --hover-border:    rgba(255,255,255,0.22);  /* ghost-button hover border */
       --rim-grad: linear-gradient(138deg, var(--glass-stroke) 0%, rgba(255,255,255,0.34) 28%, rgba(255,255,255,0.10) 58%, rgba(138,160,255,0.40) 100%);
       --rim-grad-feature: linear-gradient(138deg, rgba(210,176,116,1.00) 0%, rgba(232,216,180,0.95) 14%, rgba(255,255,255,0.85) 28%, rgba(255,255,255,0.45) 48%, rgba(255,255,255,0.14) 62%, rgba(138,160,255,0.90) 100%);
     }
@@ -181,7 +184,7 @@
       --accent-strong-2: #4750c0;   /* CTA gradient stop — white label 6.13:1 */
       --gold:            #7e6230;   /* antique bronze (champagne invisible on paper) */
       --ok:              #1f7a52;
-      --ok-text:         #1f7a52;
+      --ok-text:         #1a6b48;   /* deepened — "Live" pill text 5.3:1 on its tint over paper */
 
       --text:        #1a1916;   /* warm ink (15.3:1) */
       --text-muted:  #56524a;   /* 6.77:1 */
@@ -206,6 +209,9 @@
       --badge-text:      #3a42a8;
       --num-1:           #2b2825;   /* warm-dark metallic numerals on paper */
       --num-2:           #56524a;
+      --hover-1:         rgba(26,25,22,0.05);
+      --hover-2:         rgba(26,25,22,0.09);
+      --hover-border:    rgba(26,25,22,0.20);
       --rim-grad: linear-gradient(138deg, rgba(126,98,48,0.55) 0%, rgba(126,98,48,0.20) 35%, rgba(71,80,192,0.20) 65%, rgba(58,66,168,0.50) 100%);
       --rim-grad-feature: linear-gradient(138deg, rgba(126,98,48,0.85) 0%, rgba(150,120,60,0.55) 18%, rgba(126,98,48,0.30) 45%, rgba(71,80,192,0.30) 70%, rgba(58,66,168,0.70) 100%);
     }
@@ -214,11 +220,12 @@
         --bg:#f3efe6; --bg-2:#ece7db; --surface:#fbf9f3; --surface-2:#ffffff;
         --surface-glass:rgba(255,255,255,0.82); --surface-glass-2:rgba(248,246,240,0.82);
         --border:rgba(26,25,22,0.12); --border-soft:rgba(26,25,22,0.07); --hairline:rgba(26,25,22,0.16);
-        --accent:#4750c0; --accent-2:#3a42a8; --accent-warm:#a84d2c; --accent-strong:#3a42a8; --accent-strong-2:#4750c0; --gold:#7e6230; --ok:#1f7a52; --ok-text:#1f7a52;
+        --accent:#4750c0; --accent-2:#3a42a8; --accent-warm:#a84d2c; --accent-strong:#3a42a8; --accent-strong-2:#4750c0; --gold:#7e6230; --ok:#1f7a52; --ok-text:#1a6b48;
         --text:#1a1916; --text-muted:#56524a; --text-faint:#6f6a60;
         --glass-fill:rgba(255,255,255,0.55); --glass-stroke:rgba(126,98,48,0.40); --glass-highlight:rgba(255,255,255,0.85); --glass-shadow:rgba(40,34,24,0.16); --glass-blend:normal; --glass-spec:0.32; --focus:#3a42a8;
         --aurora-opacity:0.4; --grid-line:rgba(26,25,22,0.045); --grain-opacity:0.02;
         --header-1:rgba(251,249,243,0.86); --header-2:rgba(251,249,243,0.62); --modal-1:#ffffff; --modal-2:#fbf9f3; --scrim:rgba(26,25,22,0.42); --badge-text:#3a42a8; --num-1:#2b2825; --num-2:#56524a;
+        --hover-1:rgba(26,25,22,0.05); --hover-2:rgba(26,25,22,0.09); --hover-border:rgba(26,25,22,0.20);
         --rim-grad: linear-gradient(138deg, rgba(126,98,48,0.55) 0%, rgba(126,98,48,0.20) 35%, rgba(71,80,192,0.20) 65%, rgba(58,66,168,0.50) 100%);
         --rim-grad-feature: linear-gradient(138deg, rgba(126,98,48,0.85) 0%, rgba(150,120,60,0.55) 18%, rgba(126,98,48,0.30) 45%, rgba(71,80,192,0.30) 70%, rgba(58,66,168,0.70) 100%);
       }
@@ -414,7 +421,7 @@
       color: var(--text-muted); text-decoration: none; font-size: 0.875rem; font-weight: 500;
       padding: 0.45rem 0.8rem; border-radius: 8px; transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
     }
-    nav a.navlink:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+    nav a.navlink:hover { color: var(--text); background: var(--hover-1); }
     .nav-cta {
       display: inline-flex; align-items: center; gap: 0.4rem;
       margin-left: 0.6rem; padding: 0.5rem 0.95rem; border-radius: 9px;
@@ -431,10 +438,10 @@
     .theme-toggle {
       display: inline-flex; align-items: center; justify-content: center;
       width: 38px; height: 38px; border-radius: 9px; flex-shrink: 0; cursor: pointer;
-      background: rgba(255,255,255,0.04); border: 1px solid var(--hairline); color: var(--text-muted);
+      background: var(--hover-1); border: 1px solid var(--hairline); color: var(--text-muted);
       transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
     }
-    .theme-toggle:hover { color: var(--text); background: rgba(255,255,255,0.07); border-color: var(--border); }
+    .theme-toggle:hover { color: var(--text); background: var(--hover-2); border-color: var(--border); }
     .theme-toggle svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
     .theme-toggle .ti-moon { display: none; }
     .theme-toggle .ti-sun  { display: block; }
@@ -477,8 +484,8 @@
     .btn svg { width: 17px; height: 17px; }
     .btn-primary { color: #fff; background: linear-gradient(135deg, var(--accent-strong-2), var(--accent-strong)); box-shadow: 0 8px 26px rgba(108,140,255,0.4), inset 0 1px 0 rgba(255,255,255,0.25); }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(108,140,255,0.55), inset 0 1px 0 rgba(255,255,255,0.25); }
-    .btn-ghost { color: var(--text); background: rgba(255,255,255,0.04); border: 1px solid var(--hairline); }
-    .btn-ghost:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.06); }
+    .btn-ghost { color: var(--text); background: var(--hover-1); border: 1px solid var(--hairline); }
+    .btn-ghost:hover { transform: translateY(-2px); border-color: var(--hover-border); background: var(--hover-2); }
 
     /* ── STAT BAND (Tier B glass) ── */
     .stats { display: flex; justify-content: center; flex-wrap: wrap; gap: 0; margin: 3rem auto 0; max-width: 760px; overflow: hidden; }
@@ -609,8 +616,8 @@
     .role-modal-panel::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: var(--radius) var(--radius) 0 0; background: linear-gradient(90deg, var(--rmc, var(--violet)), transparent 80%); }
     @keyframes rm-fade { from { opacity: 0; } to { opacity: 1; } }
     @keyframes rm-rise { from { opacity: 0; transform: translateY(14px) scale(0.985); } to { opacity: 1; transform: none; } }
-    .role-modal-close { position: absolute; top: 1rem; right: 1rem; width: 36px; height: 36px; border-radius: 9px; border: 1px solid var(--border); background: rgba(255,255,255,0.04); color: var(--text-muted); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out); }
-    .role-modal-close:hover { background: rgba(255,255,255,0.09); color: var(--text); }
+    .role-modal-close { position: absolute; top: 1rem; right: 1rem; width: 36px; height: 36px; border-radius: 9px; border: 1px solid var(--border); background: var(--hover-1); color: var(--text-muted); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out); }
+    .role-modal-close:hover { background: var(--hover-2); color: var(--text); }
     .role-modal-close svg { width: 16px; height: 16px; }
     .rm-head { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1rem; padding-right: 2.6rem; }
     .rm-mono { width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem; color: #fff;
