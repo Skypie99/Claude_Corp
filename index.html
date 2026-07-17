@@ -616,7 +616,7 @@
     .role-modal-panel::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: var(--radius) var(--radius) 0 0; background: linear-gradient(90deg, var(--rmc, var(--violet)), transparent 80%); }
     @keyframes rm-fade { from { opacity: 0; } to { opacity: 1; } }
     @keyframes rm-rise { from { opacity: 0; transform: translateY(14px) scale(0.985); } to { opacity: 1; transform: none; } }
-    .role-modal-close { position: absolute; top: 1rem; right: 1rem; width: 36px; height: 36px; border-radius: 9px; border: 1px solid var(--border); background: var(--hover-1); color: var(--text-muted); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out); }
+    .role-modal-close { position: sticky; top: 1rem; float: right; margin-bottom: -36px; width: 36px; height: 36px; border-radius: 9px; border: 1px solid var(--border); background: var(--hover-1); color: var(--text-muted); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out); }
     .role-modal-close:hover { background: var(--hover-2); color: var(--text); }
     .role-modal-close svg { width: 16px; height: 16px; }
     .rm-head { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1rem; padding-right: 2.6rem; }
