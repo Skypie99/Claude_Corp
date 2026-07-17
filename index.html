@@ -1268,7 +1268,7 @@
 
     // progressive enhancement — turn each static role card into a dialog trigger
     var cards = document.querySelectorAll('#team .role');
-    Array.prototype.forEach.call(cards, function (card) {
+    Array.prototype.forEach.call(cards, function (card, i) {
       var nameEl = card.querySelector('.role-name'); if (!nameEl) return;
       var name = nameEl.textContent.trim(); if (!DETAIL[name]) return;
       var color = (card.style.getPropertyValue('--rc') || '').trim();
@@ -1278,7 +1278,11 @@
       card.setAttribute('role', 'button');
       card.setAttribute('tabindex', '0');
       card.setAttribute('aria-haspopup', 'dialog');
-      card.setAttribute('aria-label', name + ', ' + title + ' — view role details');
+      nameEl.id = 'role-' + i + '-name';                 // QW-3 (L6-03): name from parts + describedby receipt (was aria-label override)
+      if (titleEl) titleEl.id = 'role-' + i + '-title';
+      card.setAttribute('aria-labelledby', titleEl ? ('role-' + i + '-name role-' + i + '-title') : ('role-' + i + '-name'));
+      var descEl = card.querySelector('.role-desc');     // describedby stays a token list — SIG-4 (P3) appends, never replaces (seam LAW-2)
+      if (descEl) { descEl.id = 'role-' + i + '-desc'; card.setAttribute('aria-describedby', 'role-' + i + '-desc'); }
       var cta = document.createElement('span');
       cta.className = 'role-cta';
       cta.innerHTML = 'View role <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
