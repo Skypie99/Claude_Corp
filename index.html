@@ -1296,18 +1296,18 @@
 <script>
   (function () {
     var STAGE = {
-      "Sky":      { role: "Sets intent",      nc: "#f0a987",
+      "Sky":      { role: "Sets intent",      nc: "var(--accent-warm)",
         body: ["Sky writes a plain-language directive or runs a slash command. Her intent sits at the top of the authority order — it outranks the Constitution itself."] },
-      "Morgan":   { role: "Plans &amp; routes", nc: "#8aa0ff",
+      "Morgan":   { role: "Plans &amp; routes", nc: "var(--accent)",
         body: ["Morgan reads the backlogs, open branches, and QA reports, then routes work to the right specialists in dependency order.",
                "Morgan is also the only role that ever messages Sky — every other role surfaces findings to a QA report."] },
-      "15 Roles": { role: "Build in parallel", nc: "#8aa0ff",
+      "15 Roles": { role: "Build in parallel", nc: "var(--accent)",
         body: ["Each role works in isolation on its own role-prefixed branch — <code>feat/</code>, <code>fix/</code>, <code>perf/</code>, <code>content/</code> — across five groups: design &amp; frontend, backend &amp; data, safety / quality / infra, product / research / policy, and coordination.",
                "Design, code, test, accessibility, performance, and privacy checks all run before anything is proposed for merge."] },
-      "Safety":   { role: "7-layer compiler", nc: "#34d399",
+      "Safety":   { role: "7-layer compiler", nc: "var(--ok-text)",
         body: ["A 7-layer Design Compiler gate runs before any UI is called done: tokenization, accessibility parity, component consistency, visual entropy, luxury score, regression safety, and the compile decision.",
                "The Orion recovery agent stands by to restore a safe state if a role hits a blocker."] },
-      "main":     { role: "Sky merges",       nc: "#8aa0ff",
+      "main":     { role: "Sky merges",       nc: "var(--accent)",
         body: ["No agent ever touches <code>main</code>. Every change lands on a branch, gets reviewed, and merges only when Sky approves.",
                "Morgan briefs; Sky decides. Human approval is the last gate."] }
     };
