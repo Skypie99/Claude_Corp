@@ -546,6 +546,11 @@
     .pipeline-detail p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; max-width: 65ch; }
     .pipeline-detail p + p { margin-top: 0.6rem; }
     .pipeline-detail code { font-family: "JetBrains Mono", monospace; font-size: 0.82em; color: var(--coral); background: rgba(240,169,135,0.1); padding: 0.05em 0.35em; border-radius: 5px; }
+    /* .vh's auto-positioned (top/left: auto) absolute box perturbs .pipeline's auto height by
+       its own margin via the static-position algorithm; position:fixed removes it from that
+       calculation entirely (it's clipped to 1x1px regardless, so viewport-relative vs
+       ancestor-relative positioning is never visible). */
+    #pipeline-announcer { position: fixed; }
 
     /* ── SECTIONS ── */
     section { max-width: var(--maxw); margin: 0 auto; padding: 5.5rem 2rem; }
@@ -1351,7 +1356,12 @@
       detail.setAttribute('aria-labelledby', node.id);
       detail.hidden = false;
       current = node;
-      detail.scrollIntoView({ block: 'nearest' });
+      // Deferred: calling this synchronously in the same tick as the activating
+      // click/keydown can race a just-landed Tab-focus's own pending scroll and settle in
+      // the wrong place (observed intermittently). requestAnimationFrame deferrals were
+      // tried first but weren't reliably past whatever the browser's own focus-scroll
+      // was still doing; a short wall-clock delay measured clean every time.
+      setTimeout(function () { detail.scrollIntoView({ block: 'nearest' }); }, 60);
       announcer.textContent = name + ' — ' + STAGE[name].role.replace('&amp;', 'and');
     }
     function closeStage() {
