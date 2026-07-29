@@ -863,6 +863,7 @@
     </div>
     <p class="pipeline-hint"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg> Select a stage to follow a task from intent to merge.</p>
     <div class="pipeline-detail" id="pipeline-detail" role="region" hidden></div>
+    <div class="vh" id="pipeline-announcer" aria-live="polite"></div>
   </div>
 </section>
 
@@ -1318,6 +1319,7 @@
 
     var flow = document.querySelector('.pipeline .flow');
     var detail = document.getElementById('pipeline-detail');
+    var announcer = document.getElementById('pipeline-announcer');
     if (!flow || !detail) return;
     var nodes = Array.prototype.slice.call(flow.querySelectorAll('.node'));
     var current = null;
@@ -1334,10 +1336,13 @@
       detail.setAttribute('aria-labelledby', node.id);
       detail.hidden = false;
       current = node;
+      detail.scrollIntoView({ block: 'nearest' });
+      announcer.textContent = name + ' — ' + STAGE[name].role.replace('&amp;', 'and');
     }
     function closeStage() {
       nodes.forEach(function (n) { n.setAttribute('aria-expanded', 'false'); });
       detail.hidden = true; detail.removeAttribute('aria-labelledby'); current = null;
+      announcer.textContent = '';
     }
 
     nodes.forEach(function (node, i) {
