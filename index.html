@@ -367,8 +367,8 @@
     .glass-card-feature::after {
       background:
         radial-gradient(42% 36% at 14% 6%, rgba(255,255,255,0.26), transparent 68%),
-        radial-gradient(56% 68% at var(--mx, 24%) var(--my, 5%), rgba(255,255,255,0.16), transparent 55%),
-        radial-gradient(24% 30% at var(--mx, 24%) var(--my, 5%), rgba(150,185,255,0.20), transparent 50%);
+        radial-gradient(56% 68% at var(--mx, 24%) var(--my, 5%), rgba(255,255,255, var(--spec-w, 0.16)), transparent 55%),
+        radial-gradient(24% 30% at var(--mx, 24%) var(--my, 5%), rgba(150,185,255, var(--spec-b, 0.20)), transparent 50%);
       opacity: 0.6;
     }
     .glass-card-feature:hover { transform: translateY(-10px); }
@@ -1131,11 +1131,26 @@
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
     if (!fine.matches || reduce.matches) return;
     var cards = document.querySelectorAll('.glass-card, .glass-card-feature');
+    // Text-safe specular zone: the pipeline cap sits inside the glass, and the cursor
+    // radials otherwise wash its glyphs below AA when the mouse parks on the caption
+    // (ARB-1). Ramp the pipeline's own radial alphas down to a measured safe floor as
+    // the pointer nears the cap, back up to the full signature glow past RAMP_PX —
+    // every other glass-card-feature (incl. the CTA band) keeps the CSS defaults.
+    var pipeline = document.querySelector('.pipeline');
+    var pipelineCap = document.querySelector('.pipeline-cap');
+    var RAMP_PX = 80, FLOOR_W = 0.06, FLOOR_B = 0.08, DEFAULT_W = 0.16, DEFAULT_B = 0.20;
     cards.forEach(function (el) {
       el.addEventListener('pointermove', function (e) {
         var r = el.getBoundingClientRect();
         el.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(2) + '%');
         el.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(2) + '%');
+        if (el === pipeline && pipelineCap) {
+          var cr = pipelineCap.getBoundingClientRect();
+          var dist = e.clientY < cr.top ? cr.top - e.clientY : e.clientY > cr.bottom ? e.clientY - cr.bottom : 0;
+          var t = Math.max(0, Math.min(1, dist / RAMP_PX));
+          el.style.setProperty('--spec-w', (FLOOR_W + t * (DEFAULT_W - FLOOR_W)).toFixed(4));
+          el.style.setProperty('--spec-b', (FLOOR_B + t * (DEFAULT_B - FLOOR_B)).toFixed(4));
+        }
       }, { passive: true });
     });
   })();
