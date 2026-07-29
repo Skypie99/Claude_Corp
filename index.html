@@ -1347,13 +1347,13 @@
     function render(name) {
       var d = STAGE[name];
       detail.style.setProperty('--nc', d.nc);
-      detail.innerHTML = '<h3>' + name + ' <span class="pd-role">' + d.role + '</span></h3>' +
+      detail.innerHTML = '<h3 id="pipeline-detail-h">' + name + ' <span class="pd-role">' + d.role + '</span></h3>' +
         d.body.map(function (p) { return '<p>' + p + '</p>'; }).join('');
     }
     function openStage(node, name) {
       nodes.forEach(function (n) { n.setAttribute('aria-expanded', n === node ? 'true' : 'false'); });
       render(name);
-      detail.setAttribute('aria-labelledby', node.id);
+      detail.setAttribute('aria-labelledby', 'pipeline-detail-h');
       detail.hidden = false;
       current = node;
       // Deferred: calling this synchronously in the same tick as the activating
@@ -1379,7 +1379,7 @@
       node.setAttribute('tabindex', '0');
       node.setAttribute('aria-expanded', 'false');
       node.setAttribute('aria-controls', 'pipeline-detail');
-      node.setAttribute('aria-label', name + ' — ' + STAGE[name].role.replace('&amp;', 'and') + ': show details');
+      node.setAttribute('aria-label', name + ' — ' + STAGE[name].role.replace('&amp;', 'and'));
       function toggle() { if (current === node) { closeStage(); } else { openStage(node, name); } }
       node.addEventListener('click', toggle);
       node.addEventListener('keydown', function (e) {
