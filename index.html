@@ -498,7 +498,7 @@
     /* ── ORCHESTRATION PIPELINE (signature visual — Tier A glass) ── */
     .pipeline-wrap { max-width: var(--maxw); margin: 4rem auto 0; padding: 0 2rem; }
     .pipeline { padding: 2.2rem 1.6rem; }
-    .pipeline-cap { display: flex; align-items: center; gap: 0.5rem; justify-content: center; margin-bottom: 1.7rem; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); }
+    .pipeline-cap { display: flex; align-items: center; gap: 0.5rem; justify-content: center; margin-bottom: 1.7rem; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); line-height: 1.6; text-wrap: wrap; }
     .pipeline-cap .ln { height: 1px; width: 34px; background: linear-gradient(90deg, transparent, var(--hairline)); }
     .pipeline-cap .ln.r { background: linear-gradient(90deg, var(--hairline), transparent); }
     .flow { display: flex; align-items: stretch; gap: 0; }
@@ -812,9 +812,9 @@
 </div>
 
 <!-- ORCHESTRATION PIPELINE -->
-<div class="pipeline-wrap">
+<section class="pipeline-wrap" aria-labelledby="pipeline-h">
   <div class="pipeline glass-card-feature">
-    <div class="pipeline-cap"><span class="ln"></span> The orchestration pipeline <span class="ln r"></span></div>
+    <h2 class="pipeline-cap" id="pipeline-h"><span class="ln"></span> The orchestration pipeline <span class="ln r"></span></h2>
     <div class="flow">
       <div class="stage">
         <div class="node">
@@ -864,7 +864,7 @@
     <p class="pipeline-hint"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg> Select a stage to follow a task from intent to merge.</p>
     <div class="pipeline-detail" id="pipeline-detail" role="region" hidden></div>
   </div>
-</div>
+</section>
 
 <!-- PROOF -->
 <section id="proof" aria-labelledby="proof-h">
