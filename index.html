@@ -576,8 +576,7 @@
 
     /* ── TEAM (near-solid surfaces) ── */
     .legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; margin-bottom: 1.8rem; }
-    .legend span { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.78rem; color: var(--text-muted); font-weight: 500; }
-    .legend i { width: 9px; height: 9px; border-radius: 3px; }
+    .legend span { display: inline-flex; align-items: center; font-family: "JetBrains Mono", monospace; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding: 0.3rem 0.75rem; border: 1px solid var(--border); border-radius: var(--radius-pill); }
     .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(14.5rem, 100%), 1fr)); gap: 0.9rem; }
     .role {
       position: relative; overflow: visible; display: flex; flex-direction: column;
@@ -989,11 +988,11 @@
   <p class="team-hint"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg> Select any role to see its authority, limits, and constraints.</p>
 
   <div class="legend">
-    <span><i style="background:var(--accent)"></i> Design &amp; Frontend</span>
-    <span><i style="background:var(--accent)"></i> Backend &amp; Data</span>
-    <span><i style="background:var(--accent)"></i> Safety, Quality &amp; Infra</span>
-    <span><i style="background:var(--accent)"></i> Product, Research &amp; Policy</span>
-    <span><i style="background:var(--accent)"></i> Coordination</span>
+    <span>Design &amp; Frontend</span>
+    <span>Backend &amp; Data</span>
+    <span>Safety, Quality &amp; Infra</span>
+    <span>Product, Research &amp; Policy</span>
+    <span>Coordination</span>
   </div>
 
   <div class="team-grid">
