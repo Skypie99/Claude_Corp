@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Page not found · Claude Corp</title>
+  <meta name="description" content="That page doesn't exist. Claude Corp is one page — head back to the root." />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" id="meta-theme-color" content="#070708" />
+  <meta name="color-scheme" content="light dark" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236c8cff'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='15' font-weight='bold' fill='white' text-anchor='middle'%3ECC%3C/text%3E%3C/svg%3E">
+
+  <script>
+    document.documentElement.classList.add('js');
+    /* No-FOUC theme bootstrap — runs before first paint. Honors the user's saved
+       choice; otherwise leaves data-theme unset so prefers-color-scheme decides
+       (follow-OS, dark fallback). Also pre-sets the address-bar theme-color. */
+    (function () {
+      try {
+        var stored = localStorage.getItem('cc-theme');
+        var explicit = (stored === 'light' || stored === 'dark');
+        if (explicit) document.documentElement.setAttribute('data-theme', stored);
+        var theme = explicit ? stored
+          : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        var m = document.getElementById('meta-theme-color');
+        if (m) m.setAttribute('content', theme === 'light' ? '#f3efe6' : '#070708');
+      } catch (e) {}
+    })();
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ══ TOKENS — the exact subset of index.html's system this page uses ══
+       Every value below is copied byte-for-byte from index.html's :root /
+       html[data-theme="light"] / @media(prefers-color-scheme: light) blocks.
+       Nothing here is invented, and the three-block architecture is kept for
+       the same reason index.html keeps it:
+       (1) html[data-theme="light"] — the visitor explicitly chose light on the
+           main page; the bootstrap above replays that localStorage choice here
+           so a mis-shared link does not flip their theme out from under them.
+       (2) @media (prefers-color-scheme: light) :root:not([data-theme]) — the OS
+           prefers light and the visitor never toggled. This is ALSO the JS-off
+           path: with scripts blocked the bootstrap never runs, data-theme is
+           never set, and the visitor correctly falls through to their OS
+           preference instead of being pinned to a hardcoded default.
+       Contrast notes are index.html's own annotations, re-measured on this
+       page's flat --bg ground (no composited glass here — every pair below is
+       literally text-on-background, which is why they measure clean). */
+    :root {
+      --bg:              #070708;   /* near-black warm ink ground */
+      --text:            #f4f3ee;   /* warm paper-white (18.1:1 on --bg) */
+      --text-muted:      #aeb0b8;   /* 9.3:1 on --bg */
+      --accent:          #8aa0ff;   /* THE brand hue (8.2:1 on --bg) */
+      --accent-strong:   #4650c6;   /* deep indigo CTA fill — white label = 6.4:1 (AA) */
+      --accent-strong-2: #5b66d6;   /* lighter CTA gradient stop — white label = 5.0:1 (AA) */
+      --focus:           #a8b6ff;   /* indigo focus ring (10.4:1 on --bg) */
+
+      --radius-sm:       11px;      /* theme-invariant — .btn radius */
+    }
+    html[data-theme="light"] {
+      --bg:              #f3efe6;
+      --text:            #1a1916;   /* warm ink (15.3:1) */
+      --text-muted:      #56524a;   /* 6.77:1 */
+      --accent:          #4750c0;   /* indigo jewel, darkened for paper (5.34:1) */
+      --accent-strong:   #3a42a8;   /* CTA fill — white label 7.9:1 */
+      --accent-strong-2: #4750c0;   /* CTA gradient stop — white label 6.13:1 */
+      --focus:           #3a42a8;   /* deep indigo ring (6.2:1) */
+    }
+    @media (prefers-color-scheme: light) {
+      /* MUST stay value-identical to the block above — a follow-OS-light
+         visitor never sets data-theme, so a token missing here would silently
+         ship them dark ink on a paper ground. Same law as index.html's own
+         MU-5 / L2-06 note on this block. */
+      :root:not([data-theme]) {
+        --bg:#f3efe6; --text:#1a1916; --text-muted:#56524a;
+        --accent:#4750c0; --accent-strong:#3a42a8; --accent-strong-2:#4750c0;
+        --focus:#3a42a8;
+      }
+    }
+
+    /* ══ MOTION — there is none ══
+       This page ships zero @keyframes and zero transitions, so
+       prefers-reduced-motion is honored by construction rather than by a guard
+       clause. The hover state below is an instant box-shadow swap for exactly
+       this reason: nothing here can animate, so nothing here needs suppressing.
+       If any motion is ever added, index.html's reduce block (:923) is the
+       pattern to copy — do not add motion without it. */
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      /* One screen, no scroll. svh (not vh) is deliberate: on mobile Safari
+         100vh is the URL-bar-collapsed height, so a 100vh centered layout
+         overflows the visible area and manufactures a scrollbar on a page whose
+         whole job is to be a single calm dead-end. vh stays as the fallback. */
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 2rem 1.5rem;
+    }
+
+    /* ── FOCUS RING (WCAG 2.4.7) — index.html:338-339, verbatim ──
+       Declared here, ABOVE .btn, exactly as index.html orders it: both
+       selectors are specificity (0,1,0), so the later .btn rule keeps its own
+       11px radius while focused and only the outline is contributed here. */
+    :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 3px; }
+    :focus:not(:focus-visible) { outline: none; }
+
+    main { max-width: 34rem; text-align: center; }
+
+    /* index.html:647-648, verbatim except var(--violet) -> var(--accent):
+       --violet is declared there as a back-compat alias `var(--accent)`, so
+       this resolves to the identical colour without shipping the alias. */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-family: "JetBrains Mono", monospace; font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);
+      margin-bottom: 0.9rem;
+    }
+    .eyebrow::before { content: ""; width: 16px; height: 1.5px; background: var(--accent); border-radius: 2px; }
+
+    /* h1 idiom from index.html:543-546 — same weight/tracking/balance, one step
+       down the clamp because this headline stands alone rather than opening a
+       page. No .grad clip-text: the hero's gradient is a signature reserved for
+       the hero, and a 404 is not the place to spend it. */
+    h1 {
+      font-size: clamp(2rem, 5.2vw, 3rem); font-weight: 800; line-height: 1.05;
+      letter-spacing: -0.035em; margin: 0 auto 1.1rem;
+      text-wrap: balance; overflow-wrap: anywhere; hyphens: auto;
+    }
+
+    .desc { font-size: 1.06rem; color: var(--text-muted); margin: 0 auto 2.1rem; line-height: 1.65; }
+
+    /* .btn / .btn-primary from index.html:559-566, minus the hover translateY
+       and minus the transition that drove it — see the MOTION note above. */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.5rem; border-radius: var(--radius-sm); font-size: 0.96rem; font-weight: 600;
+      text-decoration: none;
+    }
+    .btn .icon { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 1.85; stroke-linecap: round; stroke-linejoin: round; }
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-strong-2), var(--accent-strong));
+      box-shadow: 0 8px 26px rgba(108,140,255,0.4), inset 0 1px 0 rgba(255,255,255,0.25);
+    }
+    .btn-primary:hover { box-shadow: 0 14px 36px rgba(108,140,255,0.55), inset 0 1px 0 rgba(255,255,255,0.25); }
+
+    /* Windows high-contrast / forced-colors — index.html:929-932, scoped to the
+       two things that exist on this page. */
+    @media (forced-colors: active) {
+      .btn-primary { border: 1px solid CanvasText; }
+      :focus-visible { outline: 2px solid Highlight; outline-offset: 2px; }
+    }
+  </style>
+</head>
+<body>
+
+<main id="main">
+  <p class="eyebrow">Error 404</p>
+  <h1>That page doesn&rsquo;t exist.</h1>
+  <p class="desc">
+    Claude Corp is one page — every section of it lives at the root and is reached by in-page
+    links. The URL you followed is either mistyped or out of date.
+  </p>
+  <a href="/" class="btn btn-primary">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+    Back to Claude Corp
+  </a>
+</main>
+
+</body>
+</html>
