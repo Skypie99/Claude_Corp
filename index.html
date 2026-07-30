@@ -527,10 +527,18 @@
 
     .connector { flex: 0 0 34px; align-self: center; height: 2px; position: relative; margin-top: -22px;
       background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.22), rgba(255,255,255,0.06)); border-radius: 2px; }
-    .connector::after { content: ""; position: absolute; top: 50%; left: 0; width: 6px; height: 6px; border-radius: 50%; transform: translateY(-50%);
+    .connector::after { content: ""; position: absolute; top: 50%; left: 0; width: 6px; height: 6px; border-radius: 50%; transform: translate(0, -50%);
       background: var(--violet); box-shadow: 0 0 8px var(--violet); animation: travel 2.6s linear infinite; }
     .connector.c2::after { animation-delay: .5s; } .connector.c3::after { animation-delay: 1s; } .connector.c4::after { animation-delay: 1.5s; }
-    @keyframes travel { 0% { left: 0; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+    /* Travel is compositor-only: transform + opacity, never a layout property.
+       The -50% cross-axis centring must ride INSIDE each keyframe — transform is
+       one property, and the animation's value replaces the specified one wholesale.
+       The 34px / 26px distances are the rails' own lengths and are BOUND to the two
+       flex bases below (.connector `flex: 0 0 34px` here, `0 0 26px` in the <=860
+       block); change one and you must change the other. A percentage cannot be used:
+       translate() percentages resolve against the 6px dot, not the rail. */
+    @keyframes travel   { 0% { transform: translate(0, -50%); opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { transform: translate(34px, -50%); opacity: 0; } }
+    @keyframes travel-v { 0% { transform: translate(-50%, 0); opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { transform: translate(-50%, 26px); opacity: 0; } }
 
     /* ── INTERACTIVE PIPELINE (JS-upgraded disclosure — static diagram without JS) ── */
     .pipeline-hint { display: none; align-items: center; justify-content: center; gap: 0.45rem; margin: 1.5rem 0 0; font-size: 0.82rem; color: var(--text-faint); }
@@ -727,7 +735,10 @@
       .flow { flex-direction: column; gap: 0.6rem; }
       .connector { width: 2px; height: 26px; flex: 0 0 26px; margin: 0; align-self: center;
         background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.22), rgba(255,255,255,0.06)); }
-      .connector::after { animation: none; top: 0; left: 50%; transform: translateX(-50%); }
+      /* The phone finally gets the narrative motion instead of a static bead
+         (L4-03). `animation-name` ONLY — the shorthand would reset the .5/1/1.5s
+         stagger's duration/iteration inherited from the desktop rule. */
+      .connector::after { animation-name: travel-v; top: 0; left: 50%; transform: translate(-50%, 0); }
       .node { max-width: 240px; }
     }
     @media (max-width: 640px) {
