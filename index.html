@@ -220,7 +220,14 @@
       --num-1:           #2b2825;   /* warm-dark metallic numerals on paper */
       --num-2:           #56524a;
       --hover-1:         rgba(26,25,22,0.05);
-      --hover-2:         rgba(26,25,22,0.09);
+      /* MU-7 (L2-05): 0.09 -> 0.11. The light hover delta was dL* 3.03 against
+         dark's 4.66 — the same interaction, materially weaker on paper. 0.11
+         measures dL* 4.55, i.e. PARITY with dark rather than overshoot: the
+         defect is light being weaker than dark, not dark being too quiet.
+         --hover-1 is deliberately NOT touched — despite the name it is the
+         RESTING fill for .theme-toggle, .btn-ghost and .role-modal-close, so
+         moving it would shift three resting contrast pairs for no stated need. */
+      --hover-2:         rgba(26,25,22,0.11);
       --hover-border:    rgba(26,25,22,0.20);
       /* MU-5 / L2-06 — ink-alpha counterparts. Alphas chosen to reproduce each
          element's DARK contrast ratio against its own composited card base, so
@@ -250,7 +257,7 @@
         --glass-fill:rgba(255,255,255,0.55); --glass-stroke:rgba(126,98,48,0.40); --glass-highlight:rgba(255,255,255,0.85); --glass-shadow:rgba(40,34,24,0.16); --glass-blend:normal; --glass-spec:0.32; --focus:#3a42a8;
         --aurora-opacity:0.4; --grid-line:rgba(26,25,22,0.045); --grain-opacity:0.02;
         --header-1:rgba(251,249,243,0.86); --header-2:rgba(251,249,243,0.62); --modal-1:#ffffff; --modal-2:#fbf9f3; --scrim:rgba(26,25,22,0.42); --badge-text:#3a42a8; --num-1:#2b2825; --num-2:#56524a;
-        --hover-1:rgba(26,25,22,0.05); --hover-2:rgba(26,25,22,0.09); --hover-border:rgba(26,25,22,0.20);
+        --hover-1:rgba(26,25,22,0.05); --hover-2:rgba(26,25,22,0.11); --hover-border:rgba(26,25,22,0.20);
         /* MU-5 / L2-06 — MUST stay value-identical to the html[data-theme="light"]
            block above; a follow-OS-light visitor never sets data-theme, so a token
            missing here would silently ship them the DARK rails. */
@@ -339,8 +346,7 @@
         var(--shadow-md),
         0 16px 40px -20px var(--glass-shadow),
         inset 0 1px 0 0 rgba(255,255,255,0.10);
-      transition: transform var(--dur-slow) var(--ease-glide),
-                  box-shadow var(--dur-slow) var(--ease-glide);
+      transition: box-shadow var(--dur-slow) var(--ease-glide);  /* MU-7: transform dropped — neither tier lifts any more */
     }
     /* keep content above the rim/specular pseudo-layers (contrast-safe) */
     .glass-card > *, .glass-card-feature > * { position: relative; z-index: 1; }
@@ -368,15 +374,22 @@
       opacity: var(--glass-spec, 0.5);
       transition: opacity var(--dur-slow) var(--ease-glide);
     }
-    .glass-card:hover, .glass-card-feature:hover {
-      transform: translateY(-6px);
+    /* MU-7 (L4-02/L2-05): NO translateY here. The lift used to ride the MATERIAL
+       class, so 17 non-interactive surfaces performed the interaction dance —
+       a false affordance, and it moved the pipeline's five node targets upward
+       exactly as the cursor aimed at them. "Lift" now means "tappable" only.
+       The rim + specular brighten and the shadow bloom stay as the passive
+       "material responds" cue. Scoped to Tier B: the Tier-A panels override the
+       resting material at .glass-card-feature and need their own hover values,
+       or this rule would DIM their rim and SHRINK their shadow (see below). */
+    .glass-card:hover {
       box-shadow:
         var(--shadow-lg),
         0 26px 56px -22px var(--glass-shadow),
         inset 0 1px 0 0 rgba(255,255,255,0.14);
     }
-    .glass-card:hover::before, .glass-card-feature:hover::before { opacity: 0.85; }
-    .glass-card:hover::after, .glass-card-feature:hover::after { opacity: 0.66; }
+    .glass-card:hover::before { opacity: 0.85; }
+    .glass-card:hover::after  { opacity: 0.66; }
 
     /* Tier A — hero / chrome surfaces (deeper blur, bolder rim, bigger lift) */
     .glass-card-feature {
@@ -402,7 +415,27 @@
         radial-gradient(24% 30% at var(--mx, 24%) var(--my, 5%), rgba(150,185,255, var(--spec-b, 0.20)), transparent 50%);
       opacity: 0.6;
     }
-    .glass-card-feature:hover { transform: translateY(-10px); }
+    /* MU-7: the Tier-A pair (.pipeline, .cta-inner) gets its OWN hover state.
+       Removing the -10px lift exposed a pre-existing inversion the lift had been
+       masking: the Tier-B hover rule outranked the Tier-A resting rule, so hover
+       replaced the 6-layer stack with 3 (36/72px -> 26/56px, dropping the indigo
+       glow and both inner rings) and dimmed the rim 0.9 -> 0.85. The page's two
+       flagship panels would have DEFLATED on cursor entry. These values keep all
+       six layers and only ever go up — asserted, not eyeballed, by a
+       computed-style monotonicity check in both themes. Specular deliberately
+       stays at 0.66, unchanged from today, so SIG-2c's ARB-1 text-safe cap
+       treatment is not perturbed. */
+    .glass-card-feature:hover {
+      box-shadow:
+        var(--shadow-lg),
+        0 44px 84px -26px var(--glass-shadow),
+        0 52px 104px -26px rgba(108,140,255,0.16),
+        inset 0 1.5px 0 0 rgba(255,255,255,0.20),
+        inset 0 0 0 1.5px rgba(255,255,255,0.14),
+        inset 0 -1px 3px 0 rgba(0,0,0,0.22);
+    }
+    .glass-card-feature:hover::before { opacity: 0.98; }
+    .glass-card-feature:hover::after  { opacity: 0.66; }
 
     /* Chromium-only refraction on the signature pipeline panel; Safari keeps plain blur */
     @supports (backdrop-filter: url(#x)) {
@@ -602,8 +635,10 @@
 
     /* ── STEPS (near-solid surfaces) ── */
     .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 1.1rem; }
-    .step { position: relative; background: linear-gradient(180deg, var(--surface-glass), var(--surface-glass-2)); border: 1px solid var(--border); border-radius: var(--radius-sm); box-shadow: var(--shadow-md); padding: 1.5rem; transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out); }
-    .step:hover { transform: translateY(-3px); border-color: rgba(138,160,255,0.4); }
+    .step { position: relative; background: linear-gradient(180deg, var(--surface-glass), var(--surface-glass-2)); border: 1px solid var(--border); border-radius: var(--radius-sm); box-shadow: var(--shadow-md); padding: 1.5rem; transition: border-color var(--dur-base) var(--ease-out); }  /* MU-7: transform dropped — .step no longer lifts */
+    /* MU-7: no lift — a .step contains zero focusable elements (verified in P3).
+       The border warm-up stays as the passive cue. */
+    .step:hover { border-color: rgba(138,160,255,0.4); }
     .step-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.1rem; }
     .step-ico { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; color: var(--violet);
       background: linear-gradient(135deg, rgba(138,160,255,0.2), rgba(138,160,255,0.05)); border: 1px solid rgba(138,160,255,0.22); }
@@ -697,7 +732,11 @@
       transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
     }
     .applink { display: flex; flex-direction: column; gap: 0.55rem; padding: 1.4rem; }
-    .applink:hover, .proof-card:hover { transform: translateY(-3px); border-color: rgba(138,160,255,0.4); box-shadow: var(--shadow-lg); }
+    /* MU-7: this pair was one rule but is two affordances. .applink IS an <a> —
+       it keeps the lift. .proof-card is a plain div whose .proof-link child is the
+       real control, so it keeps only the passive border + shadow response. */
+    .applink:hover { transform: translateY(-3px); border-color: rgba(138,160,255,0.4); box-shadow: var(--shadow-lg); }
+    .proof-card:hover { border-color: rgba(138,160,255,0.4); box-shadow: var(--shadow-lg); }
     .apptop { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
     .appname { font-weight: 700; font-size: 1.0rem; letter-spacing: -0.01em; display: flex; align-items: center; gap: 0.55rem; }
     .appdot { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; color: var(--violet);
