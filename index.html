@@ -839,15 +839,73 @@
       section { padding: 4rem 1.25rem; }
       .stat { border-right: none; border-bottom: 1px solid var(--border-soft); }
     }
-    /* Cross-theme fade — applied only during a toggle (the transient .theming class),
-       and only when the user allows motion. Colors fade; gradients snap (no jank). */
+    /* ── SIG-1 (L4-01): "one material, one breath" ───────────────────────────
+       The page used to cross themes in two populations. Flat colours eased over
+       280ms while every background-IMAGE surface snapped at t=0, so mid-flip the
+       header was already paper while the body was still ink, and the stat
+       numerals inverted in a single frame (--num-1 goes #ffffff -> #2b2825 over a
+       background 0-5% through its own tween: the page's only transient contrast
+       cliff). R6 ranked that seam the #1 craft friction on the page.
+
+       CASCADE FACT, counter-intuitive and load-bearing: the reduce block's
+       universal kill below has specificity (0,0,0); this allowlist has (0,1,1).
+       Both are !important author declarations, so THIS RULE WOULD WIN if both
+       media queries could ever match. The kill only ever applies because this
+       no-preference query removes the allowlist from the cascade under `reduce`.
+       The media query is the real gate, not a belt-and-braces companion — never
+       "simplify" by unwrapping it, and keep every rule below inside it. */
     @media (prefers-reduced-motion: no-preference) {
-      html.theming, html.theming *, html.theming *::before, html.theming *::after {
+      html.theming.theming-go, html.theming.theming-go *,
+      html.theming.theming-go *::before, html.theming.theming-go *::after {
         transition: background-color var(--dur-base) var(--ease-glide),
                     color var(--dur-base) var(--ease-glide),
                     border-color var(--dur-base) var(--ease-glide),
+                    /* opacity joins the list so .aurora EASES instead of popping:
+                       its radials are theme-invariant literals, so the whole
+                       full-viewport wash's flip is PURELY --aurora-opacity
+                       1 <-> 0.4. One word, largest single artifact on the page.
+                       Note this also re-times the two 520ms hover opacity
+                       transitions to 280ms for the ~300ms class window. */
+                    opacity var(--dur-base) var(--ease-glide),
                     fill var(--dur-base) var(--ease-glide) !important;
       }
+
+      /* Repaint gradient-painted surfaces as FLAT theme colours for the duration
+         of the flip, so they ride the eased background-color above instead of
+         snapping.
+
+         Each flat value is the gradient's MIDPOINT, never one of its stops, so
+         the hand-back to the real gradient is sub-perceptual — that is what stops
+         the pop merely RELOCATING to the class removal. The midpoint detail is
+         load-bearing and was measured, not assumed: flattening .btn-primary to
+         --accent-strong alone (its darker stop) parked the button at p=1.389 of
+         its own progress for the whole window and then visibly relaxed to 1.0 at
+         the hand-back, and flattening header to --header-1 alone (its more opaque
+         stop) ran the header 0.18 AHEAD of the body — i.e. one stop re-created a
+         smaller copy of the very seam this fix exists to remove.
+
+         Deliberately NOT flattened: .aurora / .bg-grain / the specular (the
+         opacity word above covers them); the glass rims (gold-rim-only law); and
+         h1 .grad — small-area but high-identity, and both its theme states are
+         saturated colours of similar luminance, so losing the hero's
+         violet->coral for ~300ms reads worse than its snap. */
+      html.theming .step,
+      html.theming .role,
+      html.theming .applink,
+      html.theming .proof-card,
+      html.theming .pipeline-detail { background-image: none; background-color: color-mix(in srgb, var(--surface-glass), var(--surface-glass-2)); }
+      html.theming header          { background-image: none; background-color: color-mix(in srgb, var(--header-1), var(--header-2)); }
+      html.theming .btn-primary,
+      html.theming .nav-cta,
+      html.theming .logo-mark      { background-image: none; background-color: color-mix(in srgb, var(--accent-strong-2), var(--accent-strong)); }
+      html.theming .node           { background-image: none; background-color: color-mix(in srgb, var(--node-1), var(--node-2)); }
+      html.theming .connector      { background-image: none; background-color: color-mix(in srgb, var(--rail-1), var(--rail-2)); }
+      /* The clip:text numerals cannot ride background-color — every visible pixel
+         of them IS the gradient. Hand them to `color`, which is already in the
+         allowlist and (unlike background-color) is NOT reset by the `background`
+         shorthand, so it has a real outgoing value to ease from. */
+      html.theming .stat .num,
+      html.theming .proof-stat     { background-image: none; -webkit-text-fill-color: currentColor; color: var(--num-1); }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; transition: none !important; }
@@ -1580,11 +1638,33 @@
     sync();
     btn.addEventListener('click', function () {
       var next = effective() === 'dark' ? 'light' : 'dark';
+      // SIG-1, step 1 — flatten UNDER THE OUTGOING THEME, with transitions not
+      // yet armed. Every gradient surface on this page paints via the `background`
+      // SHORTHAND, which resets background-color to `transparent` (grep the file:
+      // the only literal "background-color" is the property name in the transition
+      // list). So if the flatten and the theme flip landed in one style
+      // resolution, background-color would animate FROM TRANSPARENT — the
+      // surfaces would fade IN rather than cross over, and a flattened card would
+      // sit near #b2b1af where a true cross-fade puts it near #e7e6e4. That
+      // trades one muddy frame for a page-wide LAGGING muddy frame across 27
+      // surfaces, and leaves the sticky header briefly transparent for anyone
+      // who has scrolled. Applying .theming alone first snaps each surface to its
+      // OUTGOING flat colour — sub-perceptible, because those flat values were
+      // chosen to sit within ~15/255 of the gradient they replace.
       root.classList.add('theming');
+      void root.offsetWidth;                    // force the style flush between the two steps
+      // Step 2 — arm the transitions and flip. Now every flat colour has a real
+      // outgoing value and eases old -> new on one clock.
+      root.classList.add('theming-go');
       root.setAttribute('data-theme', next);
       try { localStorage.setItem('cc-theme', next); } catch (e) {}
       sync();
-      window.setTimeout(function () { root.classList.remove('theming'); }, 480);
+      // Step 3 — hand back to the real gradients. The 480ms is kept deliberately:
+      // the 200ms over --dur-base is a truncation cushion (a busy main thread must
+      // not drop the class mid-tween), and a tighter number would be a fourth
+      // un-tokenized motion literal. The near-zero flatten deltas already make the
+      // hand-back sub-perceptual, so there is nothing to gain by racing it.
+      window.setTimeout(function () { root.classList.remove('theming', 'theming-go'); }, 480);
     });
     if (window.matchMedia) {
       var mq = window.matchMedia('(prefers-color-scheme: light)');
