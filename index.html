@@ -549,6 +549,11 @@
       -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     }
     .hero-desc { font-size: 1.16rem; color: var(--text-muted); max-width: 620px; margin: 0 auto 2.3rem; line-height: 1.65; }
+    /* TF-2 (L1-02): the receipts-voice attribution line. Type scale is a direct
+       copy of .step-num's idiom (JetBrains Mono / 0.78rem / 600 / --text-faint) —
+       no existing class already combined those three. The -1.4rem top margin
+       collapses .hero-desc's 2.3rem bottom margin to a 14.4px gap above this line. */
+    .hero-byline { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; font-weight: 600; color: var(--text-faint); margin: -1.4rem 0 1.6rem; }
     .hero-actions { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
 
     .btn {
@@ -960,6 +965,7 @@
     Claude Corp is a multi-agent engineering system built on Anthropic's Claude. Specialized AI roles plan,
     build, test, review, and deploy across a portfolio of projects — all governed by a living Constitution.
   </p>
+  <p class="hero-byline">Designed and run by Sky Halisky · Product &amp; Implementation</p>
   <div class="hero-actions">
     <a href="https://skypistudio.com" class="btn btn-primary" target="_blank" rel="noopener">
       See the work<span class="vh"> (opens in new tab)</span>
