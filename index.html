@@ -499,7 +499,15 @@
     .icon { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.85; stroke-linecap: round; stroke-linejoin: round; }
 
     /* ── THEME TOGGLE ── */
-    .theme-toggle {
+    /* QW-6 (L3-10): with JS off the toggle rendered, looked interactive, and did
+       nothing — the one dead affordance on an otherwise exemplary no-JS page.
+       Gated exactly like the two hints (html.js .pipeline-hint / .team-hint).
+       CLS-safe: `js` is added by the SYNCHRONOUS head bootstrap before first
+       paint, so a JS-on visitor never sees the button appear. Theme still follows
+       the OS with JS off — that path is the CSS-only prefers-color-scheme token
+       block, which does not involve this control at all. */
+    .theme-toggle { display: none; }
+    html.js .theme-toggle {
       display: inline-flex; align-items: center; justify-content: center;
       width: 38px; height: 38px; border-radius: 9px; flex-shrink: 0; cursor: pointer;
       background: var(--hover-1); border: 1px solid var(--hairline); color: var(--text-muted);
