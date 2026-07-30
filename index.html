@@ -771,6 +771,14 @@
     .live-pill { display: inline-flex; align-items: center; gap: 0.4rem; font-family: "JetBrains Mono", monospace; font-size: 0.64rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ok-text);
       padding: 0.2rem 0.55rem; border-radius: 999px; background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.28); }
     .live-pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 0 3px rgba(52,211,153,0.16); }
+    /* TF-1 (CRIT L1-01): the Portfolio tile is a hub, not a third live project —
+       a modifier (not a new class) so it inherits :917's forced-colors border
+       coverage for free. Overriding border-color (not the `border` shorthand)
+       keeps the base rule's 1px/solid; dropping the ::before dot makes "a status
+       dot exists" an exclusively-liveness signal, which is what makes the count
+       reconcile at a glance. */
+    .live-pill.is-hub { color: var(--text-muted); background-color: transparent; border-color: var(--border); }
+    .live-pill.is-hub::before { display: none; }
     .appurl { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; color: var(--text-muted); overflow-wrap: anywhere; }
     .applink:hover .appurl { color: var(--violet); }
     .appdesc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
@@ -1056,7 +1064,7 @@
     <a class="applink" href="https://skypistudio.com" target="_blank" rel="noopener">
       <div class="apptop">
         <span class="appname"><span class="appdot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h18"/><path d="M9 21V9"/><rect width="18" height="18" x="3" y="3" rx="2"/></svg></span> Portfolio<span class="vh"> (opens in new tab)</span></span>
-        <span class="live-pill">Live</span>
+        <span class="live-pill is-hub">Hub</span>
       </div>
       <div class="appurl">skypistudio.com</div>
       <div class="appdesc">Sky's accessibility-first portfolio — the hub these projects link from.</div>
