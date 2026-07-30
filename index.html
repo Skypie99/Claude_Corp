@@ -522,8 +522,8 @@
     .ni-safety { background: linear-gradient(135deg, rgba(52,211,153,0.22), rgba(52,211,153,0.07)); color: var(--emerald); border: 1px solid rgba(52,211,153,0.3); }
     .ni-main   { background: linear-gradient(135deg, rgba(138,160,255,0.22), rgba(138,160,255,0.07)); color: var(--sky); border: 1px solid rgba(138,160,255,0.3); }
 
-    .dots { display: flex; gap: 4px; flex-wrap: wrap; justify-content: center; max-width: 78px; }
-    .dots i { width: 9px; height: 9px; border-radius: 3px; font-size: 6px; font-weight: 800; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-style: normal; opacity: 0.92; }
+    .dots { display: grid; grid-template-columns: repeat(5, 5px); gap: 2px; justify-content: center; align-content: center; }
+    .dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
 
     .connector { flex: 0 0 34px; align-self: center; height: 2px; position: relative; margin-top: -22px;
       background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.22), rgba(255,255,255,0.06)); border-radius: 2px; }
@@ -841,8 +841,9 @@
         <div class="node">
           <div class="nicon ni-roles">
             <div class="dots">
-              <i style="background:var(--accent)">S</i><i style="background:var(--accent)">D</i><i style="background:var(--accent)">P</i>
-              <i style="background:var(--accent)">G</i><i style="background:var(--accent)">Q</i><i style="background:var(--accent)">R</i>
+              <i></i><i></i><i></i><i></i><i></i>
+              <i></i><i></i><i></i><i></i><i></i>
+              <i></i><i></i><i></i><i></i><i></i>
             </div>
           </div>
           <div class="ntitle">15 Roles</div><div class="nsub">build in parallel</div>
