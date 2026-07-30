@@ -131,6 +131,9 @@
       --dur-fast:   180ms;
       --dur-base:   280ms;
       --dur-slow:   520ms;
+      --dur-exit:   120ms;  /* TF-7: exit is deliberately faster than entry — the
+                               user asked to leave; the fade only stops the
+                               material popping out of existence */
 
       /* ── GLASS + FOCUS ── */
       --glass-fill:      rgba(20,22,29,0.55);   /* warm-toned liquid-glass base */
@@ -707,6 +710,16 @@
     .role-modal-panel::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: var(--radius) var(--radius) 0 0; background: linear-gradient(90deg, var(--rmc, var(--violet)), transparent 80%); }
     @keyframes rm-fade { from { opacity: 0; } to { opacity: 1; } }
     @keyframes rm-rise { from { opacity: 0; transform: translateY(14px) scale(0.985); } to { opacity: 1; transform: none; } }
+    /* TF-7 (L4-05): the counterpart to rm-fade/rm-rise. Both disclosures animated
+       open over 280ms and then vanished in a single frame. An ANIMATION, not a
+       transition, so the reduced-motion kill-switch reaches it the same way it
+       reaches the entrance pair. `pointer-events: none` is load-bearing, not
+       polish: #roleModal is position:fixed;inset:0, so an opacity-0 panel that is
+       not yet [hidden] would remain the topmost hit-test target over the whole
+       viewport and still route clicks into the [data-close] handler. */
+    @keyframes rm-exit { from { opacity: 1; } to { opacity: 0; } }
+    .role-modal.is-closing,
+    .pipeline-detail.is-closing { animation: rm-exit var(--dur-exit) var(--ease-out) both; pointer-events: none; }
     .role-modal-close { position: sticky; top: 1rem; float: right; margin-bottom: -36px; width: 36px; height: 36px; border-radius: 9px; border: 1px solid var(--border); background: var(--hover-1); color: var(--text-muted); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out); }
     .role-modal-close:hover { background: var(--hover-2); color: var(--text); }
     .role-modal-close svg { width: 16px; height: 16px; }
@@ -1344,11 +1357,26 @@
         elSpec = el('rmSpec'), elMay = el('rmMay'), elNot = el('rmNot'), elCon = el('rmCon');
     var lastFocused = null;
     var scrim = [document.querySelector('header'), el('main'), document.querySelector('footer')];
+    // TF-7 (L4-05). Read at CALL time, never once at attach: the cursor-spotlight
+    // shim can latch its preference at load because it permanently disables a
+    // decorative effect, but the modal must keep working, and a visitor who
+    // changes the OS setting mid-session must be honoured on the very next close.
+    var exitRM = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var exitTimer = null;
+    function finishClose() {
+      if (exitTimer) { clearTimeout(exitTimer); exitTimer = null; }
+      modal.classList.remove('is-closing');
+      modal.hidden = true;
+    }
 
     function fill(ul, arr) { ul.innerHTML = ''; arr.forEach(function (t) { var li = document.createElement('li'); li.textContent = t; ul.appendChild(li); }); }
 
     function openModal(name, color, initial, trigger) {
       var d = DETAIL[name]; if (!d) return;
+      // Cancel any exit still in flight, or a re-open inside the fade window gets
+      // hidden by the stale timer a moment later.
+      if (exitTimer) { clearTimeout(exitTimer); exitTimer = null; }
+      modal.classList.remove('is-closing');
       lastFocused = trigger || document.activeElement;
       panel.style.setProperty('--rmc', color || 'var(--violet)');
       elMono.textContent = initial; elName.textContent = name; elRole.textContent = d.role; elDomain.textContent = d.domain;
@@ -1361,11 +1389,21 @@
       document.addEventListener('keydown', onKey, true);
     }
     function closeModal() {
-      modal.hidden = true;
+      // TF-7: the accessibility teardown is NOT deferred, and its order is
+      // load-bearing — inert must come off BEFORE focus returns, or the focus
+      // lands in a still-inert subtree and silently no-ops. Only the actual
+      // hide waits for the fade.
       document.body.style.overflow = '';
       scrim.forEach(function (n) { if (n) n.removeAttribute('inert'); });
       document.removeEventListener('keydown', onKey, true);
       if (lastFocused && lastFocused.focus) lastFocused.focus();
+      if (exitRM.matches) { finishClose(); return; }   // reduce: instant, exactly like entry
+      if (exitTimer) return;                            // already closing
+      modal.classList.add('is-closing');
+      // setTimeout, never animationend: under reduced motion the global
+      // `animation: none !important` means the event never fires at all, which
+      // would strand the panel visible — same if the tab is backgrounded.
+      exitTimer = window.setTimeout(finishClose, 120);  // == --dur-exit
     }
     function onKey(e) {
       if (e.key === 'Escape') { e.preventDefault(); closeModal(); return; }
@@ -1450,6 +1488,18 @@
     if (!flow || !detail) return;
     var nodes = Array.prototype.slice.call(flow.querySelectorAll('.node'));
     var current = null;
+    // TF-7 (L4-05) — same contract as the modal: preference read at CALL time,
+    // setTimeout rather than animationend, and the fade lives ONLY here in
+    // closeStage(). A stage SWITCH routes through openStage() instead and stays
+    // instant, which is the restraint worth keeping.
+    var exitRM = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var exitTimer = null;
+    function finishStageClose() {
+      if (exitTimer) { clearTimeout(exitTimer); exitTimer = null; }
+      detail.classList.remove('is-closing');
+      detail.hidden = true;
+      detail.removeAttribute('aria-labelledby');
+    }
 
     function render(name) {
       var d = STAGE[name];
@@ -1458,6 +1508,11 @@
         d.body.map(function (p) { return '<p>' + p + '</p>'; }).join('');
     }
     function openStage(node, name) {
+      // Cancel any exit in flight — otherwise render()'s innerHTML rewrite below
+      // can swap content inside a fading panel, and the stale timer would hide
+      // the freshly-opened stage a moment later.
+      if (exitTimer) { clearTimeout(exitTimer); exitTimer = null; }
+      detail.classList.remove('is-closing');
       nodes.forEach(function (n) { n.setAttribute('aria-expanded', n === node ? 'true' : 'false'); });
       render(name);
       detail.setAttribute('aria-labelledby', 'pipeline-detail-h');
@@ -1472,9 +1527,15 @@
       announcer.textContent = name + ' — ' + STAGE[name].role.replace('&amp;', 'and');
     }
     function closeStage() {
+      // Assistive-technology state is updated synchronously — the trigger reports
+      // collapsed and the live region clears immediately, whatever the pixels do.
       nodes.forEach(function (n) { n.setAttribute('aria-expanded', 'false'); });
-      detail.hidden = true; detail.removeAttribute('aria-labelledby'); current = null;
+      current = null;
       announcer.textContent = '';
+      if (exitRM.matches) { finishStageClose(); return; }  // reduce: instant
+      if (exitTimer) return;
+      detail.classList.add('is-closing');
+      exitTimer = window.setTimeout(finishStageClose, 120);  // == --dur-exit
     }
 
     nodes.forEach(function (node, i) {
