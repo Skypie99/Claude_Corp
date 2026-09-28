@@ -61,4 +61,4 @@ No agent self-amends. Only Sky changes the Constitution. Merges to `main` requir
 
 ---
 
-Built by [Sky Halisky](https://github.com/Skypie99) · Powered by [Anthropic Claude](https://www.anthropic.com).
+Built by [Skyler Halisky](https://github.com/Skypie99) · Powered by [Anthropic Claude](https://www.anthropic.com).
