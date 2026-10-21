@@ -987,7 +987,7 @@
     <div class="stat"><div class="num">15</div><div class="lbl">Specialized roles</div></div>
     <div class="stat"><div class="num">7</div><div class="lbl">Design-Compiler layers</div></div>
     <div class="stat"><div class="num">5</div><div class="lbl">Projects · 3 shipped to the public</div></div>
-    <div class="stat"><div class="num">v1.12</div><div class="lbl">Living Constitution</div></div>
+    <div class="stat"><div class="num">Policy</div><div class="lbl">Living Constitution</div></div>
   </div>
 
   <div class="proof-pointer">
@@ -1099,13 +1099,13 @@
   <!-- evidence cards -->
   <div class="proof-grid">
     <div class="proof-card">
-      <h3><span class="proof-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></svg></span> Versioned governance</h3>
+      <h3><span class="proof-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></svg></span> Written governance</h3>
       <ul class="gov-list">
-        <li><b>v1.12</b> Living Constitution — Art. 17 merge gate</li>
+        <li><b>policy</b> Living Constitution — review and release rules</li>
         <li><b>OS</b> Agent OS runtime overlay, versioned per release</li>
         <li><b>order</b> Sky → Constitution → roles → skills</li>
       </ul>
-      <p>Governance is dated and citable — not vibes. No agent self-amends, and merges to <code>main</code> need Sky's approval — apart from the one narrow, audited exception the Art. 17 gate spells out. These fences are prompt-level, not sandbox-level.</p>
+      <p>The Constitution sets written policy. No agent self-amends, and merges to <code>main</code> require Sky's approval. Any release exception needs separate, explicit authorization and verified controls. These fences are prompt-level, not sandbox-level.</p>
       <a class="proof-link" href="https://github.com/Skypie99/Claude_Corp" target="_blank" rel="noopener">Read the model on GitHub<span class="vh"> (opens in new tab)</span> <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
     </div>
 
@@ -1117,14 +1117,14 @@
         <li><span class="pre">content/</span>portfolio-voice-pass-2026-06-10</li>
         <li><span class="pre">perf/</span>auto-2026-05-31</li>
       </ul>
-      <p>Real, role-prefixed branches across projects. Agents propose on scoped branches — production merges stay with Sky, except the single gated exception above.</p>
+      <p>Real, role-prefixed branches across projects. Agents propose on scoped branches; production merges require Sky's approval or a separately authorized, scoped exception.</p>
       <a class="proof-link" href="https://github.com/Skypie99/Claude_Corp/commits/main" target="_blank" rel="noopener">This page's own 6-phase build history<span class="vh"> (opens in new tab)</span> <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
     </div>
 
     <div class="proof-card">
-      <h3><span class="proof-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg></span> Continuously audited</h3>
-      <p style="margin-bottom:0.6rem"><span class="proof-stat">900+</span><br/>QA &amp; audit reports written across the portfolio.</p>
-      <p>Multi-agent reviews truth-audit each other against live code and git history before anything is called done.</p>
+      <h3><span class="proof-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg></span> Documented reviews</h3>
+      <p style="margin-bottom:0.6rem"><span class="proof-stat">QA</span><br/>Reports and audit notes across the portfolio.</p>
+      <p>Reviews use source, tests, and git history to record findings and follow-up work.</p>
     </div>
   </div>
 </section>
@@ -1133,8 +1133,8 @@
 <section id="how" aria-labelledby="how-h">
   <div class="sec-head">
     <div class="eyebrow">How it works</div>
-    <h2 id="how-h">From backlog to review, fully automated</h2>
-    <p class="sec-desc">Each role is a Claude agent with a scoped skill file. Morgan orchestrates across roles; the Constitution defines the safety policy, Sky's review applies it, and the named platform controls enforce the gates that can be automated. Production release is bounded by explicit governance rules.</p>
+    <h2 id="how-h">From backlog to review, with human oversight</h2>
+    <p class="sec-desc">Each role is a Claude agent with a scoped skill file. Morgan orchestrates across roles; the Constitution defines safety policy and Sky's review applies it. Technical enforcement depends on each project's named platform controls and must be verified separately.</p>
   </div>
   <div class="steps">
     <div class="step">
@@ -1155,12 +1155,12 @@
     <div class="step">
       <div class="step-top"><div class="step-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg></div><div class="step-num">04</div></div>
       <h3>Safety sweep</h3>
-      <p>A 7-layer Design Compiler gate plus the Orion recovery agent ensure no UI ships without full parity and a rollback path.</p>
+      <p>The 7-layer Design Compiler guides UI review; Orion supports recovery when a role hits a blocker. Review findings and a rollback path are checked before release.</p>
     </div>
     <div class="step step-feature">
       <div class="step-top"><div class="step-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg></div><div class="step-num">05</div></div>
       <h3>Sky approves release</h3>
-      <p>Merges to <code>main</code> need Sky's sign-off, with one narrow, audited exception: a single already-shipped tool that can merge and release itself once every check passes. Everywhere else, Morgan briefs and Sky decides.</p>
+      <p>Merges to <code>main</code> need Sky's sign-off; any exception requires separate, explicit authorization. Agents propose and report, Morgan briefs, and Sky decides.</p>
     </div>
   </div>
 </section>
@@ -1187,7 +1187,7 @@
     <!-- Coordination -->
     <div class="role" data-cat="Coordination" style="--rc:var(--accent)"><div class="role-top"><div class="mono">M</div><div><div class="role-name">Morgan</div><div class="role-title">Project Manager</div></div></div><div class="role-desc">Status briefings, decision routing, and the sole channel for messaging Sky.</div></div>
     <!-- Design & Frontend -->
-    <div class="role" data-cat="Design &amp; Frontend" style="--rc:var(--accent)"><div class="role-top"><div class="mono">S</div><div><div class="role-name">Shamus</div><div class="role-title">Feature Engineer</div></div></div><div class="role-desc">Ships new screens, flows, and UI. Every PR passes the 7-layer Design Compiler gate.</div></div>
+    <div class="role" data-cat="Design &amp; Frontend" style="--rc:var(--accent)"><div class="role-top"><div class="mono">S</div><div><div class="role-name">Shamus</div><div class="role-title">Feature Engineer</div></div></div><div class="role-desc">Builds new screens, flows, and UI. Written policy calls for a 7-layer Design Compiler review before merge.</div></div>
     <div class="role" data-cat="Design &amp; Frontend" style="--rc:var(--accent)"><div class="role-top"><div class="mono">D</div><div><div class="role-name">Dani</div><div class="role-title">Creative Director</div></div></div><div class="role-desc">Owns the token-first design system and runs the Design Compiler — POLISH and BLOCK calls are hers.</div></div>
     <div class="role" data-cat="Design &amp; Frontend" style="--rc:var(--accent)"><div class="role-top"><div class="mono">A</div><div><div class="role-name">Alex</div><div class="role-title">Accessibility Engineer</div></div></div><div class="role-desc">Every UI change is reviewed against WCAG 2.2 AA before merge.</div></div>
     <!-- Backend & Data -->
@@ -1212,29 +1212,29 @@
 <section id="features" aria-labelledby="features-h">
   <div class="sec-head center">
     <div class="eyebrow">What makes it work</div>
-    <h2 id="features-h">Built-in guardrails, not guidelines</h2>
-    <p class="sec-desc">Claude Corp is governed by a Constitution that outranks any role or skill. These rules define governance policy and are checked through review gates and named platform controls.</p>
+    <h2 id="features-h">Written rules and review gates</h2>
+    <p class="sec-desc">Claude Corp is governed by a Constitution that outranks any role or skill. These written rules guide review; technical controls must be identified and verified for each project.</p>
   </div>
   <div class="features">
     <div class="feature glass-card">
       <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></svg></div>
       <h3>Living Constitution</h3>
-      <p>A versioned governance document (currently v1.12) that all 15 roles inherit as binding written policy. No agent self-amends — only Sky changes it.</p>
+      <p>A governance document that all 15 roles inherit as binding written policy. The full document is private; this page is a public summary. Only Sky changes the Constitution.</p>
     </div>
     <div class="feature glass-card">
       <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg></div>
       <h3>7-Layer Design Compiler</h3>
-      <p>Every UI change passes tokenization, accessibility parity, component consistency, visual entropy, luxury score, regression safety, and the compile decision before it's marked done.</p>
+      <p>The review process covers tokenization, accessibility parity, component consistency, visual entropy, luxury score, regression safety, and the compile decision. A review result needs its own evidence.</p>
     </div>
     <div class="feature glass-card">
       <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></div>
       <h3>Background Mode</h3>
-      <p>Audit agents can run autonomously on a schedule, bounded by Background Mode — a halt-sentinel file freezes all background work instantly, and every cycle is capped at one reversible change.</p>
+      <p>Background Mode defines a stop signal and limits each cycle to one reversible change. These are operating rules; runtime enforcement must be verified for the setup in use.</p>
     </div>
     <div class="feature glass-card">
       <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
       <h3>main is governed</h3>
-      <p>Every change lands on a role-prefixed branch and gets reviewed. Merging to <code>main</code> needs Sky's approval — except one narrow, audited exception that lets a single tool release itself once every check passes.</p>
+      <p>Agents propose changes on role-prefixed branches for review. Written policy requires Sky's approval for merges to <code>main</code>; any exception needs separate, explicit authorization.</p>
     </div>
     <div class="feature glass-card">
       <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.5 5.1 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.5-6.9A2 2 0 0 0 16.8 4H7.2a2 2 0 0 0-1.7 1.1z"/></svg></div>
@@ -1383,9 +1383,9 @@
         may: ["Profile and find bottlenecks", "Recommend optimizations", "Review perf impact of PRs", "Set baselines"],
         mustNot: ["Optimize without measuring first", "Trade safety for speed", "Sacrifice accessibility for speed"],
         constraints: ["Measure first — never optimize blind", "Coordinates with Dana on DB changes"] },
-      "Steve": { role: "Safety Engineer", domain: "Security, privacy, and three-pillar enforcement.",
+      "Steve": { role: "Safety Engineer", domain: "Security, privacy, and safety-policy review.",
         specialties: ["Threat modeling", "Security audits", "Privacy compliance", "Credential handling"],
-        may: ["Block unsafe changes", "Require security review", "Escalate privacy concerns", "Enforce the Constitution"],
+        may: ["Block unsafe changes", "Require security review", "Escalate privacy concerns", "Apply the Constitution in review"],
         mustNot: ["Approve credential exposure", "Skip security review", "Make exceptions to the pillars"],
         constraints: ["Safety + privacy outrank everything else", "Can halt work when a pillar is violated"] },
       "Gary": { role: "QA Engineer", domain: "Tests, regression prevention, and the CI safety net.",
@@ -1397,7 +1397,7 @@
         specialties: ["CI/CD pipelines", "Deployment automation", "Build configuration", "Monitoring setup"],
         may: ["Manage deployment pipelines", "Provision infrastructure", "Set up monitoring", "Recommend infra changes"],
         mustNot: ["Deploy to production unattended", "Skip infrastructure testing", "Ignore security in infra"],
-        constraints: ["Merges to main need Sky's approval, except one narrow, audited exception", "Deployments follow change control — never unattended"] },
+        constraints: ["Merges to main need Sky's approval; any exception needs separate authorization", "Deployments follow change control — never unattended"] },
       "Quinn": { role: "Product Manager", domain: "Requirements, prioritization, and the roadmap.",
         specialties: ["Requirements definition", "Feature prioritization", "Roadmap planning", "Product strategy"],
         may: ["Define product requirements", "Prioritize features", "Write user stories", "Guide product direction"],
@@ -1423,9 +1423,9 @@
         may: ["Write and maintain docs", "Create tutorials", "Curate the learnings log", "Improve clarity"],
         mustNot: ["Document security workarounds", "Mislead about capabilities", "Touch application code"],
         constraints: ["Docs must be accurate and current", "Never touches application code"] },
-      "Orion": { role: "Recovery Agent", domain: "Crisis recovery, safe-state restoration, and Constitution enforcement.",
+      "Orion": { role: "Recovery Agent", domain: "Crisis recovery, safe-state restoration, and Constitution-guided review.",
         specialties: ["System recovery", "Crisis response", "Safe-state restoration", "Escalation handling"],
-        may: ["Step in when a role hits a blocker", "Halt unsafe work", "Restore a safe state", "Enforce the Constitution"],
+        may: ["Step in when a role hits a blocker", "Halt unsafe work", "Restore a safe state", "Apply the Constitution in review"],
         mustNot: ["Act outside a genuine emergency", "Modify the Constitution", "Make permanent changes without Sky"],
         constraints: ["Recovery-only (Art. 8.4)", "Needs a genuine crisis to activate"] }
     };
@@ -1556,11 +1556,11 @@
         body: ["Each role works in isolation on its own role-prefixed branch — <code>feat/</code>, <code>fix/</code>, <code>perf/</code>, <code>content/</code> — across five groups: design &amp; frontend, backend &amp; data, safety / quality / infra, product / research / policy, and coordination.",
                "Design, code, test, accessibility, performance, and privacy checks all run before anything is proposed for merge."] },
       "Safety":   { role: "7-layer compiler", nc: "var(--ok-text)",
-        body: ["A 7-layer Design Compiler gate runs before any UI is called done: tokenization, accessibility parity, component consistency, visual entropy, luxury score, regression safety, and the compile decision.",
+        body: ["Written policy calls for a 7-layer Design Compiler review: tokenization, accessibility parity, component consistency, visual entropy, luxury score, regression safety, and the compile decision.",
                "The Orion recovery agent stands by to restore a safe state if a role hits a blocker."] },
       "main":     { role: "Sky approves release", nc: "var(--accent)",
-        body: ["Every change lands on a branch and gets reviewed. Merging to <code>main</code> needs Sky's approval in every case but one: a single, already-shipped tool holds a narrow, audited, revocable exception to merge and release itself once every check passes.",
-               "Everywhere else, Morgan briefs and Sky decides — human approval is the last gate."] }
+        body: ["Agents propose changes on branches for review. Written policy requires Sky's approval for merges to <code>main</code>; any release exception needs separate, explicit authorization and verified controls.",
+               "Morgan briefs and Sky decides. This public summary does not establish an active automated release exception."] }
     };
 
     var flow = document.querySelector('.pipeline .flow');

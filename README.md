@@ -2,7 +2,7 @@
 
 **A 15-role AI engineering team with bounded autonomy — governed by a living Constitution.**
 
-Claude Corp is a multi-agent engineering system built on Anthropic's Claude. Fifteen specialized AI roles plan, build, test, and review across a portfolio of projects, each working in its own isolated branch inside explicit decision rights and risk gates. Every action is governed by a versioned Constitution that outranks any individual role or skill: safety, privacy, and accessibility are defined as governance policy and checked through review gates and named platform controls, not left to individual judgment. Production changes are gated by explicit release rules, not left unattended.
+Claude Corp is a multi-agent engineering system built on Anthropic's Claude. Fifteen specialized AI roles plan, build, test, and review across a portfolio of projects, each working in its own isolated branch inside explicit decision rights and risk gates. The written Constitution sets safety, privacy, and accessibility policy above individual role and skill instructions. Review gates apply that policy; technical enforcement depends on each project's named platform controls and must be verified separately. Production changes require explicit authorization under the release policy.
 
 Live landing page: **[claudecorp.skypistudio.com](https://claudecorp.skypistudio.com)**
 
@@ -16,7 +16,7 @@ When anything conflicts — a role prompt, a skill, an orchestrator instruction,
 
 > **Sky's intent  >  Constitution  >  role files  >  skills**
 
-No agent self-amends. Only Sky changes the Constitution. Merges to `main` require Sky's approval, with one narrow, audited, and revocable exception that lets a single already-shipped tool (the Prompt Library) merge and release itself automatically once every safety check passes.
+No agent self-amends. Only Sky changes the Constitution. Written policy requires Sky's approval for merges to `main`. Any release exception needs separate, explicit authorization, a documented scope, and current verification of its controls. This public summary does not establish an active automated release exception.
 
 ---
 
@@ -47,17 +47,17 @@ No agent self-amends. Only Sky changes the Constitution. Merges to `main` requir
 1. **Sky sets intent** — a directive or slash command. The authority order locks in.
 2. **Orchestrator plans** — Morgan reads backlogs, open branches, and QA reports, then routes work to the right specialists in dependency order.
 3. **Roles execute** — each agent works in isolation on a scoped, role-prefixed branch. Design, code, test, a11y, performance, and privacy checks run before merge.
-4. **Safety sweep** — a 7-layer Design Compiler gate plus the Orion recovery agent ensure no UI ships without full parity and a rollback path.
-5. **Sky approves release** — merges to `main` need Sky's sign-off in every case but one narrow, gated exception (above). Agents branch, propose, and report; Morgan briefs; Sky decides.
+4. **Safety sweep** — the 7-layer Design Compiler guides UI review; Orion supports recovery when a role hits a blocker. Review findings and a rollback path are checked before release.
+5. **Sky approves release** — merges to `main` need Sky's sign-off; any exception requires separate, explicit authorization. Agents branch, propose, and report; Morgan briefs; Sky decides.
 
 ---
 
 ## Guardrails
 
-- **`main` is governed, not open** — every change lands on a role-prefixed branch and merges only with Sky's approval, apart from the one narrow, audited, revocable exception above.
+- **`main` is governed, not open** — agents propose changes on role-prefixed branches. Written policy requires Sky's approval; any exception needs separate, explicit authorization.
 - **One voice to Sky** — only Morgan messages Sky; every other role surfaces findings to QA reports.
-- **No unreviewed live side effects** — no agent applies migrations to a live database or sends anything external; the one gated Prompt Library release exception above is the only automated release path.
-- **Living Constitution** — currently v1.12; all roles inherit it as binding written policy.
+- **Live side effects require authorization** — written policy prohibits live database changes and external sends without explicit authorization. A release exception is not general permission to act.
+- **Living Constitution** — all roles inherit it as binding written policy. The full Constitution and role files are private; this repository presents a public summary, not a verified current version or enforcement record.
 
 ---
 
