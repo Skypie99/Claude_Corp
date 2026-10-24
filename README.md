@@ -61,4 +61,21 @@ No agent self-amends. Only Sky changes the Constitution. Written policy requires
 
 ---
 
+## The site
+
+A static page deployed by GitHub Pages from `main` (`.github/workflows/deploy.yml`). There is no build step.
+
+| Path | What |
+|------|------|
+| `index.html` | The page, including its inline Branch Atlas drawings |
+| `404.html` | Not-found page; uses root-absolute asset paths because Pages serves it at any depth |
+| `assets/site.css`, `assets/site.js` | Shared styles and the small progressive-enhancement script (theme, menu, reveal) |
+| `assets/fonts/` | Self-hosted Cormorant Garamond, DM Sans and DM Mono subsets, under the SIL Open Font License 1.1 (licence texts alongside) |
+| `og-image.png` | Social card, rendered from `tools/og-image.html` |
+| `tools/atlas.mjs` | Regenerates the drawings in place: `node tools/atlas.mjs` |
+
+The drawings are diagrams of the operating model, not captures of live activity. To preview locally, serve the repository root over HTTP, for example `python3 -m http.server 8000 --bind 127.0.0.1`, and open `http://127.0.0.1:8000/`.
+
+---
+
 Built by [Skyler Halisky](https://github.com/Skypie99) · Powered by [Anthropic Claude](https://www.anthropic.com).

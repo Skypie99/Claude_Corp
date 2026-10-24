@@ -1,33 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Claude Corp — A governed 15-role AI engineering team</title>
-  <meta name="description" content="Claude Corp is a multi-agent engineering system built on Anthropic's Claude. 15 specialized AI roles plan, build, test, and review across a portfolio of projects — production changes are governed by explicit release gates." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claude Corp · Fifteen AI roles, one person decides what ships</title>
+  <meta name="description" content="Claude Corp is a governed multi-agent development system designed and operated by Skyler Halisky at SkyPi Studio. Fifteen AI roles work in parallel under a written Constitution. One person decides what ships.">
 
   <!-- Open Graph / social share -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Claude Corp" />
-  <meta property="og:title" content="Claude Corp — A governed 15-role AI engineering team" />
-  <meta property="og:description" content="A multi-agent engineering system built on Anthropic's Claude. 15 specialized AI roles plan, build, test, and review — governed by a living Constitution, with production authority constrained by explicit release gates." />
-  <meta property="og:url" content="https://claudecorp.skypistudio.com/" />
-  <meta property="og:image" content="https://claudecorp.skypistudio.com/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Claude Corp — a 15-role AI engineering team governed by a living Constitution." />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Claude Corp — A governed 15-role AI engineering team" />
-  <meta name="twitter:description" content="A multi-agent engineering system built on Anthropic's Claude. 15 specialized AI roles, one living Constitution." />
-  <meta name="twitter:image" content="https://claudecorp.skypistudio.com/og-image.png" />
-  <meta name="twitter:image:alt" content="Claude Corp — a 15-role AI engineering team governed by a living Constitution." />
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Claude Corp">
+  <meta property="og:title" content="Claude Corp · Fifteen AI roles work in parallel. One person decides what ships.">
+  <meta property="og:description" content="A governed multi-agent development system by Skyler Halisky at SkyPi Studio: fifteen Claude Code roles, a written Constitution, review gates, and a human-held merge.">
+  <meta property="og:url" content="https://claudecorp.skypistudio.com/">
+  <meta property="og:image" content="https://claudecorp.skypistudio.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Claude Corp. Fifteen AI roles work in parallel. One person decides what ships. A drawing of fifteen branches converging on one review and a human merge.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Claude Corp · Fifteen AI roles work in parallel. One person decides what ships.">
+  <meta name="twitter:description" content="A governed multi-agent development system by Skyler Halisky at SkyPi Studio: fifteen Claude Code roles, a written Constitution, review gates, and a human-held merge.">
+  <meta name="twitter:image" content="https://claudecorp.skypistudio.com/og-image.png">
+  <meta name="twitter:image:alt" content="Claude Corp. Fifteen AI roles work in parallel. One person decides what ships. A drawing of fifteen branches converging on one review and a human merge.">
 
   <!-- SEO + canonical -->
-  <link rel="canonical" href="https://claudecorp.skypistudio.com/" />
-  <meta name="author" content="Sky Halisky" />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" id="meta-theme-color" content="#070708" />
-  <meta name="color-scheme" content="light dark" />
+  <link rel="canonical" href="https://claudecorp.skypistudio.com/">
+  <meta name="author" content="Skyler Halisky">
+  <meta name="robots" content="index, follow">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#FAF8F1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#15191A" media="(prefers-color-scheme: dark)">
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -36,1667 +37,366 @@
     "@type": "WebSite",
     "name": "Claude Corp",
     "url": "https://claudecorp.skypistudio.com/",
-    "description": "A multi-agent engineering system built on Anthropic's Claude — 15 specialized AI roles that plan, build, test, and review, governed by a living Constitution, with production changes bounded by explicit governance and release gates.",
+    "description": "A governed multi-agent development system designed and operated by Skyler Halisky at SkyPi Studio. Fifteen AI roles work in parallel under a written Constitution; one person decides what ships.",
     "author": {
       "@type": "Person",
-      "name": "Sky Halisky",
+      "name": "Skyler Halisky",
       "url": "https://skypistudio.com"
     }
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2320302C'/%3E%3Cpath d='M9 16C13 16 13 9 17 9H18C21 9 21 16 24 16M9 16C13 16 13 12.5 17 12.5H18C21 12.5 21 16 24 16M9 16C13 16 13 19.5 17 19.5H18C21 19.5 21 16 24 16M9 16C13 16 13 23 17 23H18C21 23 21 16 24 16' fill='none' stroke='%23FAF8F1' stroke-width='1.6' stroke-linecap='round'/%3E%3Ccircle cx='8' cy='16' r='2.6' fill='%23E2A27C'/%3E%3Ccircle cx='25' cy='16' r='2.6' fill='%23E2A27C'/%3E%3C/svg%3E">
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236c8cff'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='15' font-weight='bold' fill='white' text-anchor='middle'%3ECC%3C/text%3E%3C/svg%3E">
+  <link rel="preload" href="assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/dm-sans-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/dm-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/site.css">
 
   <script>
-    document.documentElement.classList.add('js');
-    /* No-FOUC theme bootstrap — runs before first paint. Honors the user's saved
-       choice; otherwise leaves data-theme unset so prefers-color-scheme decides
-       (follow-OS, dark fallback). Also pre-sets the address-bar theme-color. */
+    /* Runs before first paint. Marks JS as available and replays a saved theme
+       choice; with no saved choice, data-theme stays unset and the operating
+       system's light or dark preference decides (also the path with JS off). */
     (function () {
+      var root = document.documentElement;
+      root.classList.add('js');
       try {
-        var stored = localStorage.getItem('cc-theme');
-        var explicit = (stored === 'light' || stored === 'dark');
-        if (explicit) document.documentElement.setAttribute('data-theme', stored);
-        var theme = explicit ? stored
-          : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-        var m = document.getElementById('meta-theme-color');
-        if (m) m.setAttribute('content', theme === 'light' ? '#f3efe6' : '#070708');
-      } catch (e) {}
+        var saved = localStorage.getItem('cc-theme');
+        if (saved === 'light' || saved === 'dark') {
+          root.setAttribute('data-theme', saved);
+          var metas = document.querySelectorAll('meta[name="theme-color"]');
+          for (var i = 0; i < metas.length; i++) metas[i].setAttribute('content', saved === 'dark' ? '#15191A' : '#FAF8F1');
+        }
+      } catch (e) { /* storage blocked: follow the system theme */ }
     })();
   </script>
-
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      /* ── COLOR — Direction C: Editorial Ink Luxury (dark = default theme) ── */
-      --bg:          #070708;   /* near-black warm ink ground */
-      --bg-2:        #0b0c0f;
-      --surface:     #121317;
-      --surface-2:   #191b21;
-      --surface-glass:   rgba(25,27,33,0.72);   /* near-solid card — top stop */
-      --surface-glass-2: rgba(18,19,23,0.72);   /* near-solid card — bottom stop */
-      --border:      rgba(255,255,255,0.09);
-      --border-soft: rgba(255,255,255,0.055);
-      --hairline:    rgba(255,255,255,0.13);
-
-      /* one indigo jewel + rare terracotta + champagne-gold hairline + status-only green */
-      --accent:      #8aa0ff;   /* THE brand hue — links, eyebrows, icons, active (8.2:1 on --bg) */
-      --accent-2:    #6c8cff;   /* deeper indigo — gradient partner / 2nd rim stop */
-      --accent-warm: #f0a987;   /* rare terracotta punctuation (10.3:1 on --bg) */
-      --accent-strong:   #4650c6; /* deep indigo CTA fill — white label = 6.4:1 (AA) */
-      --accent-strong-2: #5b66d6; /* lighter CTA gradient stop — white label = 5.0:1 (AA) */
-      --gold:        #d2b074;   /* champagne metallic — hairlines / rims ONLY, never a fill */
-      --ok:          #34d399;   /* live / success / safety status signal only */
-
-      /* back-compat aliases so existing rules + JS resolve to the new system (re-resolve per theme) */
-      --violet:      var(--accent);
-      --violet-2:    var(--accent-2);
-      --indigo:      var(--accent);
-      --coral:       var(--accent-warm);
-      --sky:         var(--accent);
-      --emerald:     var(--ok);
-      --orange:      var(--accent-warm);
-      --pink:        var(--accent);
-      --green:       var(--ok);
-
-      --text:        #f4f3ee;   /* warm paper-white (18.1:1 on --bg) */
-      --text-muted:  #aeb0b8;   /* 9.3:1 on --bg */
-      --text-faint:  #8b8e98;   /* AA: 6.16:1 on --bg */
-
-      --maxw: 1140px;
-
-      /* ── RADIUS SCALE (Dashboard-matched architecture) ── */
-      --radius-xs:   8px;
-      --radius-sm:   11px;
-      --radius:      18px;
-      --radius-card: 22px;
-      --radius-pill: 999px;
-
-      /* ── SHADOW SCALE (dark-tuned) ── */
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.40);
-      --shadow-md: 0 2px 8px rgba(0,0,0,0.45);
-      --shadow-lg: 0 8px 24px rgba(0,0,0,0.50);
-      --shadow-xl: 0 12px 48px rgba(0,0,0,0.55);
-
-      /* ── MOTION TOKENS ── */
-      --ease-glide:    cubic-bezier(0.5, 0, 0.1, 1);
-      --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
-      --ease-out:      cubic-bezier(0.22, 1, 0.36, 1);
-      --ease-snap:     cubic-bezier(0.34, 1.56, 0.64, 1);
-      --dur-fast:   180ms;
-      --dur-base:   280ms;
-      --dur-slow:   520ms;
-      --dur-exit:   120ms;  /* TF-7: exit is deliberately faster than entry — the
-                               user asked to leave; the fade only stops the
-                               material popping out of existence */
-
-      /* ── GLASS + FOCUS ── */
-      --glass-fill:      rgba(20,22,29,0.55);   /* warm-toned liquid-glass base */
-      --glass-stroke:    rgba(210,176,116,0.42); /* gold refractive rim (the signature) */
-      --glass-highlight: rgba(255,255,255,0.16); /* top inset specular */
-      --glass-shadow:    rgba(0,0,0,0.70);       /* deep drop under glass */
-      --glass-blend:     screen;                 /* specular blend (dark); flips to normal in light */
-      --glass-spec:      0.5;                    /* specular sheen opacity */
-      --focus:           #a8b6ff;                /* indigo focus ring (10.4:1 on --bg) */
-
-      /* ── THEME-SWAP TOKENS (dark defaults; overridden in the light theme block) ── */
-      --aurora-opacity:  1;
-      --grid-line:       rgba(255,255,255,0.020);
-      --grain-opacity:   0.035;
-      --header-1:        rgba(7,7,8,0.85);
-      --header-2:        rgba(7,7,8,0.6);
-      --modal-1:         #191b21;
-      --modal-2:         #121317;
-      --scrim:           rgba(7,7,8,0.76);
-      --badge-text:      #d7d2ff;
-      --ok-text:         #5fe0ad;
-      --num-1:           #ffffff;
-      --num-2:           #c7ccda;
-      --hover-1:         rgba(255,255,255,0.04);  /* subtle resting fill (ghost/toggle/nav/modal-close) */
-      --hover-2:         rgba(255,255,255,0.08);  /* hover fill */
-      --hover-border:    rgba(255,255,255,0.22);  /* ghost-button hover border */
-      /* Pipeline decorative geometry (MU-5 / L2-06). Stop-pairs, not one
-         --rail-grad token, so the gradient AXIS stays in the component (the
-         rail runs 90deg on desktop and 180deg at <=860). Dark values are the
-         literals this replaced, byte-for-byte, so dark renders identically. */
-      --rail-1:          rgba(255,255,255,0.06);  /* rail edge stop */
-      --rail-2:          rgba(255,255,255,0.22);  /* rail centre stop */
-      --node-1:          rgba(255,255,255,0.07);  /* node fill, top stop */
-      --node-2:          rgba(255,255,255,0.025); /* node fill, bottom stop */
-      --node-inset:      rgba(255,255,255,0.08);  /* node 1px top bevel */
-      --node-drop:       rgba(0,0,0,0.8);         /* node drop shadow */
-      --rim-grad: linear-gradient(138deg, var(--glass-stroke) 0%, rgba(255,255,255,0.34) 28%, rgba(255,255,255,0.10) 58%, rgba(138,160,255,0.40) 100%);
-      --rim-grad-feature: linear-gradient(138deg, rgba(210,176,116,1.00) 0%, rgba(232,216,180,0.95) 14%, rgba(255,255,255,0.85) 28%, rgba(255,255,255,0.45) 48%, rgba(255,255,255,0.14) 62%, rgba(138,160,255,0.90) 100%);
-    }
-
-    /* ══ LIGHT THEME — Direction C "warm paper" (designed, not inverted) ══
-       Two entry points, identical values:
-       (1) html[data-theme="light"] — the user explicitly chose light via the toggle.
-       (2) @media (prefers-color-scheme: light) :root:not([data-theme]) — OS prefers light AND
-           the user hasn't toggled (follow-OS default; dark remains the fallback). */
-    html[data-theme="light"] {
-      --bg:          #f3efe6;
-      --bg-2:        #ece7db;
-      --surface:     #fbf9f3;
-      --surface-2:   #ffffff;
-      --surface-glass:   rgba(255,255,255,0.82);
-      --surface-glass-2: rgba(248,246,240,0.82);
-      --border:      rgba(26,25,22,0.12);
-      --border-soft: rgba(26,25,22,0.07);
-      --hairline:    rgba(26,25,22,0.16);
-
-      --accent:          #4750c0;   /* indigo jewel, darkened for paper (5.34:1) */
-      --accent-2:        #3a42a8;
-      --accent-warm:     #a84d2c;   /* deep terracotta (4.86:1) */
-      --accent-strong:   #3a42a8;   /* CTA fill — white label 7.9:1 */
-      --accent-strong-2: #4750c0;   /* CTA gradient stop — white label 6.13:1 */
-      --gold:            #7e6230;   /* antique bronze (champagne invisible on paper) */
-      --ok:              #1f7a52;
-      --ok-text:         #1a6b48;   /* deepened — "Live" pill text 5.3:1 on its tint over paper */
-
-      --text:        #1a1916;   /* warm ink (15.3:1) */
-      --text-muted:  #56524a;   /* 6.77:1 */
-      --text-faint:  #6f6a60;   /* 4.68:1 */
-
-      --glass-fill:      rgba(255,255,255,0.55); /* frosted-white pane */
-      --glass-stroke:    rgba(126,98,48,0.40);   /* bronze rim */
-      --glass-highlight: rgba(255,255,255,0.85);
-      --glass-shadow:    rgba(40,34,24,0.16);    /* soft warm drop */
-      --glass-blend:     normal;                 /* screen no-ops on white */
-      --glass-spec:      0.32;
-      --focus:           #3a42a8;                /* deep indigo ring (6.2:1) */
-
-      --aurora-opacity:  0.4;                    /* faint fog over paper */
-      --grid-line:       rgba(26,25,22,0.045);
-      --grain-opacity:   0.02;
-      --header-1:        rgba(251,249,243,0.86);
-      --header-2:        rgba(251,249,243,0.62);
-      --modal-1:         #ffffff;
-      --modal-2:         #fbf9f3;
-      --scrim:           rgba(26,25,22,0.42);
-      --badge-text:      #3a42a8;
-      --num-1:           #2b2825;   /* warm-dark metallic numerals on paper */
-      --num-2:           #56524a;
-      --hover-1:         rgba(26,25,22,0.05);
-      /* MU-7 (L2-05): 0.09 -> 0.11. The light hover delta was dL* 3.03 against
-         dark's 4.66 — the same interaction, materially weaker on paper. 0.11
-         measures dL* 4.55, i.e. PARITY with dark rather than overshoot: the
-         defect is light being weaker than dark, not dark being too quiet.
-         --hover-1 is deliberately NOT touched — despite the name it is the
-         RESTING fill for .theme-toggle, .btn-ghost and .role-modal-close, so
-         moving it would shift three resting contrast pairs for no stated need. */
-      --hover-2:         rgba(26,25,22,0.11);
-      --hover-border:    rgba(26,25,22,0.20);
-      /* MU-5 / L2-06 — ink-alpha counterparts. Alphas chosen to reproduce each
-         element's DARK contrast ratio against its own composited card base, so
-         the assembly line reads with the same weight on paper as on ink.
-         --rail-2 sits deliberately ABOVE --hairline (0.16): the tidy system
-         number measures only ~1.4:1, which would leave the rail at hairline
-         weight against a dark rail that is a ~1.95:1 track. --node-inset stays
-         WHITE because the composited card base is already rgb(251,247,239) —
-         only ~5/255 of white headroom — so the fill must go ink-ward and the
-         bevel is what re-establishes "raised". */
-      --rail-1:          rgba(26,25,22,0.07);   /* == --border-soft */
-      --rail-2:          rgba(26,25,22,0.30);
-      --node-1:          rgba(26,25,22,0.085);  /* just under --hover-2 (0.09) */
-      --node-2:          rgba(26,25,22,0.025);  /* mirrors dark's own 0.025 */
-      --node-inset:      rgba(255,255,255,0.6);
-      --node-drop:       rgba(40,34,24,0.20);   /* warm, per --glass-shadow */
-      --rim-grad: linear-gradient(138deg, rgba(126,98,48,0.55) 0%, rgba(126,98,48,0.20) 35%, rgba(71,80,192,0.20) 65%, rgba(58,66,168,0.50) 100%);
-      --rim-grad-feature: linear-gradient(138deg, rgba(126,98,48,0.85) 0%, rgba(150,120,60,0.55) 18%, rgba(126,98,48,0.30) 45%, rgba(71,80,192,0.30) 70%, rgba(58,66,168,0.70) 100%);
-    }
-    @media (prefers-color-scheme: light) {
-      :root:not([data-theme]) {
-        --bg:#f3efe6; --bg-2:#ece7db; --surface:#fbf9f3; --surface-2:#ffffff;
-        --surface-glass:rgba(255,255,255,0.82); --surface-glass-2:rgba(248,246,240,0.82);
-        --border:rgba(26,25,22,0.12); --border-soft:rgba(26,25,22,0.07); --hairline:rgba(26,25,22,0.16);
-        --accent:#4750c0; --accent-2:#3a42a8; --accent-warm:#a84d2c; --accent-strong:#3a42a8; --accent-strong-2:#4750c0; --gold:#7e6230; --ok:#1f7a52; --ok-text:#1a6b48;
-        --text:#1a1916; --text-muted:#56524a; --text-faint:#6f6a60;
-        --glass-fill:rgba(255,255,255,0.55); --glass-stroke:rgba(126,98,48,0.40); --glass-highlight:rgba(255,255,255,0.85); --glass-shadow:rgba(40,34,24,0.16); --glass-blend:normal; --glass-spec:0.32; --focus:#3a42a8;
-        --aurora-opacity:0.4; --grid-line:rgba(26,25,22,0.045); --grain-opacity:0.02;
-        --header-1:rgba(251,249,243,0.86); --header-2:rgba(251,249,243,0.62); --modal-1:#ffffff; --modal-2:#fbf9f3; --scrim:rgba(26,25,22,0.42); --badge-text:#3a42a8; --num-1:#2b2825; --num-2:#56524a;
-        --hover-1:rgba(26,25,22,0.05); --hover-2:rgba(26,25,22,0.11); --hover-border:rgba(26,25,22,0.20);
-        /* MU-5 / L2-06 — MUST stay value-identical to the html[data-theme="light"]
-           block above; a follow-OS-light visitor never sets data-theme, so a token
-           missing here would silently ship them the DARK rails. */
-        --rail-1:rgba(26,25,22,0.07); --rail-2:rgba(26,25,22,0.30);
-        --node-1:rgba(26,25,22,0.085); --node-2:rgba(26,25,22,0.025);
-        --node-inset:rgba(255,255,255,0.6); --node-drop:rgba(40,34,24,0.20);
-        --rim-grad: linear-gradient(138deg, rgba(126,98,48,0.55) 0%, rgba(126,98,48,0.20) 35%, rgba(71,80,192,0.20) 65%, rgba(58,66,168,0.50) 100%);
-        --rim-grad-feature: linear-gradient(138deg, rgba(126,98,48,0.85) 0%, rgba(150,120,60,0.55) 18%, rgba(126,98,48,0.30) 45%, rgba(71,80,192,0.30) 70%, rgba(58,66,168,0.70) 100%);
-      }
-    }
-
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: clip; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-      line-height: 1.6;
-      min-height: 100vh;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    /* ── AMBIENT BACKGROUND — living aurora (2 drift layers) + grid + grain ── */
-    .aurora {
-      position: fixed; inset: -12%; z-index: -2; pointer-events: none;
-      filter: blur(64px) saturate(110%);
-      opacity: var(--aurora-opacity, 1);
-      will-change: transform; contain: layout style paint;
-    }
-    .aurora-1 {
-      background:
-        radial-gradient(42% 38% at 22% 16%, rgba(108,140,255,0.30), transparent 64%),
-        radial-gradient(38% 34% at 80% 20%, rgba(138,160,255,0.20), transparent 62%),
-        radial-gradient(46% 42% at 72% 82%, rgba(210,176,116,0.12), transparent 66%),
-        radial-gradient(40% 40% at 24% 84%, rgba(240,169,135,0.10), transparent 66%);
-      animation: aurora-drift-1 22s ease-in-out infinite alternate;
-    }
-    .aurora-2 {
-      z-index: -1;
-      background:
-        radial-gradient(32% 30% at 62% 28%, rgba(108,140,255,0.16), transparent 60%),
-        radial-gradient(30% 28% at 28% 62%, rgba(210,176,116,0.09), transparent 60%),
-        radial-gradient(28% 26% at 82% 70%, rgba(240,169,135,0.08), transparent 60%);
-      animation: aurora-drift-2 30s ease-in-out infinite alternate;
-    }
-    @keyframes aurora-drift-1 {
-      0%   { transform: translate3d(0,0,0) scale(1); }
-      100% { transform: translate3d(-3%, 3%, 0) scale(1.04); }
-    }
-    @keyframes aurora-drift-2 {
-      0%   { transform: translate3d(0,0,0) scale(1.03); }
-      100% { transform: translate3d(3%, -3%, 0) scale(1); }
-    }
-    .bg-grid {
-      position: fixed; inset: 0; z-index: -1; pointer-events: none;
-      background-image:
-        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-      background-size: 56px 56px;
-      mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 30%, transparent 78%);
-      -webkit-mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 30%, transparent 78%);
-    }
-    .bg-grain {
-      position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: var(--grain-opacity, 0.035);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-
-    a { color: inherit; }
-    .vh { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }  /* visually hidden, SR-only */
-    .wrap { max-width: var(--maxw); margin: 0 auto; padding-left: 2rem; padding-right: 2rem; }
-
-    /* ── FOCUS RING (WCAG 2.4.7) ── */
-    :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 3px; }
-    :focus:not(:focus-visible) { outline: none; }
-
-    /* ── LIQUID GLASS — two-tier (Dashboard-matched material, dark identity) ── */
-    .glass-card, .glass-card-feature {
-      position: relative; isolation: isolate;
-      border-radius: var(--radius-card);
-      background: var(--glass-fill);
-      -webkit-backdrop-filter: blur(18px) saturate(1.7) brightness(1.06);
-              backdrop-filter: blur(18px) saturate(1.7) brightness(1.06);
-      box-shadow:
-        var(--shadow-md),
-        0 16px 40px -20px var(--glass-shadow),
-        inset 0 1px 0 0 rgba(255,255,255,0.10);
-      transition: box-shadow var(--dur-slow) var(--ease-glide);  /* MU-7: transform dropped — neither tier lifts any more */
-    }
-    /* keep content above the rim/specular pseudo-layers (contrast-safe) */
-    .glass-card > *, .glass-card-feature > * { position: relative; z-index: 1; }
-
-    /* refractive rim */
-    .glass-card::before, .glass-card-feature::before {
-      content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-      border-radius: inherit; padding: 1px;
-      background: var(--rim-grad);
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-              mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-              mask-composite: exclude;
-      opacity: 0.6;
-      transition: opacity var(--dur-slow) var(--ease-glide);
-    }
-    /* specular highlight — cursor-reactive via --mx/--my, with static fallback */
-    .glass-card::after, .glass-card-feature::after {
-      content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-      border-radius: inherit;
-      background:
-        radial-gradient(36% 28% at 16% 8%, rgba(255,255,255,0.16), transparent 70%),
-        radial-gradient(46% 54% at var(--mx, 28%) var(--my, 6%), rgba(255,255,255,0.10), transparent 58%);
-      mix-blend-mode: var(--glass-blend);
-      opacity: var(--glass-spec, 0.5);
-      transition: opacity var(--dur-slow) var(--ease-glide);
-    }
-    /* MU-7 (L4-02/L2-05): NO translateY here. The lift used to ride the MATERIAL
-       class, so 17 non-interactive surfaces performed the interaction dance —
-       a false affordance, and it moved the pipeline's five node targets upward
-       exactly as the cursor aimed at them. "Lift" now means "tappable" only.
-       The rim + specular brighten and the shadow bloom stay as the passive
-       "material responds" cue. Scoped to Tier B: the Tier-A panels override the
-       resting material at .glass-card-feature and need their own hover values,
-       or this rule would DIM their rim and SHRINK their shadow (see below). */
-    .glass-card:hover {
-      box-shadow:
-        var(--shadow-lg),
-        0 26px 56px -22px var(--glass-shadow),
-        inset 0 1px 0 0 rgba(255,255,255,0.14);
-    }
-    .glass-card:hover::before { opacity: 0.85; }
-    .glass-card:hover::after  { opacity: 0.66; }
-
-    /* Tier A — hero / chrome surfaces (deeper blur, bolder rim, bigger lift) */
-    .glass-card-feature {
-      -webkit-backdrop-filter: blur(38px) saturate(2.0) brightness(1.05);
-              backdrop-filter: blur(38px) saturate(2.0) brightness(1.05);
-      box-shadow:
-        var(--shadow-lg),
-        0 36px 72px -28px var(--glass-shadow),
-        0 44px 88px -28px rgba(108,140,255,0.10),
-        inset 0 1.5px 0 0 rgba(255,255,255,0.16),
-        inset 0 0 0 1.5px rgba(255,255,255,0.10),
-        inset 0 -1px 3px 0 rgba(0,0,0,0.22);
-    }
-    .glass-card-feature::before {
-      padding: 1.75px;
-      background: var(--rim-grad-feature);
-      opacity: 0.9;
-    }
-    .glass-card-feature::after {
-      background:
-        radial-gradient(42% 36% at 14% 6%, rgba(255,255,255,0.26), transparent 68%),
-        radial-gradient(56% 68% at var(--mx, 24%) var(--my, 5%), rgba(255,255,255, var(--spec-w, 0.16)), transparent 55%),
-        radial-gradient(24% 30% at var(--mx, 24%) var(--my, 5%), rgba(150,185,255, var(--spec-b, 0.20)), transparent 50%);
-      opacity: 0.6;
-    }
-    /* MU-7: the Tier-A pair (.pipeline, .cta-inner) gets its OWN hover state.
-       Removing the -10px lift exposed a pre-existing inversion the lift had been
-       masking: the Tier-B hover rule outranked the Tier-A resting rule, so hover
-       replaced the 6-layer stack with 3 (36/72px -> 26/56px, dropping the indigo
-       glow and both inner rings) and dimmed the rim 0.9 -> 0.85. The page's two
-       flagship panels would have DEFLATED on cursor entry. These values keep all
-       six layers and only ever go up — asserted, not eyeballed, by a
-       computed-style monotonicity check in both themes. Specular deliberately
-       stays at 0.66, unchanged from today, so SIG-2c's ARB-1 text-safe cap
-       treatment is not perturbed. */
-    .glass-card-feature:hover {
-      box-shadow:
-        var(--shadow-lg),
-        0 44px 84px -26px var(--glass-shadow),
-        0 52px 104px -26px rgba(108,140,255,0.16),
-        inset 0 1.5px 0 0 rgba(255,255,255,0.20),
-        inset 0 0 0 1.5px rgba(255,255,255,0.14),
-        inset 0 -1px 3px 0 rgba(0,0,0,0.22);
-    }
-    .glass-card-feature:hover::before { opacity: 0.98; }
-    .glass-card-feature:hover::after  { opacity: 0.66; }
-
-    /* Chromium-only refraction on the signature pipeline panel; Safari keeps plain blur */
-    @supports (backdrop-filter: url(#x)) {
-      .pipeline {
-        -webkit-backdrop-filter: url(#glass-refract) blur(38px) saturate(2.0);
-                backdrop-filter: url(#glass-refract) blur(38px) saturate(2.0);
-      }
-    }
-
-    /* ── SKIP LINK ── */
-    .skip-link {
-      position: absolute; left: 0.75rem; top: 0.75rem; z-index: 200;
-      transform: translateY(-160%);
-      padding: 0.6rem 1.1rem; border-radius: 9px;
-      font-size: 0.875rem; font-weight: 600; text-decoration: none; color: #fff;
-      background: linear-gradient(135deg, var(--accent-strong-2), var(--accent-strong));
-      box-shadow: 0 6px 20px rgba(108,140,255,0.45);
-      transition: transform var(--dur-fast) var(--ease-out);
-    }
-    .skip-link:focus { transform: translateY(0); outline: 2px solid #fff; outline-offset: 2px; }
-
-    /* ── HEADER ── */
-    header {
-      position: sticky; top: 0; z-index: 100;
-      -webkit-backdrop-filter: blur(16px) saturate(140%);
-              backdrop-filter: blur(16px) saturate(140%);
-      background: linear-gradient(180deg, var(--header-1), var(--header-2));
-      border-bottom: 1px solid var(--border-soft);
-    }
-    .header-inner {
-      max-width: var(--maxw); margin: 0 auto; padding: 1rem 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; row-gap: 0.6rem;
-    }
-    .logo { min-width: 0; }
-    .logo { display: flex; align-items: center; gap: 0.65rem; font-weight: 700; font-size: 1rem; text-decoration: none; color: var(--text); letter-spacing: -0.01em; }
-    .logo-mark {
-      width: 30px; height: 30px; border-radius: 9px;
-      background: linear-gradient(135deg, var(--accent-strong-2), var(--accent-strong) 60%, var(--accent-warm));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.8rem; font-weight: 800; color: #fff;
-      box-shadow: 0 4px 16px rgba(108,140,255,0.45), inset 0 1px 0 rgba(255,255,255,0.35);
-    }
-    .logo-mark span { transform: translateY(0.5px); }
-    nav { display: flex; align-items: center; gap: 0.4rem; }
-    nav a.navlink {
-      color: var(--text-muted); text-decoration: none; font-size: 0.875rem; font-weight: 500;
-      padding: 0.45rem 0.8rem; border-radius: 8px; transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
-    }
-    nav a.navlink:hover { color: var(--text); background: var(--hover-1); }
-    .nav-cta {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      margin-left: 0.6rem; padding: 0.5rem 0.95rem; border-radius: 9px;
-      font-size: 0.875rem; font-weight: 600; text-decoration: none; color: #fff;
-      background: linear-gradient(135deg, var(--accent-strong-2), var(--accent-strong));
-      box-shadow: 0 6px 20px rgba(108,140,255,0.35), inset 0 1px 0 rgba(255,255,255,0.25);
-      transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
-    }
-    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 10px 28px rgba(108,140,255,0.5), inset 0 1px 0 rgba(255,255,255,0.25); }
-    .nav-cta svg { width: 15px; height: 15px; }
-    .icon { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.85; stroke-linecap: round; stroke-linejoin: round; }
-
-    /* ── THEME TOGGLE ── */
-    /* QW-6 (L3-10): with JS off the toggle rendered, looked interactive, and did
-       nothing — the one dead affordance on an otherwise exemplary no-JS page.
-       Gated exactly like the two hints (html.js .pipeline-hint / .team-hint).
-       CLS-safe: `js` is added by the SYNCHRONOUS head bootstrap before first
-       paint, so a JS-on visitor never sees the button appear. Theme still follows
-       the OS with JS off — that path is the CSS-only prefers-color-scheme token
-       block, which does not involve this control at all. */
-    .theme-toggle { display: none; }
-    html.js .theme-toggle {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 38px; height: 38px; border-radius: 9px; flex-shrink: 0; cursor: pointer;
-      background: var(--hover-1); border: 1px solid var(--hairline); color: var(--text-muted);
-      transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
-    }
-    .theme-toggle:hover { color: var(--text); background: var(--hover-2); border-color: var(--border); }
-    .theme-toggle svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
-    .theme-toggle .ti-moon { display: none; }
-    .theme-toggle .ti-sun  { display: block; }
-    html[data-theme="light"] .theme-toggle .ti-moon { display: block; }
-    html[data-theme="light"] .theme-toggle .ti-sun  { display: none; }
-    @media (prefers-color-scheme: light) {
-      html:not([data-theme]) .theme-toggle .ti-moon { display: block; }
-      html:not([data-theme]) .theme-toggle .ti-sun  { display: none; }
-    }
-
-    /* ── HERO ── */
-    .hero { text-align: center; padding: 5.5rem 2rem 2.5rem; position: relative; }
-    .badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.4rem 0.95rem; border-radius: 999px; margin-bottom: 1.9rem;
-      font-size: 0.76rem; font-weight: 600; letter-spacing: 0.02em; color: var(--badge-text);
-      background: linear-gradient(180deg, rgba(108,140,255,0.16), rgba(108,140,255,0.06));
-      border: 1px solid rgba(138,160,255,0.3);
-      box-shadow: 0 2px 16px rgba(108,140,255,0.18);
-    }
-    .badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 3px rgba(52,211,153,0.18); animation: pulse 2.4s ease-in-out infinite; }
-    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
-
-    h1 {
-      font-size: clamp(2.4rem, 6vw, 4.1rem); font-weight: 800; line-height: 1.05;
-      letter-spacing: -0.035em; margin: 0 auto 1.4rem; max-width: 14ch; text-wrap: balance; overflow-wrap: anywhere; hyphens: auto;
-    }
-    h1 .grad {
-      background: linear-gradient(115deg, var(--violet) 0%, var(--violet-2) 45%, var(--coral) 100%);
-      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .hero-desc { font-size: 1.16rem; color: var(--text-muted); max-width: 620px; margin: 0 auto 2.3rem; line-height: 1.65; }
-    /* TF-2 (L1-02): the receipts-voice attribution line. Type scale is a direct
-       copy of .step-num's idiom (JetBrains Mono / 0.78rem / 600 / --text-faint) —
-       no existing class already combined those three. The -1.4rem top margin
-       collapses .hero-desc's 2.3rem bottom margin to a 14.4px gap above this line. */
-    .hero-byline { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; font-weight: 600; color: var(--text-faint); margin: -1.4rem 0 1.6rem; }
-    .hero-actions { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
-
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.75rem 1.5rem; border-radius: 11px; font-size: 0.96rem; font-weight: 600;
-      text-decoration: none; transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out); cursor: pointer;
-    }
-    .btn svg { width: 17px; height: 17px; }
-    .btn-primary { color: #fff; background: linear-gradient(135deg, var(--accent-strong-2), var(--accent-strong)); box-shadow: 0 8px 26px rgba(108,140,255,0.4), inset 0 1px 0 rgba(255,255,255,0.25); }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(108,140,255,0.55), inset 0 1px 0 rgba(255,255,255,0.25); }
-    .btn-ghost { color: var(--text); background: var(--hover-1); border: 1px solid var(--hairline); }
-    .btn-ghost:hover { transform: translateY(-2px); border-color: var(--hover-border); background: var(--hover-2); }
-
-    /* ── STAT BAND (Tier B glass) ── */
-    .stats { display: flex; justify-content: center; flex-wrap: wrap; gap: 0; margin: 3rem auto 0; max-width: 760px; overflow: hidden; }
-    .stat { flex: 1 1 0; min-width: 150px; padding: 1.2rem 1rem; text-align: center; border-right: 1px solid var(--border-soft); }
-    .stat:last-child { border-right: none; }
-    .stat .num { font-size: 1.85rem; font-weight: 800; letter-spacing: -0.02em;
-      background: linear-gradient(135deg, var(--num-1), var(--num-2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-    .stat .lbl { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.25rem; font-weight: 500; }
-
-    /* ── ORCHESTRATION PIPELINE (signature visual — Tier A glass) ── */
-    .pipeline-wrap { max-width: var(--maxw); margin: 4rem auto 0; padding: 0 2rem; }
-    .pipeline { padding: 2.2rem 1.6rem; }
-    .pipeline-cap { display: flex; align-items: center; gap: 0.5rem; justify-content: center; margin-bottom: 1.7rem; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); line-height: 1.6; text-wrap: wrap; }
-    .pipeline-cap .ln { height: 1px; width: 34px; background: linear-gradient(90deg, transparent, var(--hairline)); }
-    .pipeline-cap .ln.r { background: linear-gradient(90deg, var(--hairline), transparent); }
-    .flow { display: flex; align-items: stretch; gap: 0; }
-    .stage { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.7rem; min-width: 0; }
-    .node {
-      width: 100%; max-width: 132px; min-height: 96px; border-radius: 14px; padding: 0.9rem 0.7rem;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;
-      background: linear-gradient(180deg, var(--node-1), var(--node-2));
-      border: 1px solid var(--hairline);
-      box-shadow: inset 0 1px 0 var(--node-inset), 0 8px 24px -16px var(--node-drop);
-    }
-    .node .nicon { width: 38px; height: 38px; border-radius: 11px; display: flex; align-items: center; justify-content: center; }
-    .node .nicon svg { width: 19px; height: 19px; }
-    .node .ntitle { font-size: 0.82rem; font-weight: 700; letter-spacing: -0.01em; }
-    .node .nsub { font-size: 0.68rem; color: var(--text-faint); line-height: 1.3; }
-    .stage > .slabel { font-size: 0.68rem; color: var(--text-muted); font-weight: 500; }
-
-    .ni-sky    { background: linear-gradient(135deg, rgba(240,169,135,0.25), rgba(240,169,135,0.08)); color: var(--coral); border: 1px solid rgba(240,169,135,0.3); }
-    .ni-morgan { background: linear-gradient(135deg, rgba(138,160,255,0.22), rgba(138,160,255,0.07)); color: var(--pink); border: 1px solid rgba(138,160,255,0.3); }
-    .ni-roles  { background: linear-gradient(135deg, rgba(138,160,255,0.25), rgba(138,160,255,0.08)); color: var(--violet); border: 1px solid rgba(138,160,255,0.32); }
-    .ni-safety { background: linear-gradient(135deg, rgba(52,211,153,0.22), rgba(52,211,153,0.07)); color: var(--emerald); border: 1px solid rgba(52,211,153,0.3); }
-    .ni-main   { background: linear-gradient(135deg, rgba(138,160,255,0.22), rgba(138,160,255,0.07)); color: var(--sky); border: 1px solid rgba(138,160,255,0.3); }
-
-    .dots { display: grid; grid-template-columns: repeat(5, 5px); gap: 2px; justify-content: center; align-content: center; }
-    .dots i { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
-
-    .connector { flex: 0 0 34px; align-self: center; height: 2px; position: relative; margin-top: -22px;
-      background: linear-gradient(90deg, var(--rail-1), var(--rail-2), var(--rail-1)); border-radius: 2px; }
-    .connector::after { content: ""; position: absolute; top: 50%; left: 0; width: 6px; height: 6px; border-radius: 50%; transform: translate(0, -50%);
-      background: var(--violet); box-shadow: 0 0 8px var(--violet); animation: travel 2.6s linear infinite; }
-    .connector.c2::after { animation-delay: .5s; } .connector.c3::after { animation-delay: 1s; } .connector.c4::after { animation-delay: 1.5s; }
-    /* Travel is compositor-only: transform + opacity, never a layout property.
-       The -50% cross-axis centring must ride INSIDE each keyframe — transform is
-       one property, and the animation's value replaces the specified one wholesale.
-       The 34px / 26px distances are the rails' own lengths and are BOUND to the two
-       flex bases below (.connector `flex: 0 0 34px` here, `0 0 26px` in the <=860
-       block); change one and you must change the other. A percentage cannot be used:
-       translate() percentages resolve against the 6px dot, not the rail. */
-    @keyframes travel   { 0% { transform: translate(0, -50%); opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { transform: translate(34px, -50%); opacity: 0; } }
-    @keyframes travel-v { 0% { transform: translate(-50%, 0); opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { transform: translate(-50%, 26px); opacity: 0; } }
-
-    /* ── INTERACTIVE PIPELINE (JS-upgraded disclosure — static diagram without JS) ── */
-    .pipeline-hint { display: none; align-items: center; justify-content: center; gap: 0.45rem; margin: 1.5rem 0 0; font-size: 0.82rem; color: var(--text-faint); }
-    html.js .pipeline-hint { display: flex; }
-    .pipeline-hint svg { width: 15px; height: 15px; color: var(--violet); flex-shrink: 0; }
-    html.js .flow .node[role="button"] { cursor: pointer; transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out); }
-    html.js .flow .node[role="button"]:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--nc, var(--violet)) 50%, var(--hairline)); }
-    .flow .node[aria-expanded="true"] { border-color: color-mix(in srgb, var(--nc, var(--violet)) 60%, transparent); box-shadow: 0 0 0 1px color-mix(in srgb, var(--nc, var(--violet)) 45%, transparent), 0 12px 30px -16px var(--nc, var(--violet)); }
-    .pipeline-detail { margin: 1.3rem auto 0; max-width: 720px; border: 1px solid var(--border); border-left: 3px solid var(--nc, var(--violet)); border-radius: var(--radius); background: linear-gradient(180deg, var(--surface-glass), var(--surface-glass-2)); box-shadow: var(--shadow-md); padding: 1.35rem 1.45rem; animation: rm-rise var(--dur-base) var(--ease-entrance); }
-    .pipeline-detail[hidden] { display: none; }
-    .pipeline-detail h3 { font-size: 1.0rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.55rem; display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.55rem; }
-    .pipeline-detail .pd-role { font-family: "JetBrains Mono", monospace; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nc, var(--violet)); }
-    .pipeline-detail p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; max-width: 65ch; }
-    .pipeline-detail p + p { margin-top: 0.6rem; }
-    .pipeline-detail code { font-family: "JetBrains Mono", monospace; font-size: 0.82em; color: var(--coral); background: rgba(240,169,135,0.1); padding: 0.05em 0.35em; border-radius: 5px; }
-    /* .vh's auto-positioned (top/left: auto) absolute box perturbs .pipeline's auto height by
-       its own margin via the static-position algorithm; position:fixed removes it from that
-       calculation entirely (it's clipped to 1x1px regardless, so viewport-relative vs
-       ancestor-relative positioning is never visible). */
-    #pipeline-announcer { position: fixed; }
-
-    /* ── SECTIONS ── */
-    section { max-width: var(--maxw); margin: 0 auto; padding: 5.5rem 2rem; }
-    .sec-head { margin-bottom: 3rem; max-width: 640px; }
-    .sec-head.center { margin-left: auto; margin-right: auto; text-align: center; }
-    .eyebrow { display: inline-flex; align-items: center; gap: 0.45rem; font-family: "JetBrains Mono", monospace; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--violet); margin-bottom: 0.9rem; }
-    .eyebrow::before { content: ""; width: 16px; height: 1.5px; background: var(--violet); border-radius: 2px; }
-    h2 { font-size: clamp(1.8rem, 3.4vw, 2.5rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.85rem; text-wrap: balance; }
-    .sec-desc { color: var(--text-muted); font-size: 1.04rem; line-height: 1.6; }
-
-    /* ── STEPS (near-solid surfaces) ── */
-    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 1.1rem; }
-    .step { position: relative; background: linear-gradient(180deg, var(--surface-glass), var(--surface-glass-2)); border: 1px solid var(--border); border-radius: var(--radius-sm); box-shadow: var(--shadow-md); padding: 1.5rem; transition: border-color var(--dur-base) var(--ease-out); }  /* MU-7: transform dropped — .step no longer lifts */
-    /* MU-7: no lift — a .step contains zero focusable elements (verified in P3).
-       The border warm-up stays as the passive cue. */
-    .step:hover { border-color: rgba(138,160,255,0.4); }
-    .step-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.1rem; }
-    .step-ico { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; color: var(--violet);
-      background: linear-gradient(135deg, rgba(138,160,255,0.2), rgba(138,160,255,0.05)); border: 1px solid rgba(138,160,255,0.22); }
-    .step-ico svg { width: 20px; height: 20px; }
-    .step-num { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; font-weight: 600; color: var(--text-faint); }
-    .step h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 0.4rem; letter-spacing: -0.01em; }
-    .step p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.55; }
-    .step code, .feature code { font-family: "JetBrains Mono", monospace; font-size: 0.82em; color: var(--coral); background: rgba(240,169,135,0.1); padding: 0.05em 0.35em; border-radius: 5px; }
-    /* Featured close (step 05): full-span row via grid-column, same background token as 01-04 — prominence is area + border + type scale only. */
-    .step-feature { grid-column: 1 / -1; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 0 1.75rem; padding: 2rem 2.25rem; border: 2px solid var(--hairline); }
-    .step-feature .step-top { grid-row: 1 / 3; margin-bottom: 0; justify-content: flex-start; gap: 0.65rem; }
-    .step-feature h3 { grid-column: 2; grid-row: 1; font-size: 1.3rem; }
-    .step-feature p { grid-column: 2; grid-row: 2; font-size: 0.95rem; }
-
-    /* ── TEAM (near-solid surfaces) ── */
-    .legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.1rem; margin-bottom: 1.8rem; }
-    .legend span { display: inline-flex; align-items: center; font-family: "JetBrains Mono", monospace; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding: 0.3rem 0.75rem; border: 1px solid var(--border); border-radius: var(--radius-pill); }
-    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(14.5rem, 100%), 1fr)); gap: 0.9rem; }
-    .role {
-      position: relative; overflow: visible; display: flex; flex-direction: column;
-      background: linear-gradient(180deg, var(--surface-glass), var(--surface-glass-2));
-      border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1.25rem;
-      transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
-    }
-    .role::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--rc, var(--violet)); opacity: 0.65; border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
-    .role:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--rc) 45%, transparent); box-shadow: 0 18px 40px -28px var(--rc); }
-    .role-top { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.85rem; }
-    .mono {
-      width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.02rem; color: #fff;
-      background: linear-gradient(135deg, color-mix(in srgb, var(--rc) 90%, #000), color-mix(in srgb, var(--rc) 55%, #000));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 4px 14px -6px var(--rc);
-    }
-    .role-name { font-weight: 700; font-size: 0.98rem; letter-spacing: -0.01em; }
-    .role-title { font-size: 0.76rem; color: var(--rc, var(--violet)); font-weight: 600; overflow-wrap: anywhere; hyphens: auto; }
-    .role-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; max-width: 65ch; }
-
-    /* ── INTERACTIVE TEAM + ROLE MODAL ("meet each agent" — JS-enhanced) ── */
-    .role.tappable { cursor: pointer; }
-    .team-hint { font-size: 0.84rem; color: var(--text-faint); margin: -1.6rem 0 1.7rem; display: none; align-items: center; gap: 0.45rem; }
-    html.js .team-hint { display: flex; }  /* only shown when JS upgrades the cards (no-JS users see no dead hint; present at first paint = no CLS) */
-    .team-hint svg { width: 15px; height: 15px; color: var(--violet); flex-shrink: 0; }
-    .role-cta { display: inline-flex; align-items: center; gap: 0.3rem; margin-top: auto; font-size: 0.73rem; font-weight: 600; color: var(--rc, var(--violet)); opacity: 0.55; transition: opacity var(--dur-base) var(--ease-out), gap var(--dur-base) var(--ease-out); }
-    .role.tappable:hover .role-cta, .role.tappable:focus-visible .role-cta { opacity: 1; gap: 0.45rem; }
-    .role-cta svg { width: 13px; height: 13px; }
-
-    .role-modal { position: fixed; inset: 0; z-index: 300; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
-    .role-modal[hidden] { display: none; }
-    .role-modal-overlay { position: absolute; inset: 0; background: var(--scrim); -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); animation: rm-fade var(--dur-base) var(--ease-out); }
-    .role-modal-panel {
-      position: relative; z-index: 1; width: min(560px, 100%); max-height: min(86vh, 760px); overflow-y: auto;
-      background: linear-gradient(180deg, var(--modal-1), var(--modal-2));
-      border: 1px solid var(--hairline); border-radius: var(--radius);
-      box-shadow: 0 40px 90px -30px rgba(0,0,0,0.85), inset 0 1px 0 rgba(255,255,255,0.08);
-      padding: 1.8rem 1.8rem 2rem;
-      animation: rm-rise var(--dur-base) var(--ease-entrance);
-    }
-    .role-modal-panel::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: var(--radius) var(--radius) 0 0; background: linear-gradient(90deg, var(--rmc, var(--violet)), transparent 80%); }
-    @keyframes rm-fade { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes rm-rise { from { opacity: 0; transform: translateY(14px) scale(0.985); } to { opacity: 1; transform: none; } }
-    /* TF-7 (L4-05): the counterpart to rm-fade/rm-rise. Both disclosures animated
-       open over 280ms and then vanished in a single frame. An ANIMATION, not a
-       transition, so the reduced-motion kill-switch reaches it the same way it
-       reaches the entrance pair. `pointer-events: none` is load-bearing, not
-       polish: #roleModal is position:fixed;inset:0, so an opacity-0 panel that is
-       not yet [hidden] would remain the topmost hit-test target over the whole
-       viewport and still route clicks into the [data-close] handler. */
-    @keyframes rm-exit { from { opacity: 1; } to { opacity: 0; } }
-    .role-modal.is-closing,
-    .pipeline-detail.is-closing { animation: rm-exit var(--dur-exit) var(--ease-out) both; pointer-events: none; }
-    .role-modal-close { position: sticky; top: 1rem; float: right; margin-bottom: -36px; width: 36px; height: 36px; border-radius: 9px; border: 1px solid var(--border); background: var(--hover-1); color: var(--text-muted); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out); }
-    .role-modal-close:hover { background: var(--hover-2); color: var(--text); }
-    .role-modal-close svg { width: 16px; height: 16px; }
-    .rm-head { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1rem; padding-right: 2.6rem; }
-    .rm-mono { width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem; color: #fff;
-      background: linear-gradient(135deg, color-mix(in srgb, var(--rmc, var(--violet)) 90%, #000), color-mix(in srgb, var(--rmc, var(--violet)) 55%, #000));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 6px 16px -6px var(--rmc, var(--violet)); }
-    .rm-name { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
-    .rm-role { font-size: 0.85rem; font-weight: 600; color: var(--rmc, var(--violet)); }
-    .rm-domain { font-size: 0.95rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 1.35rem; }
-    .rm-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem 1.5rem; }
-    .rm-block h3 { font-family: "JetBrains Mono", monospace; font-size: 0.67rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.6rem; }
-    .rm-block ul { list-style: none; display: flex; flex-direction: column; gap: 0.42rem; }
-    .rm-block li { font-size: 0.83rem; color: var(--text); line-height: 1.45; padding-left: 1.05rem; position: relative; }
-    .rm-block li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 5px; height: 5px; border-radius: 50%; background: var(--text-faint); }
-    .rm-block.may li::before { background: var(--emerald); }
-    .rm-block.not li::before { background: var(--coral); }
-    @media (max-width: 540px) {
-      .rm-cols { grid-template-columns: 1fr; gap: 1.1rem; }
-      .role-modal { padding: 0.8rem; }
-      .role-modal-panel { padding: 1.5rem 1.3rem 1.6rem; }
-    }
-
-    /* ── PROOF (near-solid surfaces — perf-safe, no extra blur layers) ── */
-    .proof-apps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 0.9rem; margin-bottom: 0.9rem; }
-    .applink, .proof-card {
-      position: relative; min-width: 0; text-decoration: none; color: var(--text);
-      background: linear-gradient(180deg, var(--surface-glass), var(--surface-glass-2));
-      border: 1px solid var(--border); border-radius: var(--radius-sm);
-      box-shadow: var(--shadow-md);
-      transition: transform var(--dur-base) var(--ease-out), border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
-    }
-    .applink { display: flex; flex-direction: column; gap: 0.55rem; padding: 1.4rem; }
-    /* MU-7: this pair was one rule but is two affordances. .applink IS an <a> —
-       it keeps the lift. .proof-card is a plain div whose .proof-link child is the
-       real control, so it keeps only the passive border + shadow response. */
-    .applink:hover { transform: translateY(-3px); border-color: rgba(138,160,255,0.4); box-shadow: var(--shadow-lg); }
-    .proof-card:hover { border-color: rgba(138,160,255,0.4); box-shadow: var(--shadow-lg); }
-    .apptop { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
-    .appname { font-weight: 700; font-size: 1.0rem; letter-spacing: -0.01em; display: flex; align-items: center; gap: 0.55rem; }
-    .appdot { width: 34px; height: 34px; border-radius: 10px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; color: var(--violet);
-      background: linear-gradient(135deg, rgba(138,160,255,0.2), rgba(138,160,255,0.05)); border: 1px solid rgba(138,160,255,0.22); }
-    .appdot svg { width: 17px; height: 17px; }
-    .live-pill { display: inline-flex; align-items: center; gap: 0.4rem; font-family: "JetBrains Mono", monospace; font-size: 0.64rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ok-text);
-      padding: 0.2rem 0.55rem; border-radius: 999px; background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.28); }
-    .live-pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 0 3px rgba(52,211,153,0.16); }
-    /* TF-1 (CRIT L1-01): the Portfolio tile is a hub, not one of the live
-       projects — a modifier (not a new class) so it inherits :917's forced-colors
-       border coverage for free. Overriding border-color (not the `border`
-       shorthand) keeps the base rule's 1px/solid; dropping the ::before dot makes
-       "a status dot exists" an exclusively-liveness signal, which is what makes
-       the count reconcile at a glance. */
-    .live-pill.is-hub { color: var(--text-muted); background-color: transparent; border-color: var(--border); }
-    .live-pill.is-hub::before { display: none; }
-    .appurl { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; color: var(--text-muted); overflow-wrap: anywhere; }
-    .applink:hover .appurl { color: var(--violet); }
-    .appdesc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
-
-    .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr)); gap: 0.9rem; }
-    .proof-card { padding: 1.5rem 1.5rem; display: flex; flex-direction: column; }
-    .proof-card h3 { font-size: 1.0rem; font-weight: 700; margin-bottom: 0.8rem; letter-spacing: -0.01em; display: flex; align-items: center; gap: 0.55rem; }
-    .proof-ico { width: 30px; height: 30px; border-radius: 9px; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; color: var(--violet);
-      background: linear-gradient(135deg, rgba(138,160,255,0.2), rgba(138,160,255,0.05)); border: 1px solid rgba(138,160,255,0.22); }
-    .proof-ico svg { width: 16px; height: 16px; }
-    .proof-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; max-width: 65ch; }
-    .gov-list, .branchlist { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; margin: 0 0 0.85rem; }
-    .gov-list li { font-size: 0.84rem; color: var(--text); display: flex; gap: 0.55rem; align-items: baseline; }
-    .gov-list li b { font-family: "JetBrains Mono", monospace; font-weight: 600; color: var(--violet); font-size: 0.78rem; flex-shrink: 0; min-width: 3.1em; }
-    .branchlist li { font-family: "JetBrains Mono", monospace; font-size: 0.74rem; color: var(--text-muted); overflow-wrap: anywhere; }
-    .branchlist .pre { color: var(--coral); }
-    .proof-stat { font-size: 2.1rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1;
-      background: linear-gradient(135deg, var(--num-1), var(--num-2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-    .proof-link { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; font-weight: 600; color: var(--violet); text-decoration: none; margin-top: auto; padding-top: 0.7rem; }
-    .proof-link:hover { text-decoration: underline; }
-    .proof-link svg { width: 14px; height: 14px; }
-    .proof-pointer { text-align: center; margin-top: 1.4rem; }
-    .proof-pointer a { font-size: 0.86rem; font-weight: 600; color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 0.45rem; transition: color var(--dur-fast) var(--ease-out); }
-    .proof-pointer a:hover { color: var(--violet); }
-    .proof-pointer svg { width: 15px; height: 15px; }
-
-    /* ── FEATURES (Tier B glass) ── */
-    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 1.1rem; }
-    .feature { padding: 1.7rem; }
-    .feature-ico { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--violet); margin-bottom: 1.1rem;
-      background: linear-gradient(135deg, rgba(138,160,255,0.2), rgba(138,160,255,0.05)); border: 1px solid rgba(138,160,255,0.22); }
-    .feature-ico svg { width: 22px; height: 22px; }
-    .feature h3 { font-size: 1.08rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
-    .feature p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.58; max-width: 65ch; }
-
-    /* ── CTA (Tier A glass) ── */
-    .cta-band { max-width: 880px; margin: 2rem auto 0; padding: 0 2rem 1rem; }
-    .cta-inner { text-align: center; border-radius: 24px; padding: 4rem 2.5rem;
-      background:
-        radial-gradient(120% 160% at 50% -30%, rgba(138,160,255,0.30), transparent 60%),
-        var(--glass-fill); }
-    .cta-inner h2 { margin-bottom: 0.9rem; }
-    .cta-inner p { color: var(--text-muted); margin-bottom: 1rem; font-size: 1.05rem; max-width: 560px; margin-left: auto; margin-right: auto; }
-    .cta-inner p strong { color: var(--text); font-weight: 700; }
-    .cta-inner .cta-availability { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.5rem; max-width: 100%; font-size: 0.9rem; font-weight: 500; color: var(--text); margin: 0.5rem auto 1.7rem; padding: 0.45rem 1rem; border-radius: var(--radius-pill); background: rgba(52,211,153,0.10); border: 1px solid rgba(52,211,153,0.26); }
-    .cta-inner .cta-availability .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 0 3px rgba(52,211,153,0.16); flex-shrink: 0; }
-    .cta-inner .hero-actions { margin-top: 0.4rem; }
-
-    /* ── FOOTER ── */
-    footer { border-top: 1px solid var(--border-soft); margin-top: 5rem; padding: 2rem; }
-    .footer-inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.84rem; color: var(--text-faint); }
-    .footer-inner a { color: var(--text-muted); text-decoration: none; transition: color var(--dur-fast) var(--ease-out); }
-    .footer-inner a:hover { color: var(--violet); }
-    .footer-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.3rem; }
-    .footer-links a { display: inline-flex; align-items: center; min-height: 24px; }  /* WCAG 2.5.8 target size */
-
-    @media (max-width: 860px) {
-      .flow { flex-direction: column; gap: 0.6rem; }
-      .connector { width: 2px; height: 26px; flex: 0 0 26px; margin: 0; align-self: center;
-        background: linear-gradient(180deg, var(--rail-1), var(--rail-2), var(--rail-1)); }
-      /* The phone finally gets the narrative motion instead of a static bead
-         (L4-03). `animation-name` ONLY — the shorthand would reset the .5/1/1.5s
-         stagger's duration/iteration inherited from the desktop rule. */
-      .connector::after { animation-name: travel-v; top: 0; left: 50%; transform: translate(-50%, 0); }
-      .node { max-width: 240px; }
-    }
-    @media (max-width: 640px) {
-      nav .navlink { display: none; }
-      .wrap, section, .header-inner { padding-left: 1.25rem; padding-right: 1.25rem; }
-      .hero { padding: 4rem 1.25rem 2rem; }
-      section { padding: 4rem 1.25rem; }
-      .stat { border-right: none; border-bottom: 1px solid var(--border-soft); }
-    }
-    /* ── SIG-1 (L4-01): "one material, one breath" ───────────────────────────
-       The page used to cross themes in two populations. Flat colours eased over
-       280ms while every background-IMAGE surface snapped at t=0, so mid-flip the
-       header was already paper while the body was still ink, and the stat
-       numerals inverted in a single frame (--num-1 goes #ffffff -> #2b2825 over a
-       background 0-5% through its own tween: the page's only transient contrast
-       cliff). R6 ranked that seam the #1 craft friction on the page.
-
-       CASCADE FACT, counter-intuitive and load-bearing: the reduce block's
-       universal kill below has specificity (0,0,0); this allowlist has (0,1,1).
-       Both are !important author declarations, so THIS RULE WOULD WIN if both
-       media queries could ever match. The kill only ever applies because this
-       no-preference query removes the allowlist from the cascade under `reduce`.
-       The media query is the real gate, not a belt-and-braces companion — never
-       "simplify" by unwrapping it, and keep every rule below inside it. */
-    @media (prefers-reduced-motion: no-preference) {
-      html.theming.theming-go, html.theming.theming-go *,
-      html.theming.theming-go *::before, html.theming.theming-go *::after {
-        transition: background-color var(--dur-base) var(--ease-glide),
-                    color var(--dur-base) var(--ease-glide),
-                    border-color var(--dur-base) var(--ease-glide),
-                    /* opacity joins the list so .aurora EASES instead of popping:
-                       its radials are theme-invariant literals, so the whole
-                       full-viewport wash's flip is PURELY --aurora-opacity
-                       1 <-> 0.4. One word, largest single artifact on the page.
-                       Note this also re-times the two 520ms hover opacity
-                       transitions to 280ms for the ~300ms class window. */
-                    opacity var(--dur-base) var(--ease-glide),
-                    fill var(--dur-base) var(--ease-glide) !important;
-      }
-
-      /* Repaint gradient-painted surfaces as FLAT theme colours for the duration
-         of the flip, so they ride the eased background-color above instead of
-         snapping.
-
-         Each flat value is the gradient's MIDPOINT, never one of its stops, so
-         the hand-back to the real gradient is sub-perceptual — that is what stops
-         the pop merely RELOCATING to the class removal. The midpoint detail is
-         load-bearing and was measured, not assumed: flattening .btn-primary to
-         --accent-strong alone (its darker stop) parked the button at p=1.389 of
-         its own progress for the whole window and then visibly relaxed to 1.0 at
-         the hand-back, and flattening header to --header-1 alone (its more opaque
-         stop) ran the header 0.18 AHEAD of the body — i.e. one stop re-created a
-         smaller copy of the very seam this fix exists to remove.
-
-         Deliberately NOT flattened: .aurora / .bg-grain / the specular (the
-         opacity word above covers them); the glass rims (gold-rim-only law); and
-         h1 .grad — small-area but high-identity, and both its theme states are
-         saturated colours of similar luminance, so losing the hero's
-         violet->coral for ~300ms reads worse than its snap. */
-      html.theming .step,
-      html.theming .role,
-      html.theming .applink,
-      html.theming .proof-card,
-      html.theming .pipeline-detail { background-image: none; background-color: color-mix(in srgb, var(--surface-glass), var(--surface-glass-2)); }
-      html.theming header          { background-image: none; background-color: color-mix(in srgb, var(--header-1), var(--header-2)); }
-      html.theming .btn-primary,
-      html.theming .nav-cta,
-      html.theming .logo-mark      { background-image: none; background-color: color-mix(in srgb, var(--accent-strong-2), var(--accent-strong)); }
-      html.theming .node           { background-image: none; background-color: color-mix(in srgb, var(--node-1), var(--node-2)); }
-      html.theming .connector      { background-image: none; background-color: color-mix(in srgb, var(--rail-1), var(--rail-2)); }
-      /* The clip:text numerals cannot ride background-color — every visible pixel
-         of them IS the gradient. Hand them to `color`, which is already in the
-         allowlist and (unlike background-color) is NOT reset by the `background`
-         shorthand, so it has a real outgoing value to ease from. */
-      html.theming .stat .num,
-      html.theming .proof-stat     { background-image: none; -webkit-text-fill-color: currentColor; color: var(--num-1); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; transition: none !important; }
-      .aurora { will-change: auto; }
-      .connector::after { display: none; }  /* no stranded traveling-dot when motion is off */
-    }
-    /* Windows high-contrast / forced-colors: keep structure + focus visible */
-    @media (forced-colors: active) {
-      .glass-card, .glass-card-feature, .role, .step, .applink, .proof-card, .role-modal-panel, .stats, .badge, .live-pill, .pipeline-detail, .dots i, .connector, .btn-primary, .nav-cta { border: 1px solid CanvasText; }
-      :focus-visible { outline: 2px solid Highlight; outline-offset: 2px; }
-      .aurora, .bg-grid, .bg-grain { display: none; }
-    }
-  </style>
+  <script src="assets/site.js" defer></script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<div class="aurora aurora-1"></div>
-<div class="aurora aurora-2"></div>
-<div class="bg-grid"></div>
-<div class="bg-grain"></div>
-
-<a href="#main" class="skip-link">Skip to main content</a>
-
-<!-- HEADER -->
-<header>
-  <div class="header-inner">
-    <a href="#" class="logo"><span class="logo-mark"><span>CC</span></span> Claude&nbsp;Corp</a>
-    <nav aria-label="Primary">
-      <a href="#proof" class="navlink">Proof</a>
-      <a href="#how" class="navlink">How it works</a>
-      <a href="#team" class="navlink">The team</a>
-      <a href="#features" class="navlink">Features</a>
-      <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to light theme" aria-pressed="false">
-        <svg class="ti-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-        <svg class="ti-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-      </button>
-      <a href="https://github.com/Skypie99/Claude_Corp" class="nav-cta" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" style="width:15px;height:15px" aria-hidden="true"><path d="M12 .5C5.4.5 0 5.9 0 12.5c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 24 12.5C24 5.9 18.6.5 12 .5z"/></svg>
-        GitHub<span class="vh"> (opens in new tab)</span>
-      </a>
+<header class="site-head" id="top">
+  <div class="wrap head-row">
+    <a class="wordmark" href="#top">
+      <span class="wordmark-name">Claude Corp</span>
+      <span class="wordmark-sub">A SkyPi Studio system</span>
+    </a>
+    <button class="icon-button menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-nav">
+      <span class="icon-button-text">Menu</span>
+      <span class="ring" aria-hidden="true"><svg viewBox="0 0 16 16"><path class="menu-bars" d="M4 5.5h8M4 8h8M4 10.5h8" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path class="menu-close" d="M5 5l6 6M11 5l-6 6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>
+    </button>
+    <nav class="primary" id="primary-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#work">The work</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#rights">Decision rights</a></li>
+        <li><a href="#limits">Limits</a></li>
+        <li><a class="ext" href="https://skypistudio.com/work/claude-corp/" target="_blank" rel="noopener">Case study<span class="visually-hidden"> (opens in new tab)</span></a></li>
+      </ul>
     </nav>
+    <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme">
+      <span class="icon-button-text" data-theme-label>Dark</span>
+      <span class="ring" aria-hidden="true"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor"/></svg></span>
+    </button>
   </div>
 </header>
 
-<main id="main">
+<main id="main" tabindex="-1">
 
-<!-- HERO -->
-<div class="hero">
-  <div class="badge"><span class="dot"></span> Active &middot; governed by a living Constitution</div>
-  <h1>A <span class="grad">15-role AI team</span> that builds software — governed, not unattended</h1>
-  <p class="hero-desc">
-    Claude Corp is a multi-agent engineering system built on Anthropic's Claude. Specialized AI roles plan,
-    build, test, and review across a portfolio of projects inside explicit decision rights and risk gates —
-    production changes are gated by explicit release rules, all governed by a living Constitution.
-  </p>
-  <p class="hero-byline">Designed and run by Sky Halisky · Product &amp; Implementation</p>
-  <div class="hero-actions">
-    <a href="https://skypistudio.com" class="btn btn-primary" target="_blank" rel="noopener">
-      See the work<span class="vh"> (opens in new tab)</span>
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-    </a>
-    <a href="#team" class="btn btn-ghost">Meet the team <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-  </div>
+  <!-- OPENING -->
+  <section class="hero" aria-labelledby="h1">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="label kicker"><span class="dot" aria-hidden="true"></span>Designed and operated by Skyler Halisky</p>
+        <h1 id="h1">Fifteen AI roles work in parallel. <span class="accent">One person decides what ships.</span></h1>
 
-  <div class="stats glass-card">
-    <div class="stat"><div class="num">15</div><div class="lbl">Specialized roles</div></div>
-    <div class="stat"><div class="num">7</div><div class="lbl">Design-Compiler layers</div></div>
-    <div class="stat"><div class="num">5</div><div class="lbl">Projects · 3 shipped to the public</div></div>
-    <div class="stat"><div class="num">Policy</div><div class="lbl">Living Constitution</div></div>
-  </div>
-
-  <div class="proof-pointer">
-    <a href="#proof">Real, versioned, and live — see the evidence <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="m5 12 7 7 7-7"/></svg></a>
-  </div>
-</div>
-
-<!-- ORCHESTRATION PIPELINE -->
-<section class="pipeline-wrap" aria-labelledby="pipeline-h">
-  <div class="pipeline glass-card-feature">
-    <h2 class="pipeline-cap" id="pipeline-h"><span class="ln"></span> The orchestration pipeline <span class="ln r"></span></h2>
-    <div class="flow">
-      <div class="stage">
-        <div class="node">
-          <div class="nicon ni-sky"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
-          <div class="ntitle">Sky</div><div class="nsub">sets intent</div>
-        </div>
-        <div class="slabel">a directive</div>
-      </div>
-      <div class="connector c1"></div>
-      <div class="stage">
-        <div class="node">
-          <div class="nicon ni-morgan"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div>
-          <div class="ntitle">Morgan</div><div class="nsub">plans &amp; routes</div>
-        </div>
-        <div class="slabel">dependency graph</div>
-      </div>
-      <div class="connector c2"></div>
-      <div class="stage">
-        <div class="node">
-          <div class="nicon ni-roles">
-            <div class="dots">
-              <i></i><i></i><i></i><i></i><i></i>
-              <i></i><i></i><i></i><i></i><i></i>
-              <i></i><i></i><i></i><i></i><i></i>
-            </div>
+        <figure class="strip-well">
+          <div class="strip-plate">
+            <figcaption class="strip-head">
+              <span class="label">Concept diagram</span>
+              <span class="visually-hidden">: Sky's brief goes to Morgan, who routes it into fifteen separate role branches. The branches converge on one review, then Sky approves the merge to main.</span>
+            </figcaption>
+            <!-- atlas:strip --><svg class="atlas atlas-strip" viewBox="0 0 360 100" aria-hidden="true" focusable="false"><path d="M 14 50 H 26" class="glyph-rule" stroke-width="1.2" fill="none"/><path d="M 43 50 C 77 50 78 10.8 112 10.8 H 236 C 256 10.8 252 50 272 50" class="glyph-accent branch" pathLength="1" style="--i:0" stroke-width="1.25" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 43 50 C 77 50 78 16.4 112 16.4 H 236 C 256 16.4 252 50 272 50" class="glyph-ink branch" pathLength="1" style="--i:1" stroke-width="1.25" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 43 50 C 77 50 78 22 112 22 H 236 C 256 22 252 50 272 50" class="glyph-muted branch" pathLength="1" style="--i:2" stroke-width="1.25" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 43 50 C 77 50 78 27.6 112 27.6 H 236 C 256 27.6 252 50 272 50" class="glyph-accent branch" pathLength="1" style="--i:3" stroke-width="1.25" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 43 50 C 77 50 78 33.2 112 33.2 H 236 C 256 33.2 252 50 272 50" class="glyph-ink branch" pathLength="1" style="--i:4" stroke-width="1.25" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 43 50 C 77 50 78 38.8 112 38.8 H 236 C 256 38.8 252 50 272 50" class="glyph-muted branch" pathLength="1" style="--i:5" stroke-width="1.25" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 43 50 C 77 50 78 44.4 112 44.4 H 236 C 256 44.4 252 50 272 50" class="glyph-accent branch" pathLength="1" style="--i:6" stroke-width="1.25" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 43 50 C 77 50 78 50 112 50 H 236 C 256 50 252 50 272 50" class="glyph-ink branch" pathLength="1" style="--i:7" stroke-width="1.25" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 43 50 C 77 50 78 55.6 112 55.6 H 236 C 256 55.6 252 50 272 50" class="glyph-muted branch" pathLength="1" style="--i:8" stroke-width="1.25" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 43 50 C 77 50 78 61.2 112 61.2 H 236 C 256 61.2 252 50 272 50" class="glyph-accent branch" pathLength="1" style="--i:9" stroke-width="1.25" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 43 50 C 77 50 78 66.8 112 66.8 H 236 C 256 66.8 252 50 272 50" class="glyph-ink branch" pathLength="1" style="--i:10" stroke-width="1.25" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 43 50 C 77 50 78 72.4 112 72.4 H 236 C 256 72.4 252 50 272 50" class="glyph-muted branch" pathLength="1" style="--i:11" stroke-width="1.25" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 43 50 C 77 50 78 78 112 78 H 236 C 256 78 252 50 272 50" class="glyph-accent branch" pathLength="1" style="--i:12" stroke-width="1.25" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 43 50 C 77 50 78 83.6 112 83.6 H 236 C 256 83.6 252 50 272 50" class="glyph-ink branch" pathLength="1" style="--i:13" stroke-width="1.25" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 43 50 C 77 50 78 89.2 112 89.2 H 236 C 256 89.2 252 50 272 50" class="glyph-muted branch" pathLength="1" style="--i:14" stroke-width="1.25" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="174" cy="10.8" r="1.9" class="fill-accent node-dot"/><circle cx="174" cy="16.4" r="1.9" class="fill-ink node-dot"/><circle cx="174" cy="22" r="1.9" class="fill-muted node-dot"/><circle cx="174" cy="27.6" r="1.9" class="fill-accent node-dot"/><circle cx="174" cy="33.2" r="1.9" class="fill-ink node-dot"/><circle cx="174" cy="38.8" r="1.9" class="fill-muted node-dot"/><circle cx="174" cy="44.4" r="1.9" class="fill-accent node-dot"/><circle cx="174" cy="50" r="1.9" class="fill-ink node-dot"/><circle cx="174" cy="55.6" r="1.9" class="fill-muted node-dot"/><circle cx="174" cy="61.2" r="1.9" class="fill-accent node-dot"/><circle cx="174" cy="66.8" r="1.9" class="fill-ink node-dot"/><circle cx="174" cy="72.4" r="1.9" class="fill-muted node-dot"/><circle cx="174" cy="78" r="1.9" class="fill-accent node-dot"/><circle cx="174" cy="83.6" r="1.9" class="fill-ink node-dot"/><circle cx="174" cy="89.2" r="1.9" class="fill-muted node-dot"/><circle cx="8" cy="50" r="5" class="fill-paper glyph-ink" stroke-width="1.7"/><circle cx="8" cy="50" r="1.7" class="fill-accent"/><circle cx="34" cy="50" r="7" class="fill-paper glyph-ink" stroke-width="2"/><circle cx="34" cy="50" r="2.2" class="fill-accent"/><rect x="272" y="39" width="22" height="22" rx="3" class="fill-shade glyph-accent" stroke-width="1.3"/><path d="M 277 50 L 281.5 54.5 L 289.5 44.5" class="glyph-accent" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 299 50 H 316" class="glyph-accent" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M 311.5 46 L 316 50 L 311.5 54" class="glyph-accent" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="327" cy="50" r="7" class="fill-paper glyph-ink" stroke-width="2"/><circle cx="327" cy="50" r="2.2" class="fill-accent"/><path d="M 335 50 H 348" class="glyph-ink" stroke-width="1.2" fill="none"/><circle cx="353" cy="50" r="4.5" class="fill-ink"/></svg><!-- /atlas:strip -->
+            <p class="strip-labels" aria-hidden="true"><span>Morgan</span><span>15 roles</span><span>Sky merges</span></p>
           </div>
-          <div class="ntitle">15 Roles</div><div class="nsub">build in parallel</div>
+        </figure>
+
+        <p class="standfirst">Claude Corp is a governed multi-agent development system built at SkyPi Studio. Specialized Claude Code roles plan, build and review on separate branches under a written Constitution. Review gates check the work. Sky holds the merge.</p>
+        <div class="actions">
+          <a class="pill is-solid" href="#work"><span class="dot" aria-hidden="true"></span>See the evidence</a>
+          <a class="textlink ext" href="https://skypistudio.com/work/claude-corp/" target="_blank" rel="noopener">Read the case study<span class="visually-hidden"> (opens in new tab)</span></a>
         </div>
-        <div class="slabel">scoped branches</div>
+        <dl class="ledger">
+          <div><dt>Operator</dt><dd>Skyler Halisky (Sky), SkyPi Studio. Designer and operator, AI-assisted.</dd></div>
+          <div><dt>Status</dt><dd>In active use, on Sky's own projects only.</dd></div>
+          <div><dt>Evidence</dt><dd><a class="ext" href="https://apps.apple.com/app/flagstone-accessibility-map/id6774709116" target="_blank" rel="noopener">Flagstone on the App Store<span class="visually-hidden"> (opens in new tab)</span></a> · <a class="ext" href="https://prompts.skypistudio.com" target="_blank" rel="noopener">Prompt Library<span class="visually-hidden"> (opens in new tab)</span></a> · <a class="ext" href="https://ghostcode.skypistudio.com" target="_blank" rel="noopener">Ghost Code<span class="visually-hidden"> (opens in new tab)</span></a></dd></div>
+        </dl>
       </div>
-      <div class="connector c3"></div>
-      <div class="stage">
-        <div class="node">
-          <div class="nicon ni-safety"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg></div>
-          <div class="ntitle">Safety</div><div class="nsub">7-layer compiler</div>
+
+      <div class="hero-art">
+        <div class="well">
+          <figure class="plate" aria-labelledby="atlas-title atlas-caption">
+            <div class="plate-head">
+              <span class="label" id="atlas-title">Claude Corp / Branch Atlas</span>
+              <span class="label plate-note">Concept diagram · not a capture</span>
+            </div>
+            <ol class="atlas-notes">
+              <li class="note n1"><span class="note-num">01</span> Sky writes the brief and the acceptance gates.</li>
+              <li class="note n2"><span class="note-num">02</span> Morgan plans and routes in dependency order.</li>
+              <li class="note n3"><span class="note-num">03</span> Fifteen roles. One branch each, never on main.</li>
+              <li class="note n4"><span class="note-num">04</span> Review: tests, accessibility, privacy, design compile.</li>
+              <li class="note n5"><span class="note-num">05</span> Sky approves the merge to main.</li>
+              <li class="atlas-art" aria-hidden="true"><!-- atlas:wide --><svg class="atlas atlas-wide" viewBox="0 0 800 290" aria-hidden="true" focusable="false"><path d="M 34 0 V 104" class="glyph-rule" stroke-width="1" fill="none"/><path d="M 400 0 V 11" class="glyph-rule" stroke-width="1" fill="none"/><path d="M 712 0 V 101" class="glyph-rule" stroke-width="1" fill="none"/><path d="M 116 275 V 290" class="glyph-rule" stroke-width="1" fill="none"/><path d="M 636 275 V 290" class="glyph-rule" stroke-width="1" fill="none"/><path d="M 43 118 H 104" class="glyph-rule" stroke-width="1.4" fill="none"/><path d="M 128 118 C 200 118 202 20 274 20 H 526 C 588 20 552 118 614 118" class="glyph-accent branch" pathLength="1" style="--i:0" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 34 274 34 H 526 C 588 34 552 118 614 118" class="glyph-ink branch" pathLength="1" style="--i:1" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 48 274 48 H 526 C 588 48 552 118 614 118" class="glyph-muted branch" pathLength="1" style="--i:2" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 62 274 62 H 526 C 588 62 552 118 614 118" class="glyph-accent branch" pathLength="1" style="--i:3" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 76 274 76 H 526 C 588 76 552 118 614 118" class="glyph-ink branch" pathLength="1" style="--i:4" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 90 274 90 H 526 C 588 90 552 118 614 118" class="glyph-muted branch" pathLength="1" style="--i:5" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 104 274 104 H 526 C 588 104 552 118 614 118" class="glyph-accent branch" pathLength="1" style="--i:6" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 118 274 118 H 526 C 588 118 552 118 614 118" class="glyph-ink branch" pathLength="1" style="--i:7" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 132 274 132 H 526 C 588 132 552 118 614 118" class="glyph-muted branch" pathLength="1" style="--i:8" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 146 274 146 H 526 C 588 146 552 118 614 118" class="glyph-accent branch" pathLength="1" style="--i:9" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 160 274 160 H 526 C 588 160 552 118 614 118" class="glyph-ink branch" pathLength="1" style="--i:10" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 174 274 174 H 526 C 588 174 552 118 614 118" class="glyph-muted branch" pathLength="1" style="--i:11" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 188 274 188 H 526 C 588 188 552 118 614 118" class="glyph-accent branch" pathLength="1" style="--i:12" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 202 274 202 H 526 C 588 202 552 118 614 118" class="glyph-ink branch" pathLength="1" style="--i:13" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 216 274 216 H 526 C 588 216 552 118 614 118" class="glyph-muted branch" pathLength="1" style="--i:14" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="400" cy="20" r="3.4" class="fill-accent node-dot"/><circle cx="400" cy="34" r="3.4" class="fill-ink node-dot"/><circle cx="400" cy="48" r="3.4" class="fill-muted node-dot"/><circle cx="400" cy="62" r="3.4" class="fill-accent node-dot"/><circle cx="400" cy="76" r="3.4" class="fill-ink node-dot"/><circle cx="400" cy="90" r="3.4" class="fill-muted node-dot"/><circle cx="400" cy="104" r="3.4" class="fill-accent node-dot"/><circle cx="400" cy="118" r="3.4" class="fill-ink node-dot"/><circle cx="400" cy="132" r="3.4" class="fill-muted node-dot"/><circle cx="400" cy="146" r="3.4" class="fill-accent node-dot"/><circle cx="400" cy="160" r="3.4" class="fill-ink node-dot"/><circle cx="400" cy="174" r="3.4" class="fill-muted node-dot"/><circle cx="400" cy="188" r="3.4" class="fill-accent node-dot"/><circle cx="400" cy="202" r="3.4" class="fill-ink node-dot"/><circle cx="400" cy="216" r="3.4" class="fill-muted node-dot"/><circle cx="34" cy="118" r="8" class="fill-paper glyph-ink" stroke-width="2.5"/><circle cx="34" cy="118" r="2.6" class="fill-accent"/><circle cx="116" cy="118" r="11" class="fill-paper glyph-ink" stroke-width="3"/><circle cx="116" cy="118" r="3.3" class="fill-accent"/><rect x="614" y="96" width="44" height="44" rx="4" class="fill-shade glyph-accent" stroke-width="1.6"/><path d="M 624 118 L 633 127 L 649 107" class="glyph-accent" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 668 118 H 695" class="glyph-accent" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M 687 112 L 695 118 L 687 124" class="glyph-accent" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="712" cy="118" r="11" class="fill-paper glyph-ink" stroke-width="3"/><circle cx="712" cy="118" r="3.3" class="fill-accent"/><path d="M 725 118 H 763" class="glyph-ink" stroke-width="1.6" fill="none"/><circle cx="772" cy="118" r="7" class="fill-ink"/><text x="34" y="266" font-size="25" text-anchor="middle" class="t-ink">Sky</text><text x="116" y="266" font-size="27" text-anchor="middle" class="t-ink">Morgan</text><text x="400" y="266" font-size="31" text-anchor="middle" class="t-ink">15 roles</text><text x="636" y="266" font-size="27" text-anchor="middle" class="t-ink">Review</text><text x="712" y="266" font-size="27" text-anchor="middle" class="t-ink">Sky</text><text x="772" y="266" font-size="25" text-anchor="middle" class="t-ink">main</text></svg><!-- /atlas:wide --></li>
+            </ol>
+            <figcaption class="plate-caption" id="atlas-caption">Fifteen separate branches. One review. One human merge.</figcaption>
+          </figure>
         </div>
-        <div class="slabel">a11y · privacy · perf</div>
-      </div>
-      <div class="connector c4"></div>
-      <div class="stage">
-        <div class="node">
-          <div class="nicon ni-main"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg></div>
-          <div class="ntitle">main</div><div class="nsub">Sky merges</div>
-        </div>
-        <div class="slabel">human approval</div>
       </div>
     </div>
-    <p class="pipeline-hint"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg> Select a stage to follow a task from intent to merge.</p>
-    <div class="pipeline-detail" id="pipeline-detail" role="region" hidden></div>
-    <div class="vh" id="pipeline-announcer" aria-live="polite"></div>
-  </div>
-</section>
+  </section>
 
-<!-- PROOF -->
-<section id="proof" aria-labelledby="proof-h">
-  <div class="sec-head center">
-    <div class="eyebrow">Proof, not promises</div>
-    <h2 id="proof-h">A real system, with receipts</h2>
-    <p class="sec-desc">Extraordinary claims deserve evidence. The public summary is here: open the live apps, inspect the source, and read how the system is governed. The full Constitution and role files are private.</p>
-  </div>
+  <div class="spine">
 
-  <!-- live apps you can open -->
-  <div class="proof-apps">
-    <a class="applink" href="https://apps.apple.com/app/flagstone-accessibility-map/id6774709116" target="_blank" rel="noopener">
-      <div class="apptop">
-        <span class="appname"><span class="appdot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span> Flagstone<span class="vh"> (opens in new tab)</span></span>
-        <span class="live-pill">App Store</span>
+  <!-- WHAT IT HAS PRODUCED -->
+  <section class="section" id="work" aria-labelledby="h-work">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="label">The work</p>
+        <h2 id="h-work">What it has produced</h2>
+        <p class="sec-standfirst">Three public apps, plus the portfolio that presents them. Each was planned, built and reviewed through this system.</p>
+      </header>
+      <div class="gallery">
+        <article class="entry reveal" aria-labelledby="h-flagstone">
+          <p class="label">Entry 01 · iOS app</p>
+          <h3 id="h-flagstone">Flagstone</h3>
+          <p class="entry-meta">On the App Store · US and Canada · Released September 2026</p>
+          <p class="entry-body">A community map for reporting and verifying accessibility barriers. Built and tested against WCAG 2.2 AA, with an accessibility check in continuous integration.</p>
+          <ul class="routes">
+            <li><a class="ext" href="https://apps.apple.com/app/flagstone-accessibility-map/id6774709116" target="_blank" rel="noopener">App Store listing<span class="visually-hidden"> for Flagstone (opens in new tab)</span></a></li>
+            <li><a class="ext" href="https://flagstone.skypistudio.com" target="_blank" rel="noopener">flagstone.skypistudio.com<span class="visually-hidden"> (opens in new tab)</span></a></li>
+            <li><a class="ext" href="https://github.com/Skypie99/AccessMap/commits/main" target="_blank" rel="noopener">Commit history<span class="visually-hidden"> for Flagstone, in its AccessMap repository (opens in new tab)</span></a></li>
+          </ul>
+        </article>
+        <article class="entry reveal" aria-labelledby="h-prompts">
+          <p class="label">Entry 02 · Web app</p>
+          <h3 id="h-prompts">Prompt Library</h3>
+          <p class="entry-meta">Live at prompts.skypistudio.com</p>
+          <p class="entry-body">Prompts, favorites and settings live in the browser, with no backend of Sky's. Built against WCAG 2.2 AA, with documented keyboard shortcuts; typecheck, tests and lint run on every pull request.</p>
+          <ul class="routes">
+            <li><a class="ext" href="https://prompts.skypistudio.com" target="_blank" rel="noopener">Open the app<span class="visually-hidden">: Prompt Library (opens in new tab)</span></a></li>
+            <li><a class="ext" href="https://github.com/Skypie99/Prompt_Library" target="_blank" rel="noopener">Source on GitHub<span class="visually-hidden"> for Prompt Library (opens in new tab)</span></a></li>
+          </ul>
+        </article>
+        <article class="entry reveal" aria-labelledby="h-ghost">
+          <p class="label">Entry 03 · Web game</p>
+          <h3 id="h-ghost">Ghost Code</h3>
+          <p class="entry-meta">Live at ghostcode.skypistudio.com</p>
+          <p class="entry-body">A terminal-command trainer and Sky's first real build: 56 cards across Claude Code, the macOS terminal and Git, with no dependencies. Its design-compile reports are public in its repository.</p>
+          <ul class="routes">
+            <li><a class="ext" href="https://ghostcode.skypistudio.com" target="_blank" rel="noopener">Open the game<span class="visually-hidden">: Ghost Code (opens in new tab)</span></a></li>
+            <li><a class="ext" href="https://github.com/Skypie99/ghost-code" target="_blank" rel="noopener">Source on GitHub<span class="visually-hidden"> for Ghost Code (opens in new tab)</span></a></li>
+            <li><a class="ext" href="https://github.com/Skypie99/ghost-code/tree/main/qa-reports" target="_blank" rel="noopener">Review reports<span class="visually-hidden"> for Ghost Code (opens in new tab)</span></a></li>
+          </ul>
+        </article>
+        <div class="entry entry-note reveal">
+          <h3 class="label" id="h-portfolio">And the portfolio</h3>
+          <p class="entry-body">The SkyPi Studio portfolio and its Claude Corp case study were built through the same roles and gates.</p>
+          <ul class="routes"><li><a class="ext" href="https://skypistudio.com" target="_blank" rel="noopener">skypistudio.com<span class="visually-hidden"> (opens in new tab)</span></a></li></ul>
+        </div>
       </div>
-      <div class="appurl">apps.apple.com · iOS 4.1.1</div>
-      <div class="appdesc">A community map for reporting and verifying accessibility barriers. Free, US and Canada, released September 2026.</div>
-    </a>
-    <a class="applink" href="https://skypistudio.com" target="_blank" rel="noopener">
-      <div class="apptop">
-        <span class="appname"><span class="appdot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h18"/><path d="M9 21V9"/><rect width="18" height="18" x="3" y="3" rx="2"/></svg></span> Portfolio<span class="vh"> (opens in new tab)</span></span>
-        <span class="live-pill is-hub">Hub</span>
-      </div>
-      <div class="appurl">skypistudio.com</div>
-      <div class="appdesc">Sky's accessibility-first portfolio — the hub these projects link from.</div>
-    </a>
-    <a class="applink" href="https://prompts.skypistudio.com" target="_blank" rel="noopener">
-      <div class="apptop">
-        <span class="appname"><span class="appdot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></span> Prompt Library<span class="vh"> (opens in new tab)</span></span>
-        <span class="live-pill">Live</span>
-      </div>
-      <div class="appurl">prompts.skypistudio.com</div>
-      <div class="appdesc">A Next.js app the system built, tested, and shipped under WCAG&nbsp;AA.</div>
-    </a>
-    <a class="applink" href="https://ghostcode.skypistudio.com" target="_blank" rel="noopener">
-      <div class="apptop">
-        <span class="appname"><span class="appdot"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg></span> Ghost Code<span class="vh"> (opens in new tab)</span></span>
-        <span class="live-pill">Live</span>
-      </div>
-      <div class="appurl">ghostcode.skypistudio.com</div>
-      <div class="appdesc">A full redesign that passed the 7-layer Design Compiler gate.</div>
-    </a>
-  </div>
+      <p class="footnote reveal">Entries are typeset from public listings, not screenshots. The links open the real thing.</p>
+    </div>
+  </section>
 
-  <!-- evidence cards -->
-  <div class="proof-grid">
-    <div class="proof-card">
-      <h3><span class="proof-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></svg></span> Written governance</h3>
-      <ul class="gov-list">
-        <li><b>policy</b> Living Constitution — review and release rules</li>
-        <li><b>OS</b> Agent OS runtime overlay, versioned per release</li>
-        <li><b>order</b> Sky → Constitution → roles → skills</li>
+  <!-- HOW A CYCLE RUNS -->
+  <section class="section" id="how" aria-labelledby="h-how">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="label">The system</p>
+        <h2 id="h-how">How a cycle runs</h2>
+        <p class="sec-standfirst">The drawing, unrolled: five stations from a directive to a merge.</p>
+      </header>
+      <ol class="stations">
+        <li class="station reveal">
+          <span class="station-num" aria-hidden="true">01</span>
+          <div class="station-body">
+            <h3><span class="visually-hidden">01. </span>Directive</h3>
+            <p>Sky writes the brief and the acceptance gates a cycle will be judged against. The authority order is fixed: Sky's intent, then the Constitution, then each role's file, then its skills.</p>
+            <p class="station-ref">Held by Sky</p>
+          </div>
+        </li>
+        <li class="station reveal">
+          <span class="station-num" aria-hidden="true">02</span>
+          <div class="station-body">
+            <h3><span class="visually-hidden">02. </span>Routing</h3>
+            <p>Morgan, the project-manager role, reads the backlog, open branches and QA reports, then routes work to the right lanes in dependency order. Morgan is also the only role allowed to brief Sky.</p>
+            <p class="station-ref">Morgan · one voice to Sky</p>
+          </div>
+        </li>
+        <li class="station reveal">
+          <span class="station-num" aria-hidden="true">03</span>
+          <div class="station-body">
+            <h3><span class="visually-hidden">03. </span>Fifteen branches</h3>
+            <p>Each role works alone on its own role-prefixed branch, never on main. Before starting, it checks for another role's open branch or an existing fix, and writes a conflict report instead of duplicating the work.</p>
+            <dl class="lanes">
+              <div><dt>Design and frontend</dt><dd>Dani, creative direction · Shamus, features · Alex, accessibility</dd></div>
+              <div><dt>Backend and data</dt><dd>Dana, backend · Peter, performance</dd></div>
+              <div><dt>Safety, quality and infrastructure</dt><dd>Steve, safety · Gary, QA · Rory, DevOps</dd></div>
+              <div><dt>Product, research and policy</dt><dd>Quinn, product · Riley, user research · Jordan, privacy · Casey, community · Will, writing</dd></div>
+              <div><dt>Coordination</dt><dd>Morgan, project management · Orion, recovery</dd></div>
+            </dl>
+            <p class="station-ref">Role names are role names, not people</p>
+          </div>
+        </li>
+        <li class="station reveal">
+          <span class="station-num" aria-hidden="true">04</span>
+          <div class="station-body">
+            <h3><span class="visually-hidden">04. </span>Review</h3>
+            <p>Written review gates call for tests, accessibility, privacy and performance checks before anything is proposed for merge, and a seven-layer design-compile review before a UI change counts as done. Orion, the recovery role, resumes failed work from its last checkpoint and escalates after three attempts instead of looping.</p>
+            <p class="station-ref">Tests · accessibility · privacy · design compile</p>
+          </div>
+        </li>
+        <li class="station reveal">
+          <span class="station-num" aria-hidden="true">05</span>
+          <div class="station-body">
+            <h3><span class="visually-hidden">05. </span>Release</h3>
+            <p>Merges to main need Sky's sign-off. The written rules allow one narrow exception: a single role may merge and release one project, the Prompt Library, and only when every check on a written list passes. Sky reviews that grant quarterly and can revoke it.</p>
+            <p class="station-ref">Held by Sky</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- DECISION RIGHTS -->
+  <section class="section section-panel" id="rights" aria-labelledby="h-rights">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="label">Decision rights</p>
+        <h2 id="h-rights">Who decides what</h2>
+        <p class="sec-standfirst">What the roles do, what stays with Sky, and where the written rules stop.</p>
+      </header>
+      <div class="rights-card reveal">
+        <table class="rights" role="table">
+          <caption class="visually-hidden">Decision rights: each decision, who holds it, what the written rules say, and the basis for the claim</caption>
+          <thead role="rowgroup">
+            <tr role="row"><th scope="col" role="columnheader">Decision</th><th scope="col" role="columnheader">Held by</th><th scope="col" role="columnheader">What the rules say</th><th scope="col" role="columnheader">Basis</th></tr>
+          </thead>
+          <tbody role="rowgroup">
+            <tr role="row">
+              <th scope="row" role="rowheader">Intent and rules</th>
+              <td class="who" role="cell">Sky</td>
+              <td role="cell">Sky writes the Constitution, each role's file, the brief and the acceptance gates a cycle is judged against. Only Sky amends the Constitution; roles may propose changes.</td>
+              <td class="basis" role="cell"><span class="cell-label" aria-hidden="true">Basis: </span>Written rule</td>
+            </tr>
+            <tr role="row">
+              <th scope="row" role="rowheader">Build and investigate</th>
+              <td class="who" role="cell">The roles</td>
+              <td role="cell">Each of the fifteen roles works in its own lane and on its own branch, never on main: planning, building, testing, diagnosing and documenting. Before starting, a role checks for another role's open branch or an existing fix.</td>
+              <td class="basis" role="cell"><span class="cell-label" aria-hidden="true">Basis: </span>Written rule, seen in practice</td>
+            </tr>
+            <tr role="row">
+              <th scope="row" role="rowheader">Review and prepare</th>
+              <td class="who" role="cell">The roles, routed by Morgan</td>
+              <td role="cell">Tests, accessibility, privacy and performance checks come before a change is proposed, and a UI change goes through the seven-layer design-compile review. Work arrives as reviewable diffs, migration files and reports. Only Morgan briefs Sky.</td>
+              <td class="basis" role="cell"><span class="cell-label" aria-hidden="true">Basis: </span>Written policy, manual review</td>
+            </tr>
+            <tr role="row">
+              <th scope="row" role="rowheader">Escalate and authorize</th>
+              <td class="who" role="cell">Sky</td>
+              <td role="cell">Conflicts between roles, privacy-sensitive changes, anything involving credentials and anything irreversible come back to Sky, who reads the escalations and the reports of work not done, not only the successes. A role that is unsure is expected to stop and report, not decide.</td>
+              <td class="basis" role="cell"><span class="cell-label" aria-hidden="true">Basis: </span>Written rule</td>
+            </tr>
+            <tr role="row">
+              <th scope="row" role="rowheader">Merge and release</th>
+              <td class="who" role="cell">Sky</td>
+              <td role="cell">Merging to main is Sky's. The written rules allow one narrow exception: one role may merge and release one project, the Prompt Library, only when every listed check passes, including proof from the built site and a recorded rollback. Sky reviews that grant quarterly and can revoke it.</td>
+              <td class="basis" role="cell"><span class="cell-label" aria-hidden="true">Basis: </span>Written rule</td>
+            </tr>
+            <tr role="row">
+              <th scope="row" role="rowheader">Deploy and production</th>
+              <td class="who" role="cell">Sky</td>
+              <td role="cell">No role deploys, submits to an app store, applies a live database change or sends anything outside the repository on its own. The exception above covers that one project's release, and nothing else.</td>
+              <td class="basis" role="cell"><span class="cell-label" aria-hidden="true">Basis: </span>Written rule</td>
+            </tr>
+            <tr role="row">
+              <th scope="row" role="rowheader">Unattended work</th>
+              <td class="who" role="cell">The roles, on stricter rules</td>
+              <td role="cell">Scheduled cycles may make at most one reversible change each, send nothing outside the repository, and stay audit-only on the products by default. A single sentinel file halts all of it.</td>
+              <td class="basis" role="cell"><span class="cell-label" aria-hidden="true">Basis: </span>Written rule</td>
+            </tr>
+            <tr role="row">
+              <th scope="row" role="rowheader">Enforcement</th>
+              <td class="who" role="cell">Prompt-level</td>
+              <td role="cell">These rules are instructions the roles follow, not permissions a platform enforces. Where a project has automated checks, they belong to that project and are verified there.</td>
+              <td class="basis" role="cell"><span class="cell-label" aria-hidden="true">Basis: </span>Known limit</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <figure class="pull reveal">
+        <blockquote><p>The flexible version, letting each agent judge when to escalate, is the one I rejected every time, because judgement is the thing I cannot verify at scale.</p></blockquote>
+        <figcaption>Skyler Halisky, from the <a class="ext" href="https://skypistudio.com/work/claude-corp/" target="_blank" rel="noopener">case study<span class="visually-hidden"> (opens in new tab)</span></a></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- CREDIBILITY AND LIMITS -->
+  <section class="section" id="limits" aria-labelledby="h-limits">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="label">Credibility and limits</p>
+        <h2 id="h-limits">Why it can be trusted, and how far</h2>
+      </header>
+      <div class="trust-grid">
+        <ul class="chain reveal" aria-label="Kinds of evidence">
+          <li><h3 class="label">Written rules</h3><p>A written Constitution and fifteen role files set the authority order and the boundaries above. They are private; this page is a summary.</p></li>
+          <li><h3 class="label">In the source</h3><p>The shipped projects' code, tests and commit histories are public, and each project's automated checks live in its own repository.</p></li>
+          <li><h3 class="label">Seen in practice</h3><p>Roles write conflict reports instead of duplicating work. Reconciliation, not trust, once caught a session that confidently reported a push to a main that was still behind.</p></li>
+          <li><h3 class="label">Human approval</h3><p>Merges, releases, escalations and anything irreversible wait for Sky, apart from the one written exception for the Prompt Library.</p></li>
+        </ul>
+        <div class="limits reveal">
+          <h3 class="limits-lead">The honest limit: these fences are prompt-level, not sandbox-level.</h3>
+          <ul>
+            <li>The Constitution and role files are private. The public summary is a summary.</li>
+            <li>Claude Corp's own gates are written policy and manual review, not continuous-integration enforcement.</li>
+            <li>The roles are not people and are not always running. They work when Sky invokes them, or on bounded scheduled cycles.</li>
+            <li>Anything that depends on a real device, Safari or a screen reader still needs a person to check it.</li>
+            <li>The drawings on this page explain the operating model. They are not captures of live activity.</li>
+            <li>In use on Sky's own projects only. Some of the overhead does not pay for itself.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROUTES -->
+  <section class="section" id="next" aria-labelledby="h-next">
+    <div class="wrap">
+      <header class="sec-head reveal">
+        <p class="label">Routes</p>
+        <h2 id="h-next">Where to look next</h2>
+      </header>
+      <ul class="routes-list reveal">
+        <li><p class="route-name"><a class="ext" href="https://skypistudio.com/work/claude-corp/" target="_blank" rel="noopener">Case study on SkyPi Studio<span class="visually-hidden"> (opens in new tab)</span></a></p><p>The long-form account: problem, approach, what shipped, the limit, and a reflection.</p></li>
+        <li><p class="route-name"><a class="ext" href="https://skypistudio.com" target="_blank" rel="noopener">SkyPi Studio<span class="visually-hidden"> (opens in new tab)</span></a></p><p>Skyler Halisky's portfolio and the hub these projects link from.</p></li>
+        <li><p class="route-name"><a class="ext" href="https://github.com/Skypie99/Claude_Corp" target="_blank" rel="noopener">Public summary and page source<span class="visually-hidden"> (opens in new tab)</span></a></p><p>The repository behind this page. The full Constitution is not published.</p></li>
+        <li><p class="route-name"><a class="ext" href="https://apps.apple.com/app/flagstone-accessibility-map/id6774709116" target="_blank" rel="noopener">Flagstone on the App Store<span class="visually-hidden"> (opens in new tab)</span></a></p><p>Free, US and Canada.</p></li>
+        <li><p class="route-name"><a class="ext" href="https://prompts.skypistudio.com" target="_blank" rel="noopener">Prompt Library<span class="visually-hidden"> (opens in new tab)</span></a></p><p>Open the app.</p></li>
+        <li><p class="route-name"><a class="ext" href="https://ghostcode.skypistudio.com" target="_blank" rel="noopener">Ghost Code<span class="visually-hidden"> (opens in new tab)</span></a></p><p>Open the game.</p></li>
+        <li><p class="route-name"><a class="ext" href="https://skypistudio.com/contact/" target="_blank" rel="noopener">Write to Sky<span class="visually-hidden"> (opens in new tab)</span></a></p><p>Through the contact page on SkyPi Studio.</p></li>
       </ul>
-      <p>The Constitution sets written policy. No agent self-amends, and merges to <code>main</code> require Sky's approval. Any release exception needs separate, explicit authorization and verified controls. These fences are prompt-level, not sandbox-level.</p>
-      <a class="proof-link" href="https://github.com/Skypie99/Claude_Corp" target="_blank" rel="noopener">Read the model on GitHub<span class="vh"> (opens in new tab)</span> <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
     </div>
+  </section>
 
-    <div class="proof-card">
-      <h3><span class="proof-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span> Every role, its own branch</h3>
-      <ul class="branchlist">
-        <li><span class="pre">feat/</span>claudecorp-p1-glass-foundation</li>
-        <li><span class="pre">attribution/</span>claude-corp-truth-2026-06-18</li>
-        <li><span class="pre">content/</span>portfolio-voice-pass-2026-06-10</li>
-        <li><span class="pre">perf/</span>auto-2026-05-31</li>
-      </ul>
-      <p>Real, role-prefixed branches across projects. Agents propose on scoped branches; production merges require Sky's approval or a separately authorized, scoped exception.</p>
-      <a class="proof-link" href="https://github.com/Skypie99/Claude_Corp/commits/main" target="_blank" rel="noopener">This page's own 6-phase build history<span class="vh"> (opens in new tab)</span> <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-    </div>
-
-    <div class="proof-card">
-      <h3><span class="proof-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg></span> Documented reviews</h3>
-      <p style="margin-bottom:0.6rem"><span class="proof-stat">QA</span><br/>Reports and audit notes across the portfolio.</p>
-      <p>Reviews use source, tests, and git history to record findings and follow-up work.</p>
-    </div>
   </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="how" aria-labelledby="how-h">
-  <div class="sec-head">
-    <div class="eyebrow">How it works</div>
-    <h2 id="how-h">From backlog to review, with human oversight</h2>
-    <p class="sec-desc">Each role is a Claude agent with a scoped skill file. Morgan orchestrates across roles; the Constitution defines safety policy and Sky's review applies it. Technical enforcement depends on each project's named platform controls and must be verified separately.</p>
-  </div>
-  <div class="steps">
-    <div class="step">
-      <div class="step-top"><div class="step-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div><div class="step-num">01</div></div>
-      <h3>Sky sets intent</h3>
-      <p>Sky writes a directive or runs a slash command. The authority order locks in: Sky &gt; Constitution &gt; role files &gt; skills.</p>
-    </div>
-    <div class="step">
-      <div class="step-top"><div class="step-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div><div class="step-num">02</div></div>
-      <h3>Orchestrator plans</h3>
-      <p>Morgan reads backlogs, open branches, and QA reports — then routes work to the right specialists in dependency order.</p>
-    </div>
-    <div class="step">
-      <div class="step-top"><div class="step-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg></div><div class="step-num">03</div></div>
-      <h3>Roles execute</h3>
-      <p>Each agent works in isolation on a scoped branch. Design, code, test, a11y, performance, and privacy checks all run before merge.</p>
-    </div>
-    <div class="step">
-      <div class="step-top"><div class="step-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg></div><div class="step-num">04</div></div>
-      <h3>Safety sweep</h3>
-      <p>The 7-layer Design Compiler guides UI review; Orion supports recovery when a role hits a blocker. Review findings and a rollback path are checked before release.</p>
-    </div>
-    <div class="step step-feature">
-      <div class="step-top"><div class="step-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg></div><div class="step-num">05</div></div>
-      <h3>Sky approves release</h3>
-      <p>Merges to <code>main</code> need Sky's sign-off; any exception requires separate, explicit authorization. Agents propose and report, Morgan briefs, and Sky decides.</p>
-    </div>
-  </div>
-</section>
-
-<!-- TEAM -->
-<section id="team" aria-labelledby="team-h">
-  <div class="sec-head">
-    <div class="eyebrow">The team</div>
-    <h2 id="team-h">15 specialized roles</h2>
-    <p class="sec-desc">Each role is a purpose-built Claude agent with a scoped skill file, a prefixed branch namespace, and a silent external presence — only Morgan talks to Sky.</p>
-  </div>
-
-  <p class="team-hint"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg> Select any role to see its authority, limits, and constraints.</p>
-
-  <div class="legend">
-    <span>Design &amp; Frontend</span>
-    <span>Backend &amp; Data</span>
-    <span>Safety, Quality &amp; Infra</span>
-    <span>Product, Research &amp; Policy</span>
-    <span>Coordination</span>
-  </div>
-
-  <div class="team-grid">
-    <!-- Coordination -->
-    <div class="role" data-cat="Coordination" style="--rc:var(--accent)"><div class="role-top"><div class="mono">M</div><div><div class="role-name">Morgan</div><div class="role-title">Project Manager</div></div></div><div class="role-desc">Status briefings, decision routing, and the sole channel for messaging Sky.</div></div>
-    <!-- Design & Frontend -->
-    <div class="role" data-cat="Design &amp; Frontend" style="--rc:var(--accent)"><div class="role-top"><div class="mono">S</div><div><div class="role-name">Shamus</div><div class="role-title">Feature Engineer</div></div></div><div class="role-desc">Builds new screens, flows, and UI. Written policy calls for a 7-layer Design Compiler review before merge.</div></div>
-    <div class="role" data-cat="Design &amp; Frontend" style="--rc:var(--accent)"><div class="role-top"><div class="mono">D</div><div><div class="role-name">Dani</div><div class="role-title">Creative Director</div></div></div><div class="role-desc">Owns the token-first design system and runs the Design Compiler — POLISH and BLOCK calls are hers.</div></div>
-    <div class="role" data-cat="Design &amp; Frontend" style="--rc:var(--accent)"><div class="role-top"><div class="mono">A</div><div><div class="role-name">Alex</div><div class="role-title">Accessibility Engineer</div></div></div><div class="role-desc">Every UI change is reviewed against WCAG 2.2 AA before merge.</div></div>
-    <!-- Backend & Data -->
-    <div class="role" data-cat="Backend &amp; Data" style="--rc:var(--accent)"><div class="role-top"><div class="mono">D</div><div><div class="role-name">Dana</div><div class="role-title">Backend Engineer</div></div></div><div class="role-desc">Schema, migrations, RLS, and data integrity. Never touches the live database.</div></div>
-    <div class="role" data-cat="Backend &amp; Data" style="--rc:var(--accent)"><div class="role-top"><div class="mono">P</div><div><div class="role-name">Peter</div><div class="role-title">Performance Engineer</div></div></div><div class="role-desc">Bundle audits, render profiling, and query optimization across every project.</div></div>
-    <!-- Safety, Quality & Infra -->
-    <div class="role" data-cat="Safety, Quality &amp; Infra" style="--rc:var(--accent)"><div class="role-top"><div class="mono">S</div><div><div class="role-name">Steve</div><div class="role-title">Safety Engineer</div></div></div><div class="role-desc">Applies the Constitution's safety rules in review. Raises blockers before risky code ships.</div></div>
-    <div class="role" data-cat="Safety, Quality &amp; Infra" style="--rc:var(--accent)"><div class="role-top"><div class="mono">G</div><div><div class="role-name">Gary</div><div class="role-title">QA Engineer</div></div></div><div class="role-desc">Writes and runs the test suite. Catches regressions before they reach review.</div></div>
-    <div class="role" data-cat="Safety, Quality &amp; Infra" style="--rc:var(--accent)"><div class="role-top"><div class="mono">R</div><div><div class="role-name">Rory</div><div class="role-title">DevOps Engineer</div></div></div><div class="role-desc">CI/CD pipelines, EAS builds, and release readiness. Gets things actually shipped.</div></div>
-    <!-- Product, Research & Policy -->
-    <div class="role" data-cat="Product, Research &amp; Policy" style="--rc:var(--accent)"><div class="role-top"><div class="mono">Q</div><div><div class="role-name">Quinn</div><div class="role-title">Product Manager</div></div></div><div class="role-desc">Grooms the backlog, specs features, and prioritizes by real user value.</div></div>
-    <div class="role" data-cat="Product, Research &amp; Policy" style="--rc:var(--accent)"><div class="role-top"><div class="mono">R</div><div><div class="role-name">Riley</div><div class="role-title">User Researcher</div></div></div><div class="role-desc">Personas, journey maps, and friction analysis grounded in real disabled-user needs.</div></div>
-    <div class="role" data-cat="Product, Research &amp; Policy" style="--rc:var(--accent)"><div class="role-top"><div class="mono">J</div><div><div class="role-name">Jordan</div><div class="role-title">Privacy Advisor</div></div></div><div class="role-desc">Privacy-by-design gate on all location, auth, and user-data changes.</div></div>
-    <div class="role" data-cat="Product, Research &amp; Policy" style="--rc:var(--accent)"><div class="role-top"><div class="mono">C</div><div><div class="role-name">Casey</div><div class="role-title">Community Manager</div></div></div><div class="role-desc">Contributor docs, onboarding, and growth strategy for the project.</div></div>
-    <div class="role" data-cat="Product, Research &amp; Policy" style="--rc:var(--accent)"><div class="role-top"><div class="mono">W</div><div><div class="role-name">Will</div><div class="role-title">Technical Writer</div></div></div><div class="role-desc">READMEs, setup guides, changelogs, and the learnings log — clear language everywhere.</div></div>
-    <!-- Coordination -->
-    <div class="role" data-cat="Coordination" style="--rc:var(--accent)"><div class="role-top"><div class="mono">O</div><div><div class="role-name">Orion</div><div class="role-title">Recovery Agent</div></div></div><div class="role-desc">Recovery-only (Art. 8.4). Steps in when another role hits a blocker or inconsistent state.</div></div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section id="features" aria-labelledby="features-h">
-  <div class="sec-head center">
-    <div class="eyebrow">What makes it work</div>
-    <h2 id="features-h">Written rules and review gates</h2>
-    <p class="sec-desc">Claude Corp is governed by a Constitution that outranks any role or skill. These written rules guide review; technical controls must be identified and verified for each project.</p>
-  </div>
-  <div class="features">
-    <div class="feature glass-card">
-      <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></svg></div>
-      <h3>Living Constitution</h3>
-      <p>A governance document that all 15 roles inherit as binding written policy. The full document is private; this page is a public summary. Only Sky changes the Constitution.</p>
-    </div>
-    <div class="feature glass-card">
-      <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg></div>
-      <h3>7-Layer Design Compiler</h3>
-      <p>The review process covers tokenization, accessibility parity, component consistency, visual entropy, luxury score, regression safety, and the compile decision. A review result needs its own evidence.</p>
-    </div>
-    <div class="feature glass-card">
-      <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></div>
-      <h3>Background Mode</h3>
-      <p>Background Mode defines a stop signal and limits each cycle to one reversible change. These are operating rules; runtime enforcement must be verified for the setup in use.</p>
-    </div>
-    <div class="feature glass-card">
-      <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-      <h3>main is governed</h3>
-      <p>Agents propose changes on role-prefixed branches for review. Written policy requires Sky's approval for merges to <code>main</code>; any exception needs separate, explicit authorization.</p>
-    </div>
-    <div class="feature glass-card">
-      <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.5 5.1 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.5-6.9A2 2 0 0 0 16.8 4H7.2a2 2 0 0 0-1.7 1.1z"/></svg></div>
-      <h3>One voice to Sky</h3>
-      <p>Morgan is the only agent allowed to message Sky. Every other role surfaces findings to QA reports; Morgan picks them up and briefs.</p>
-    </div>
-    <div class="feature glass-card">
-      <div class="feature-ico"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M3 21v-5h5"/></svg></div>
-      <h3>Velocity Loop</h3>
-      <p>Five chained commands drive a continuous backlog-to-PR cycle: plan → work → review → state-sync → next. No idle time between iterations.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<div class="cta-band">
-  <div class="cta-inner glass-card-feature">
-    <h2>Built by one developer, powered by fifteen agents</h2>
-    <p>Claude Corp is the multi-agent engineering system <strong>Sky Halisky</strong> designed and runs on Anthropic's Claude — always on, always scoped, always accountable to Sky. The software it maintains is real, live, and linked above.</p>
-    <p class="cta-availability"><span class="dot" aria-hidden="true"></span> Sky is open to thoughtful product &amp; implementation collaborations.</p>
-    <div class="hero-actions">
-      <a href="https://skypistudio.com" class="btn btn-primary" target="_blank" rel="noopener">
-        View Sky's portfolio<span class="vh"> (opens in new tab)</span>
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-      </a>
-      <a href="https://github.com/Skypie99/Claude_Corp" class="btn btn-ghost" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 .5C5.4.5 0 5.9 0 12.5c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 24 12.5C24 5.9 18.6.5 12 .5z"/></svg>
-        View the source<span class="vh"> (opens in new tab)</span>
-      </a>
-    </div>
-  </div>
-</div>
-
 </main>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div>Built by <a href="https://skypistudio.com" target="_blank" rel="noopener">Sky Halisky<span class="vh"> (opens in new tab)</span></a> &middot; Powered by <a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic Claude<span class="vh"> (opens in new tab)</span></a></div>
-    <div class="footer-links">
-      <a href="#proof">Proof</a>
-      <a href="#how">How it works</a>
-      <a href="#team">Team</a>
-      <a href="#features">Features</a>
-      <a href="https://skypistudio.com" target="_blank" rel="noopener">Portfolio<span class="vh"> (opens in new tab)</span></a>
-      <a href="https://github.com/Skypie99/Claude_Corp" target="_blank" rel="noopener">GitHub<span class="vh"> (opens in new tab)</span></a>
-    </div>
+<footer class="site-foot">
+  <div class="wrap foot-grid">
+    <p class="foot-note">Claude Corp is a personal system by Skyler Halisky, SkyPi Studio, Okanagan Valley, British Columbia. It runs on <a class="ext" href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic's Claude<span class="visually-hidden"> (opens in new tab)</span></a> and is not an Anthropic product.</p>
+    <p class="label foot-colophon">Set in Cormorant Garamond, DM Sans and DM Mono</p>
   </div>
 </footer>
-
-<!-- Role detail modal (populated + activated by JS — progressive enhancement) -->
-<div class="role-modal" id="roleModal" role="dialog" aria-modal="true" aria-labelledby="rmName rmRole" aria-describedby="rmDomain" hidden>
-  <div class="role-modal-overlay" data-close="1"></div>
-  <div class="role-modal-panel">
-    <button type="button" class="role-modal-close" id="rmClose" data-close="1" aria-label="Close dialog">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-    </button>
-    <div class="rm-head">
-      <div class="rm-mono" id="rmMono" aria-hidden="true"></div>
-      <div>
-        <h2 class="rm-name" id="rmName"></h2>
-        <div class="rm-role" id="rmRole"></div>
-      </div>
-    </div>
-    <p class="rm-domain" id="rmDomain"></p>
-    <div class="rm-cols">
-      <div class="rm-block"><h3>Specialties</h3><ul id="rmSpec"></ul></div>
-      <div class="rm-block may"><h3>Can</h3><ul id="rmMay"></ul></div>
-      <div class="rm-block not"><h3>Cannot</h3><ul id="rmNot"></ul></div>
-      <div class="rm-block"><h3>Constraints</h3><ul id="rmCon"></ul></div>
-    </div>
-  </div>
-</div>
-
-<!-- Chromium-only glass refraction filter (Safari ignores it via @supports above) -->
-<svg aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
-  <filter id="glass-refract" x="-20%" y="-20%" width="140%" height="140%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="42" result="noise"/>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="14" xChannelSelector="R" yChannelSelector="G"/>
-  </filter>
-</svg>
-
-<!-- Cursor spotlight: writes --mx/--my for the glass specular highlight (pointer-fine + motion-allowed only) -->
-<script>
-  (function () {
-    var fine = window.matchMedia('(hover: hover) and (pointer: fine)');
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (!fine.matches || reduce.matches) return;
-    var cards = document.querySelectorAll('.glass-card, .glass-card-feature');
-    // Text-safe specular zone: the pipeline cap sits inside the glass, and the cursor
-    // radials otherwise wash its glyphs below AA when the mouse parks on the caption
-    // (ARB-1). Ramp the pipeline's own radial alphas down to a measured safe floor as
-    // the pointer nears the cap, back up to the full signature glow past RAMP_PX —
-    // every other glass-card-feature (incl. the CTA band) keeps the CSS defaults.
-    var pipeline = document.querySelector('.pipeline');
-    var pipelineCap = document.querySelector('.pipeline-cap');
-    var RAMP_PX = 80, FLOOR_W = 0.06, FLOOR_B = 0.08, DEFAULT_W = 0.16, DEFAULT_B = 0.20;
-    cards.forEach(function (el) {
-      el.addEventListener('pointermove', function (e) {
-        var r = el.getBoundingClientRect();
-        el.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(2) + '%');
-        el.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(2) + '%');
-        if (el === pipeline && pipelineCap) {
-          var cr = pipelineCap.getBoundingClientRect();
-          var dist = e.clientY < cr.top ? cr.top - e.clientY : e.clientY > cr.bottom ? e.clientY - cr.bottom : 0;
-          var t = Math.max(0, Math.min(1, dist / RAMP_PX));
-          el.style.setProperty('--spec-w', (FLOOR_W + t * (DEFAULT_W - FLOOR_W)).toFixed(4));
-          el.style.setProperty('--spec-b', (FLOOR_B + t * (DEFAULT_B - FLOOR_B)).toFixed(4));
-        }
-      }, { passive: true });
-    });
-  })();
-</script>
-
-<!-- Interactive "meet each agent": upgrades the static team cards into accessible dialog triggers -->
-<script>
-  (function () {
-    var DETAIL = {
-      "Morgan": { role: "Project Manager", domain: "Orchestration, status, and the single channel to Sky.",
-        specialties: ["Cross-role coordination", "Status briefings", "Risk escalation", "Dependency planning"],
-        may: ["Message Sky directly (sole channel)", "Coordinate cross-team work", "Escalate blockers", "Track project health"],
-        mustNot: ["Make unilateral technical decisions", "Override role boundaries", "Commit timelines without the team"],
-        constraints: ["Only Morgan messages Sky — ever", "Reports follow a fixed five-section format"] },
-      "Shamus": { role: "Feature Engineer", domain: "Frontend features, screens, and UI — every PR through the Design Compiler.",
-        specialties: ["React / Next.js", "Feature prototyping", "Component systems", "Design-token implementation"],
-        may: ["Create scoped UI branches", "Propose feature designs", "Build component specs", "Run the Design Compiler"],
-        mustNot: ["Ship without a Design Compiler PASS", "Modify core auth", "Change database schemas"],
-        constraints: ["A Design Compiler PASS is required before UI is done", "Coordinates with Dani on tokens"] },
-      "Dani": { role: "Creative Director", domain: "The design system, visual governance, and theming.",
-        specialties: ["Design tokens", "Theme consistency", "Visual language", "Luxury-UI scoring"],
-        may: ["Own and maintain design tokens", "Define visual standards", "Score design entropy", "Guide styling"],
-        mustNot: ["Ship breaking token changes unreviewed", "Override accessibility", "Make unilateral design calls"],
-        constraints: ["Authority over visual + token decisions", "The Design Compiler needs Dani's judgment"] },
-      "Alex": { role: "Accessibility Engineer", domain: "WCAG 2.2 AA compliance and inclusive design.",
-        specialties: ["WCAG 2.2 AA", "Screen-reader testing", "Keyboard navigation", "Color-contrast analysis"],
-        may: ["Audit components for a11y", "Recommend remediation", "Block non-compliant PRs", "Test with assistive tech"],
-        mustNot: ["Approve a11y workarounds", "Allow contrast violations", "Ship without a parity review"],
-        constraints: ["Accessibility is a non-negotiable pillar", "Every UI change needs a11y approval"] },
-      "Dana": { role: "Backend Engineer", domain: "APIs, schema, migrations, and data integrity.",
-        specialties: ["API design", "Database optimization", "Migrations (files only)", "Supabase / PostgreSQL"],
-        may: ["Design and implement APIs", "Create data models", "Optimize queries", "Author migrations as files"],
-        mustNot: ["Apply migrations to a live database", "Skip data validation", "Expose secrets"],
-        constraints: ["Migrations are files with rollback — never applied directly", "Never touches the live database"] },
-      "Peter": { role: "Performance Engineer", domain: "Speed, scalability, and resource efficiency.",
-        specialties: ["Query optimization", "Render profiling", "Caching strategies", "Latency analysis"],
-        may: ["Profile and find bottlenecks", "Recommend optimizations", "Review perf impact of PRs", "Set baselines"],
-        mustNot: ["Optimize without measuring first", "Trade safety for speed", "Sacrifice accessibility for speed"],
-        constraints: ["Measure first — never optimize blind", "Coordinates with Dana on DB changes"] },
-      "Steve": { role: "Safety Engineer", domain: "Security, privacy, and safety-policy review.",
-        specialties: ["Threat modeling", "Security audits", "Privacy compliance", "Credential handling"],
-        may: ["Block unsafe changes", "Require security review", "Escalate privacy concerns", "Apply the Constitution in review"],
-        mustNot: ["Approve credential exposure", "Skip security review", "Make exceptions to the pillars"],
-        constraints: ["Safety + privacy outrank everything else", "Can halt work when a pillar is violated"] },
-      "Gary": { role: "QA Engineer", domain: "Tests, regression prevention, and the CI safety net.",
-        specialties: ["Test-case design", "Regression detection", "Edge-case hunting", "Test automation"],
-        may: ["Write and run test suites", "Block regressions", "Request reproduction steps", "Design coverage"],
-        mustNot: ["Approve without test evidence", "Skip regression testing", "Ignore edge cases"],
-        constraints: ["“Done” means passing tests", "Nothing ships without Gary's green"] },
-      "Rory": { role: "DevOps Engineer", domain: "CI/CD, builds, and release readiness.",
-        specialties: ["CI/CD pipelines", "Deployment automation", "Build configuration", "Monitoring setup"],
-        may: ["Manage deployment pipelines", "Provision infrastructure", "Set up monitoring", "Recommend infra changes"],
-        mustNot: ["Deploy to production unattended", "Skip infrastructure testing", "Ignore security in infra"],
-        constraints: ["Merges to main need Sky's approval; any exception needs separate authorization", "Deployments follow change control — never unattended"] },
-      "Quinn": { role: "Product Manager", domain: "Requirements, prioritization, and the roadmap.",
-        specialties: ["Requirements definition", "Feature prioritization", "Roadmap planning", "Product strategy"],
-        may: ["Define product requirements", "Prioritize features", "Write user stories", "Guide product direction"],
-        mustNot: ["Override architectural concerns", "Ignore technical constraints", "Ship without validation"],
-        constraints: ["Requirements must be technically feasible", "User value drives prioritization"] },
-      "Riley": { role: "User Researcher", domain: "Personas, journeys, and friction analysis.",
-        specialties: ["User research", "Journey mapping", "Friction analysis", "Evidence synthesis"],
-        may: ["Run research studies", "Generate insights", "Map user journeys", "Support decisions with data"],
-        mustNot: ["Publish PII", "Draw conclusions from tiny samples", "Skip privacy review"],
-        constraints: ["Research respects user privacy", "Insights are validated before they ship"] },
-      "Jordan": { role: "Privacy Advisor", domain: "Privacy-by-design across location, auth, and user data.",
-        specialties: ["Privacy review", "Compliance (PIPEDA)", "Governance docs", "Data-practice analysis"],
-        may: ["Review changes for privacy", "Document governance decisions", "Recommend safeguards", "Gate sensitive work"],
-        mustNot: ["Approve privacy violations", "Ignore compliance requirements", "Make binding legal commitments"],
-        constraints: ["Privacy is a non-negotiable pillar", "Not a lawyer — findings need professional legal review"] },
-      "Casey": { role: "Community Manager", domain: "Contributor docs, onboarding, and growth.",
-        specialties: ["Contributor docs", "Onboarding flows", "Growth strategy", "Community support"],
-        may: ["Write onboarding + contributor guides", "Plan growth", "Support contributors", "Improve first-run UX"],
-        mustNot: ["Expose private data", "Overpromise capabilities", "Ignore accessibility feedback"],
-        constraints: ["Accuracy over hype", "Coordinates with Will on docs"] },
-      "Will": { role: "Technical Writer", domain: "READMEs, setup guides, changelogs, and the learnings log.",
-        specialties: ["Technical documentation", "Setup guides", "Changelogs", "Plain-language editing"],
-        may: ["Write and maintain docs", "Create tutorials", "Curate the learnings log", "Improve clarity"],
-        mustNot: ["Document security workarounds", "Mislead about capabilities", "Touch application code"],
-        constraints: ["Docs must be accurate and current", "Never touches application code"] },
-      "Orion": { role: "Recovery Agent", domain: "Crisis recovery, safe-state restoration, and Constitution-guided review.",
-        specialties: ["System recovery", "Crisis response", "Safe-state restoration", "Escalation handling"],
-        may: ["Step in when a role hits a blocker", "Halt unsafe work", "Restore a safe state", "Apply the Constitution in review"],
-        mustNot: ["Act outside a genuine emergency", "Modify the Constitution", "Make permanent changes without Sky"],
-        constraints: ["Recovery-only (Art. 8.4)", "Needs a genuine crisis to activate"] }
-    };
-
-    var modal = document.getElementById('roleModal');
-    if (!modal) return;
-    var panel = modal.querySelector('.role-modal-panel');
-    var el = function (id) { return document.getElementById(id); };
-    var elName = el('rmName'), elRole = el('rmRole'), elMono = el('rmMono'), elDomain = el('rmDomain'),
-        elSpec = el('rmSpec'), elMay = el('rmMay'), elNot = el('rmNot'), elCon = el('rmCon');
-    var lastFocused = null;
-    var scrim = [document.querySelector('header'), el('main'), document.querySelector('footer')];
-    // TF-7 (L4-05). Read at CALL time, never once at attach: the cursor-spotlight
-    // shim can latch its preference at load because it permanently disables a
-    // decorative effect, but the modal must keep working, and a visitor who
-    // changes the OS setting mid-session must be honoured on the very next close.
-    var exitRM = window.matchMedia('(prefers-reduced-motion: reduce)');
-    var exitTimer = null;
-    function finishClose() {
-      if (exitTimer) { clearTimeout(exitTimer); exitTimer = null; }
-      modal.classList.remove('is-closing');
-      modal.hidden = true;
-    }
-
-    function fill(ul, arr) { ul.innerHTML = ''; arr.forEach(function (t) { var li = document.createElement('li'); li.textContent = t; ul.appendChild(li); }); }
-
-    function openModal(name, color, initial, trigger) {
-      var d = DETAIL[name]; if (!d) return;
-      // Cancel any exit still in flight, or a re-open inside the fade window gets
-      // hidden by the stale timer a moment later.
-      if (exitTimer) { clearTimeout(exitTimer); exitTimer = null; }
-      modal.classList.remove('is-closing');
-      lastFocused = trigger || document.activeElement;
-      panel.style.setProperty('--rmc', color || 'var(--violet)');
-      elMono.textContent = initial; elName.textContent = name; elRole.textContent = d.role; elDomain.textContent = d.domain;
-      fill(elSpec, d.specialties); fill(elMay, d.may); fill(elNot, d.mustNot); fill(elCon, d.constraints);
-      modal.hidden = false;
-      document.body.style.overflow = 'hidden';
-      scrim.forEach(function (n) { if (n) n.setAttribute('inert', ''); });
-      panel.scrollTop = 0;
-      el('rmClose').focus();
-      document.addEventListener('keydown', onKey, true);
-    }
-    function closeModal() {
-      // TF-7: the accessibility teardown is NOT deferred, and its order is
-      // load-bearing — inert must come off BEFORE focus returns, or the focus
-      // lands in a still-inert subtree and silently no-ops. Only the actual
-      // hide waits for the fade.
-      document.body.style.overflow = '';
-      scrim.forEach(function (n) { if (n) n.removeAttribute('inert'); });
-      document.removeEventListener('keydown', onKey, true);
-      if (lastFocused && lastFocused.focus) lastFocused.focus();
-      if (exitRM.matches) { finishClose(); return; }   // reduce: instant, exactly like entry
-      if (exitTimer) return;                            // already closing
-      modal.classList.add('is-closing');
-      // setTimeout, never animationend: under reduced motion the global
-      // `animation: none !important` means the event never fires at all, which
-      // would strand the panel visible — same if the tab is backgrounded.
-      exitTimer = window.setTimeout(finishClose, 120);  // == --dur-exit
-    }
-    function onKey(e) {
-      if (e.key === 'Escape') { e.preventDefault(); closeModal(); return; }
-      if (e.key === 'Tab') {
-        var f = Array.prototype.filter.call(
-          panel.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'),
-          function (n) { return n.offsetParent !== null; });
-        if (!f.length) return;
-        var first = f[0], last = f[f.length - 1];
-        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-      }
-    }
-    modal.addEventListener('click', function (e) { if (e.target.closest('[data-close]')) closeModal(); });
-
-    // progressive enhancement — turn each static role card into a dialog trigger
-    var cards = document.querySelectorAll('#team .role');
-    Array.prototype.forEach.call(cards, function (card, i) {
-      var nameEl = card.querySelector('.role-name'); if (!nameEl) return;
-      var name = nameEl.textContent.trim(); if (!DETAIL[name]) return;
-      var color = (card.style.getPropertyValue('--rc') || '').trim();
-      var monoEl = card.querySelector('.mono'); var initial = monoEl ? monoEl.textContent.trim() : name.charAt(0);
-      var titleEl = card.querySelector('.role-title'); var title = titleEl ? titleEl.textContent.trim() : '';
-      card.classList.add('tappable');
-      card.setAttribute('role', 'button');
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('aria-haspopup', 'dialog');
-      nameEl.id = 'role-' + i + '-name';                 // QW-3 (L6-03): name from parts + describedby receipt (was aria-label override)
-      if (titleEl) titleEl.id = 'role-' + i + '-title';
-      card.setAttribute('aria-labelledby', titleEl ? ('role-' + i + '-name role-' + i + '-title') : ('role-' + i + '-name'));
-      var descEl = card.querySelector('.role-desc');     // describedby stays a token list — SIG-4 (P3) appends, never replaces (seam LAW-2)
-      if (descEl) {
-        descEl.id = 'role-' + i + '-desc';
-        var describedBy = 'role-' + i + '-desc';
-        var catText = card.getAttribute('data-cat');        // SIG-4 (P3): non-visual category label, appended after the description — description stays first (seam LAW-2)
-        if (catText) {
-          var catEl = document.createElement('span');
-          catEl.className = 'vh';
-          catEl.id = 'role-' + i + '-cat';
-          catEl.textContent = catText;
-          card.appendChild(catEl);
-          describedBy += ' role-' + i + '-cat';
-        }
-        card.setAttribute('aria-describedby', describedBy);
-      }
-      var cta = document.createElement('span');
-      cta.className = 'role-cta';
-      cta.innerHTML = 'View role <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
-      card.appendChild(cta);
-      card.addEventListener('click', function () { openModal(name, color, initial, card); });
-      card.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); openModal(name, color, initial, card); }
-      });
-    });
-    // (the "Select any role…" hint is now static markup, revealed via html.js — see #team — so it adds no post-load layout shift)
-  })();
-</script>
-
-<!-- Interactive orchestration pipeline: upgrades the static stage diagram into an accessible disclosure (reuses copy already on the page) -->
-<script>
-  (function () {
-    var STAGE = {
-      "Sky":      { role: "Sets intent",      nc: "var(--accent-warm)",
-        body: ["Sky writes a plain-language directive or runs a slash command. Her intent sits at the top of the authority order — it outranks the Constitution itself."] },
-      "Morgan":   { role: "Plans &amp; routes", nc: "var(--accent)",
-        body: ["Morgan reads the backlogs, open branches, and QA reports, then routes work to the right specialists in dependency order.",
-               "Morgan is also the only role that ever messages Sky — every other role surfaces findings to a QA report."] },
-      "15 Roles": { role: "Build in parallel", nc: "var(--accent)",
-        body: ["Each role works in isolation on its own role-prefixed branch — <code>feat/</code>, <code>fix/</code>, <code>perf/</code>, <code>content/</code> — across five groups: design &amp; frontend, backend &amp; data, safety / quality / infra, product / research / policy, and coordination.",
-               "Design, code, test, accessibility, performance, and privacy checks all run before anything is proposed for merge."] },
-      "Safety":   { role: "7-layer compiler", nc: "var(--ok-text)",
-        body: ["Written policy calls for a 7-layer Design Compiler review: tokenization, accessibility parity, component consistency, visual entropy, luxury score, regression safety, and the compile decision.",
-               "The Orion recovery agent stands by to restore a safe state if a role hits a blocker."] },
-      "main":     { role: "Sky approves release", nc: "var(--accent)",
-        body: ["Agents propose changes on branches for review. Written policy requires Sky's approval for merges to <code>main</code>; any release exception needs separate, explicit authorization and verified controls.",
-               "Morgan briefs and Sky decides. This public summary does not establish an active automated release exception."] }
-    };
-
-    var flow = document.querySelector('.pipeline .flow');
-    var detail = document.getElementById('pipeline-detail');
-    var announcer = document.getElementById('pipeline-announcer');
-    if (!flow || !detail) return;
-    var nodes = Array.prototype.slice.call(flow.querySelectorAll('.node'));
-    var current = null;
-    // TF-7 (L4-05) — same contract as the modal: preference read at CALL time,
-    // setTimeout rather than animationend, and the fade lives ONLY here in
-    // closeStage(). A stage SWITCH routes through openStage() instead and stays
-    // instant, which is the restraint worth keeping.
-    var exitRM = window.matchMedia('(prefers-reduced-motion: reduce)');
-    var exitTimer = null;
-    function finishStageClose() {
-      if (exitTimer) { clearTimeout(exitTimer); exitTimer = null; }
-      detail.classList.remove('is-closing');
-      detail.hidden = true;
-      detail.removeAttribute('aria-labelledby');
-    }
-
-    function render(name) {
-      var d = STAGE[name];
-      detail.style.setProperty('--nc', d.nc);
-      detail.innerHTML = '<h3 id="pipeline-detail-h">' + name + ' <span class="pd-role">' + d.role + '</span></h3>' +
-        d.body.map(function (p) { return '<p>' + p + '</p>'; }).join('');
-    }
-    function openStage(node, name) {
-      // Cancel any exit in flight — otherwise render()'s innerHTML rewrite below
-      // can swap content inside a fading panel, and the stale timer would hide
-      // the freshly-opened stage a moment later.
-      if (exitTimer) { clearTimeout(exitTimer); exitTimer = null; }
-      detail.classList.remove('is-closing');
-      nodes.forEach(function (n) { n.setAttribute('aria-expanded', n === node ? 'true' : 'false'); });
-      render(name);
-      detail.setAttribute('aria-labelledby', 'pipeline-detail-h');
-      detail.hidden = false;
-      current = node;
-      // Deferred: calling this synchronously in the same tick as the activating
-      // click/keydown can race a just-landed Tab-focus's own pending scroll and settle in
-      // the wrong place (observed intermittently). requestAnimationFrame deferrals were
-      // tried first but weren't reliably past whatever the browser's own focus-scroll
-      // was still doing; a short wall-clock delay measured clean every time.
-      setTimeout(function () { detail.scrollIntoView({ block: 'nearest' }); }, 60);
-      announcer.textContent = name + ' — ' + STAGE[name].role.replace('&amp;', 'and');
-    }
-    function closeStage() {
-      // Assistive-technology state is updated synchronously — the trigger reports
-      // collapsed and the live region clears immediately, whatever the pixels do.
-      nodes.forEach(function (n) { n.setAttribute('aria-expanded', 'false'); });
-      current = null;
-      announcer.textContent = '';
-      if (exitRM.matches) { finishStageClose(); return; }  // reduce: instant
-      if (exitTimer) return;
-      detail.classList.add('is-closing');
-      exitTimer = window.setTimeout(finishStageClose, 120);  // == --dur-exit
-    }
-
-    nodes.forEach(function (node, i) {
-      var titleEl = node.querySelector('.ntitle'); if (!titleEl) return;
-      var name = titleEl.textContent.trim(); if (!STAGE[name]) return;
-      node.id = 'pstage-' + i;
-      node.style.setProperty('--nc', STAGE[name].nc);
-      node.setAttribute('role', 'button');
-      node.setAttribute('tabindex', '0');
-      node.setAttribute('aria-expanded', 'false');
-      node.setAttribute('aria-controls', 'pipeline-detail');
-      node.setAttribute('aria-label', name + ' — ' + STAGE[name].role.replace('&amp;', 'and'));
-      function toggle() { if (current === node) { closeStage(); } else { openStage(node, name); } }
-      node.addEventListener('click', toggle);
-      node.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); toggle(); }
-        else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); nodes[(i + 1) % nodes.length].focus(); }
-        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); nodes[(i - 1 + nodes.length) % nodes.length].focus(); }
-      });
-    });
-  })();
-</script>
-
-<!-- Theme toggle: flips data-theme, persists the choice, keeps the label + address-bar color in sync -->
-<script>
-  (function () {
-    var btn = document.getElementById('theme-toggle');
-    if (!btn) return;
-    var root = document.documentElement;
-    function effective() {
-      var t = root.getAttribute('data-theme');
-      if (t === 'light' || t === 'dark') return t;
-      return (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
-    }
-    function sync() {
-      var cur = effective();
-      btn.setAttribute('aria-pressed', cur === 'light' ? 'true' : 'false');
-      btn.setAttribute('aria-label', cur === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
-      var m = document.getElementById('meta-theme-color');
-      if (m) m.setAttribute('content', cur === 'light' ? '#f3efe6' : '#070708');
-    }
-    sync();
-    btn.addEventListener('click', function () {
-      var next = effective() === 'dark' ? 'light' : 'dark';
-      // SIG-1, step 1 — flatten UNDER THE OUTGOING THEME, with transitions not
-      // yet armed. Every gradient surface on this page paints via the `background`
-      // SHORTHAND, which resets background-color to `transparent` (grep the file:
-      // the only literal "background-color" is the property name in the transition
-      // list). So if the flatten and the theme flip landed in one style
-      // resolution, background-color would animate FROM TRANSPARENT — the
-      // surfaces would fade IN rather than cross over, and a flattened card would
-      // sit near #b2b1af where a true cross-fade puts it near #e7e6e4. That
-      // trades one muddy frame for a page-wide LAGGING muddy frame across 27
-      // surfaces, and leaves the sticky header briefly transparent for anyone
-      // who has scrolled. Applying .theming alone first snaps each surface to its
-      // OUTGOING flat colour — sub-perceptible, because those flat values were
-      // chosen to sit within ~15/255 of the gradient they replace.
-      root.classList.add('theming');
-      void root.offsetWidth;                    // force the style flush between the two steps
-      // Step 2 — arm the transitions and flip. Now every flat colour has a real
-      // outgoing value and eases old -> new on one clock.
-      root.classList.add('theming-go');
-      root.setAttribute('data-theme', next);
-      try { localStorage.setItem('cc-theme', next); } catch (e) {}
-      sync();
-      // Step 3 — hand back to the real gradients. The 480ms is kept deliberately:
-      // the 200ms over --dur-base is a truncation cushion (a busy main thread must
-      // not drop the class mid-tween), and a tighter number would be a fourth
-      // un-tokenized motion literal. The near-zero flatten deltas already make the
-      // hand-back sub-perceptual, so there is nothing to gain by racing it.
-      window.setTimeout(function () { root.classList.remove('theming', 'theming-go'); }, 480);
-    });
-    if (window.matchMedia) {
-      var mq = window.matchMedia('(prefers-color-scheme: light)');
-      var onChange = function () { if (!root.getAttribute('data-theme')) sync(); };
-      if (mq.addEventListener) mq.addEventListener('change', onChange);
-      else if (mq.addListener) mq.addListener(onChange);
-    }
-  })();
-</script>
-
 </body>
 </html>
