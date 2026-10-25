@@ -506,6 +506,8 @@ h2 { font-size: var(--fs-section); line-height: var(--lh-heading); }
   .hero-copy { max-width: var(--w-copy); }
   h1 { max-width: var(--measure-display-wide); }
   .strip-well { display: block; }
+  /* The compact strip carries the system below 1180px; drawing the full plate as well would show it twice within one screen. */
+  .hero-art { display: none; }
   .well { margin-right: 0; padding: var(--space-6); }
   .plate { max-width: none; }
 }
@@ -549,7 +551,6 @@ h2 { font-size: var(--fs-section); line-height: var(--lh-heading); }
   .wordmark-name { font-size: var(--fs-title-xs); }
   .icon-button-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
   .hero { padding: var(--space-7) 0 var(--space-14); }
-  .hero-art { display: none; }
   .kicker { margin-bottom: var(--space-4); letter-spacing: var(--track-ref); }
   h1 { font-size: var(--fs-display-sm); max-width: none; }
   .strip-well { margin-top: var(--space-6); }
