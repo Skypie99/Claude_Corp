@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <title>og-image template</title>
+  <!-- Template for /og-image.png (1200 x 630). Serve the repository root over
+       HTTP, open /tools/og-image.html in a headless browser at 1200 x 630 with
+       reduced motion, and capture the viewport. Artwork comes from tools/atlas.mjs. -->
+  <link rel="stylesheet" href="../assets/site.css">
+  <style>
+    html, body { width: 1200px; height: 630px; overflow: hidden; }
+    .card { position: relative; width: 1200px; height: 630px; padding: 60px 0 52px 64px; display: grid; grid-template-columns: 500px 1fr; gap: 40px; }
+    .card-copy { display: flex; flex-direction: column; }
+    .card .kicker { margin-bottom: 24px; font-size: 15px; }
+    .card h1 { font-size: 64px; line-height: 1.02; max-width: none; }
+    .card-url { margin-top: auto; font-family: var(--mono); font-size: 18px; letter-spacing: 0.04em; color: var(--ink-meta); }
+    .card-art { position: relative; }
+    .card .well { position: absolute; left: 0; top: 0; right: 0; bottom: -52px; margin: 0; padding: 0 44px 52px 30px; border-radius: 10px 0 0 0; display: flex; align-items: center; }
+    .card .plate { width: 100%; }
+    .card .plate { max-width: none; padding: 22px 24px 18px; }
+    .card .plate-head { padding-bottom: 10px; }
+    .card .plate-caption { margin-top: 12px; padding-top: 12px; font-size: 17px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-copy">
+      <p class="label kicker"><span class="dot" aria-hidden="true"></span>Claude Corp · A SkyPi Studio system</p>
+      <h1>Fifteen AI roles work in parallel. <span class="accent">One person decides what ships.</span></h1>
+      <p class="card-url">claudecorp.skypistudio.com</p>
+    </div>
+    <div class="card-art">
+      <div class="well">
+        <div class="plate">
+          <div class="plate-head"><span class="label">Claude Corp / Branch Atlas</span><span class="label">Concept diagram</span></div>
+          <!-- atlas:wide --><svg class="atlas atlas-wide" viewBox="0 0 800 290" aria-hidden="true" focusable="false"><path d="M 34 0 V 104" class="glyph-rule" stroke-width="1" fill="none"/><path d="M 400 0 V 11" class="glyph-rule" stroke-width="1" fill="none"/><path d="M 712 0 V 101" class="glyph-rule" stroke-width="1" fill="none"/><path d="M 116 275 V 290" class="glyph-rule" stroke-width="1" fill="none"/><path d="M 636 275 V 290" class="glyph-rule" stroke-width="1" fill="none"/><path d="M 43 118 H 104" class="glyph-rule" stroke-width="1.4" fill="none"/><path d="M 128 118 C 200 118 202 20 274 20 H 526 C 588 20 552 118 614 118" class="glyph-accent branch" pathLength="1" style="--i:0" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 34 274 34 H 526 C 588 34 552 118 614 118" class="glyph-ink branch" pathLength="1" style="--i:1" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 48 274 48 H 526 C 588 48 552 118 614 118" class="glyph-muted branch" pathLength="1" style="--i:2" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 62 274 62 H 526 C 588 62 552 118 614 118" class="glyph-accent branch" pathLength="1" style="--i:3" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 76 274 76 H 526 C 588 76 552 118 614 118" class="glyph-ink branch" pathLength="1" style="--i:4" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 90 274 90 H 526 C 588 90 552 118 614 118" class="glyph-muted branch" pathLength="1" style="--i:5" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 104 274 104 H 526 C 588 104 552 118 614 118" class="glyph-accent branch" pathLength="1" style="--i:6" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 118 274 118 H 526 C 588 118 552 118 614 118" class="glyph-ink branch" pathLength="1" style="--i:7" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 132 274 132 H 526 C 588 132 552 118 614 118" class="glyph-muted branch" pathLength="1" style="--i:8" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 146 274 146 H 526 C 588 146 552 118 614 118" class="glyph-accent branch" pathLength="1" style="--i:9" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 160 274 160 H 526 C 588 160 552 118 614 118" class="glyph-ink branch" pathLength="1" style="--i:10" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 174 274 174 H 526 C 588 174 552 118 614 118" class="glyph-muted branch" pathLength="1" style="--i:11" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 188 274 188 H 526 C 588 188 552 118 614 118" class="glyph-accent branch" pathLength="1" style="--i:12" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 202 274 202 H 526 C 588 202 552 118 614 118" class="glyph-ink branch" pathLength="1" style="--i:13" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 128 118 C 200 118 202 216 274 216 H 526 C 588 216 552 118 614 118" class="glyph-muted branch" pathLength="1" style="--i:14" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="400" cy="20" r="3.4" class="fill-accent node-dot"/><circle cx="400" cy="34" r="3.4" class="fill-ink node-dot"/><circle cx="400" cy="48" r="3.4" class="fill-muted node-dot"/><circle cx="400" cy="62" r="3.4" class="fill-accent node-dot"/><circle cx="400" cy="76" r="3.4" class="fill-ink node-dot"/><circle cx="400" cy="90" r="3.4" class="fill-muted node-dot"/><circle cx="400" cy="104" r="3.4" class="fill-accent node-dot"/><circle cx="400" cy="118" r="3.4" class="fill-ink node-dot"/><circle cx="400" cy="132" r="3.4" class="fill-muted node-dot"/><circle cx="400" cy="146" r="3.4" class="fill-accent node-dot"/><circle cx="400" cy="160" r="3.4" class="fill-ink node-dot"/><circle cx="400" cy="174" r="3.4" class="fill-muted node-dot"/><circle cx="400" cy="188" r="3.4" class="fill-accent node-dot"/><circle cx="400" cy="202" r="3.4" class="fill-ink node-dot"/><circle cx="400" cy="216" r="3.4" class="fill-muted node-dot"/><circle cx="34" cy="118" r="8" class="fill-paper glyph-ink" stroke-width="2.5"/><circle cx="34" cy="118" r="2.6" class="fill-accent"/><circle cx="116" cy="118" r="11" class="fill-paper glyph-ink" stroke-width="3"/><circle cx="116" cy="118" r="3.3" class="fill-accent"/><rect x="614" y="96" width="44" height="44" rx="4" class="fill-shade glyph-accent" stroke-width="1.6"/><path d="M 624 118 L 633 127 L 649 107" class="glyph-accent" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M 668 118 H 695" class="glyph-accent" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M 687 112 L 695 118 L 687 124" class="glyph-accent" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="712" cy="118" r="11" class="fill-paper glyph-ink" stroke-width="3"/><circle cx="712" cy="118" r="3.3" class="fill-accent"/><path d="M 725 118 H 763" class="glyph-ink" stroke-width="1.6" fill="none"/><circle cx="772" cy="118" r="7" class="fill-ink"/><text x="34" y="266" font-size="25" text-anchor="middle" class="t-ink">Sky</text><text x="116" y="266" font-size="27" text-anchor="middle" class="t-ink">Morgan</text><text x="400" y="266" font-size="31" text-anchor="middle" class="t-ink">15 roles</text><text x="636" y="266" font-size="27" text-anchor="middle" class="t-ink">Review</text><text x="712" y="266" font-size="27" text-anchor="middle" class="t-ink">Sky</text><text x="772" y="266" font-size="25" text-anchor="middle" class="t-ink">main</text></svg><!-- /atlas:wide -->
+          <p class="plate-caption">Fifteen separate branches. One review. One human merge.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

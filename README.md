@@ -16,7 +16,7 @@ When anything conflicts — a role prompt, a skill, an orchestrator instruction,
 
 > **Sky's intent  >  Constitution  >  role files  >  skills**
 
-No agent self-amends. Only Sky changes the Constitution. Written policy requires Sky's approval for merges to `main`. Any release exception needs separate, explicit authorization, a documented scope, and current verification of its controls. This public summary does not establish an active automated release exception.
+No agent self-amends. Only Sky changes the Constitution. Written policy requires Sky's approval for merges to `main`, with one narrow written exception: a single role may merge and release one project, the Prompt Library, only when every check on a written list passes. That grant is subject to quarterly review and can be revoked. This public summary does not verify that the exception is currently active or that its controls are enforced.
 
 ---
 
@@ -48,16 +48,33 @@ No agent self-amends. Only Sky changes the Constitution. Written policy requires
 2. **Orchestrator plans** — Morgan reads backlogs, open branches, and QA reports, then routes work to the right specialists in dependency order.
 3. **Roles execute** — each agent works in isolation on a scoped, role-prefixed branch. Design, code, test, a11y, performance, and privacy checks run before merge.
 4. **Safety sweep** — the 7-layer Design Compiler guides UI review; Orion supports recovery when a role hits a blocker. Review findings and a rollback path are checked before release.
-5. **Sky approves release** — merges to `main` need Sky's sign-off; any exception requires separate, explicit authorization. Agents branch, propose, and report; Morgan briefs; Sky decides.
+5. **Sky approves release** — merges to `main` need Sky's sign-off, except for the one narrow written exception above. Agents branch, propose, and report; Morgan briefs; Sky decides.
 
 ---
 
 ## Guardrails
 
-- **`main` is governed, not open** — agents propose changes on role-prefixed branches. Written policy requires Sky's approval; any exception needs separate, explicit authorization.
+- **`main` is governed, not open** — agents propose changes on role-prefixed branches. Written policy requires Sky's approval, with one narrow written exception (one role, one project, behind a written list of checks).
 - **One voice to Sky** — only Morgan messages Sky; every other role surfaces findings to QA reports.
 - **Live side effects require authorization** — written policy prohibits live database changes and external sends without explicit authorization. A release exception is not general permission to act.
 - **Living Constitution** — all roles inherit it as binding written policy. The full Constitution and role files are private; this repository presents a public summary, not a verified current version or enforcement record.
+
+---
+
+## The site
+
+A static page deployed by GitHub Pages from `main` (`.github/workflows/deploy.yml`). There is no build step.
+
+| Path | What |
+|------|------|
+| `index.html` | The page, including its inline Branch Atlas drawings |
+| `404.html` | Not-found page; uses root-absolute asset paths because Pages serves it at any depth |
+| `assets/site.css`, `assets/site.js` | Shared styles and the small progressive-enhancement script (theme, menu, reveal) |
+| `assets/fonts/` | Self-hosted Cormorant Garamond, DM Sans and DM Mono subsets, under the SIL Open Font License 1.1 (licence texts alongside) |
+| `og-image.png` | Social card, rendered from `tools/og-image.html` |
+| `tools/atlas.mjs` | Regenerates the drawings in place: `node tools/atlas.mjs` |
+
+The drawings are diagrams of the operating model, not captures of live activity. To preview locally, serve the repository root over HTTP, for example `python3 -m http.server 8000 --bind 127.0.0.1`, and open `http://127.0.0.1:8000/`.
 
 ---
 
