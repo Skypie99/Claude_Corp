@@ -35,7 +35,11 @@
     var next = current === 'dark' ? 'light' : 'dark';
     toggles.forEach(function (button) {
       var label = button.querySelector('[data-theme-label]');
-      if (label) label.textContent = next === 'dark' ? 'Dark' : 'Light';
+      // The visible word names the mode the page is IN (the same rule the
+      // portfolio's switch follows); the accessible name names the ACTION.
+      // Before 2026-10-27 this word carried `next`, so a light page read
+      // "Dark" and a dark page read "Light" — the reported reversal.
+      if (label) label.textContent = current === 'dark' ? 'Dark' : 'Light';
       button.setAttribute('aria-label', 'Switch to ' + next + ' theme');
     });
     var saved = root.hasAttribute('data-theme');
