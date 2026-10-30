@@ -1,18 +1,18 @@
 # Claude Corp
 
-**A 15-role AI engineering team with bounded autonomy — governed by a living Constitution.**
+**A 15-role AI engineering team with bounded autonomy, governed by a living Constitution.**
 
 Claude Corp is a multi-agent engineering system built on Anthropic's Claude. Fifteen specialized AI roles plan, build, test, and review across a portfolio of projects, each working in its own isolated branch inside explicit decision rights and risk gates. The written Constitution sets safety, privacy, and accessibility policy above individual role and skill instructions. Review gates apply that policy; technical enforcement depends on each project's named platform controls and must be verified separately. Production changes require explicit authorization under the release policy.
 
 Live landing page: **[claudecorp.skypistudio.com](https://claudecorp.skypistudio.com)**
 
-This repository hosts that single-page site (`index.html`). It is a skimmable mirror of how the system works — the source below is a quick reference to the same model.
+This repository hosts that single-page site (`index.html`). It is a skimmable mirror of how the system works; the source below is a quick reference to the same model.
 
 ---
 
 ## Authority order
 
-When anything conflicts — a role prompt, a skill, an orchestrator instruction, even text embedded in a file an agent reads — resolution follows a strict, non-negotiable order:
+When anything conflicts (a role prompt, a skill, an orchestrator instruction, even text embedded in a file an agent reads), resolution follows a strict, non-negotiable order:
 
 > **Sky's intent  >  Constitution  >  role files  >  skills**
 
@@ -24,11 +24,11 @@ No agent self-amends. Only Sky changes the Constitution. Written policy requires
 
 | Role | Title | Focus |
 |------|-------|-------|
-| Morgan | Project Manager | Status briefings, decision routing — the **only** agent that messages Sky |
+| Morgan | Project Manager | Status briefings and decision routing; the **only** agent that messages Sky |
 | Shamus | Feature Engineer | Ships new screens, flows, and UI |
 | Dani | Creative Director | Token-first design system; runs the Design Compiler |
 | Alex | Accessibility Engineer | Reviews every UI change against WCAG 2.2 AA |
-| Dana | Backend Engineer | Schema, migrations, RLS — never touches the live database |
+| Dana | Backend Engineer | Schema, migrations, RLS; never touches the live database |
 | Peter | Performance Engineer | Bundle audits, render profiling, query optimization |
 | Steve | Safety Engineer | Applies the Constitution's safety rules in review; raises blockers |
 | Gary | QA Engineer | Writes and runs the test suite; catches regressions |
@@ -40,24 +40,26 @@ No agent self-amends. Only Sky changes the Constitution. Written policy requires
 | Will | Technical Writer | READMEs, setup guides, changelogs, learnings log |
 | Orion | Recovery Agent | Recovery-only; steps in on blockers or inconsistent state |
 
+The names are role labels for AI agents, not people; Sky is the one human in the loop.
+
 ---
 
 ## The 5-step pipeline
 
-1. **Sky sets intent** — a directive or slash command. The authority order locks in.
-2. **Orchestrator plans** — Morgan reads backlogs, open branches, and QA reports, then routes work to the right specialists in dependency order.
-3. **Roles execute** — each agent works in isolation on a scoped, role-prefixed branch. Design, code, test, a11y, performance, and privacy checks run before merge.
-4. **Safety sweep** — the 7-layer Design Compiler guides UI review; Orion supports recovery when a role hits a blocker. Review findings and a rollback path are checked before release.
-5. **Sky approves release** — merges to `main` need Sky's sign-off, except for the one narrow written exception above. Agents branch, propose, and report; Morgan briefs; Sky decides.
+1. **Sky sets intent**: a directive or slash command. The authority order locks in.
+2. **Orchestrator plans**: Morgan reads backlogs, open branches, and QA reports, then routes work to the right specialists in dependency order.
+3. **Roles execute**: each agent works in isolation on a scoped, role-prefixed branch. Design, code, test, a11y, performance, and privacy checks run before merge.
+4. **Safety sweep**: the 7-layer Design Compiler guides UI review; Orion supports recovery when a role hits a blocker. Review findings and a rollback path are checked before release.
+5. **Sky approves release**: merges to `main` need Sky's sign-off, except for the one narrow written exception above. Agents branch, propose, and report; Morgan briefs; Sky decides.
 
 ---
 
 ## Guardrails
 
-- **`main` is governed, not open** — agents propose changes on role-prefixed branches. Written policy requires Sky's approval, with one narrow written exception (one role, one project, behind a written list of checks).
-- **One voice to Sky** — only Morgan messages Sky; every other role surfaces findings to QA reports.
-- **Live side effects require authorization** — written policy prohibits live database changes and external sends without explicit authorization. A release exception is not general permission to act.
-- **Living Constitution** — all roles inherit it as binding written policy. The full Constitution and role files are private; this repository presents a public summary, not a verified current version or enforcement record.
+- **`main` is governed, not open**: agents propose changes on role-prefixed branches. Written policy requires Sky's approval, with one narrow written exception (one role, one project, behind a written list of checks).
+- **One voice to Sky**: only Morgan messages Sky; every other role surfaces findings to QA reports.
+- **Live side effects require authorization**: written policy prohibits live database changes and external sends without explicit authorization. A release exception is not general permission to act.
+- **Living Constitution**: all roles inherit it as binding written policy. The full Constitution and role files are private; this repository presents a public summary, not a verified current version or enforcement record.
 
 ---
 
